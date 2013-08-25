@@ -17,22 +17,7 @@
 		0A209EC917CA8079002B6ACF /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A209EC717CA8079002B6ACF /* Main_iPad.storyboard */; };
 		0A209ECC17CA8079002B6ACF /* RSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209ECB17CA8079002B6ACF /* RSViewController.m */; };
 		0A209ECE17CA8079002B6ACF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A209ECD17CA8079002B6ACF /* Images.xcassets */; };
-		0A209ED517CA8079002B6ACF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209ED417CA8079002B6ACF /* XCTest.framework */; };
-		0A209ED617CA8079002B6ACF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209EB217CA8079002B6ACF /* Foundation.framework */; };
-		0A209ED717CA8079002B6ACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209EB617CA8079002B6ACF /* UIKit.framework */; };
-		0A209EDF17CA8079002B6ACF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A209EDD17CA8079002B6ACF /* InfoPlist.strings */; };
-		0A209EE117CA8079002B6ACF /* Rat_Slap_TouchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209EE017CA8079002B6ACF /* Rat_Slap_TouchTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		0A209ED817CA8079002B6ACF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0A209EA717CA8079002B6ACF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0A209EAE17CA8079002B6ACF;
-			remoteInfo = "Rat Slap Touch";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0A209EAF17CA8079002B6ACF /* Rat Slap Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rat Slap Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,11 +35,7 @@
 		0A209ECA17CA8079002B6ACF /* RSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSViewController.h; sourceTree = "<group>"; };
 		0A209ECB17CA8079002B6ACF /* RSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSViewController.m; sourceTree = "<group>"; };
 		0A209ECD17CA8079002B6ACF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0A209ED317CA8079002B6ACF /* Rat Slap TouchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rat Slap TouchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A209ED417CA8079002B6ACF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		0A209EDC17CA8079002B6ACF /* Rat Slap TouchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rat Slap TouchTests-Info.plist"; sourceTree = "<group>"; };
-		0A209EDE17CA8079002B6ACF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0A209EE017CA8079002B6ACF /* Rat_Slap_TouchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rat_Slap_TouchTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,16 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0A209ED017CA8079002B6ACF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0A209ED517CA8079002B6ACF /* XCTest.framework in Frameworks */,
-				0A209ED717CA8079002B6ACF /* UIKit.framework in Frameworks */,
-				0A209ED617CA8079002B6ACF /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				0A209EB817CA8079002B6ACF /* Rat Slap Touch */,
-				0A209EDA17CA8079002B6ACF /* Rat Slap TouchTests */,
 				0A209EB117CA8079002B6ACF /* Frameworks */,
 				0A209EB017CA8079002B6ACF /* Products */,
 			);
@@ -95,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				0A209EAF17CA8079002B6ACF /* Rat Slap Touch.app */,
-				0A209ED317CA8079002B6ACF /* Rat Slap TouchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,24 +106,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0A209EDA17CA8079002B6ACF /* Rat Slap TouchTests */ = {
-			isa = PBXGroup;
-			children = (
-				0A209EE017CA8079002B6ACF /* Rat_Slap_TouchTests.m */,
-				0A209EDB17CA8079002B6ACF /* Supporting Files */,
-			);
-			path = "Rat Slap TouchTests";
-			sourceTree = "<group>";
-		};
-		0A209EDB17CA8079002B6ACF /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0A209EDC17CA8079002B6ACF /* Rat Slap TouchTests-Info.plist */,
-				0A209EDD17CA8079002B6ACF /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -175,24 +126,6 @@
 			productReference = 0A209EAF17CA8079002B6ACF /* Rat Slap Touch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0A209ED217CA8079002B6ACF /* Rat Slap TouchTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0A209EE717CA8079002B6ACF /* Build configuration list for PBXNativeTarget "Rat Slap TouchTests" */;
-			buildPhases = (
-				0A209ECF17CA8079002B6ACF /* Sources */,
-				0A209ED017CA8079002B6ACF /* Frameworks */,
-				0A209ED117CA8079002B6ACF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0A209ED917CA8079002B6ACF /* PBXTargetDependency */,
-			);
-			name = "Rat Slap TouchTests";
-			productName = "Rat Slap TouchTests";
-			productReference = 0A209ED317CA8079002B6ACF /* Rat Slap TouchTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -202,11 +135,6 @@
 				CLASSPREFIX = RS;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = mandrake;
-				TargetAttributes = {
-					0A209ED217CA8079002B6ACF = {
-						TestTargetID = 0A209EAE17CA8079002B6ACF;
-					};
-				};
 			};
 			buildConfigurationList = 0A209EAA17CA8079002B6ACF /* Build configuration list for PBXProject "Rat Slap Touch" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -222,7 +150,6 @@
 			projectRoot = "";
 			targets = (
 				0A209EAE17CA8079002B6ACF /* Rat Slap Touch */,
-				0A209ED217CA8079002B6ACF /* Rat Slap TouchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -239,14 +166,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0A209ED117CA8079002B6ACF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0A209EDF17CA8079002B6ACF /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -260,23 +179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0A209ECF17CA8079002B6ACF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0A209EE117CA8079002B6ACF /* Rat_Slap_TouchTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0A209ED917CA8079002B6ACF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0A209EAE17CA8079002B6ACF /* Rat Slap Touch */;
-			targetProxy = 0A209ED817CA8079002B6ACF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0A209EBB17CA8079002B6ACF /* InfoPlist.strings */ = {
@@ -301,14 +204,6 @@
 				0A209EC817CA8079002B6ACF /* Base */,
 			);
 			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
-		0A209EDD17CA8079002B6ACF /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A209EDE17CA8079002B6ACF /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -410,46 +305,6 @@
 			};
 			name = Release;
 		};
-		0A209EE817CA8079002B6ACF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Rat Slap Touch.app/Rat Slap Touch";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rat Slap Touch/Rat Slap Touch-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Rat Slap TouchTests/Rat Slap TouchTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		0A209EE917CA8079002B6ACF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Rat Slap Touch.app/Rat Slap Touch";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rat Slap Touch/Rat Slap Touch-Prefix.pch";
-				INFOPLIST_FILE = "Rat Slap TouchTests/Rat Slap TouchTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -467,14 +322,6 @@
 			buildConfigurations = (
 				0A209EE517CA8079002B6ACF /* Debug */,
 				0A209EE617CA8079002B6ACF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		0A209EE717CA8079002B6ACF /* Build configuration list for PBXNativeTarget "Rat Slap TouchTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0A209EE817CA8079002B6ACF /* Debug */,
-				0A209EE917CA8079002B6ACF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
