@@ -131,9 +131,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0A209EAE17CA8079002B6ACF /* Rat Slap Touch */ = {
+		0A209EAE17CA8079002B6ACF /* Rat Slap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A209EE417CA8079002B6ACF /* Build configuration list for PBXNativeTarget "Rat Slap Touch" */;
+			buildConfigurationList = 0A209EE417CA8079002B6ACF /* Build configuration list for PBXNativeTarget "Rat Slap" */;
 			buildPhases = (
 				0A209EAB17CA8079002B6ACF /* Sources */,
 				0A209EAC17CA8079002B6ACF /* Frameworks */,
@@ -143,7 +143,7 @@
 			);
 			dependencies = (
 			);
-			name = "Rat Slap Touch";
+			name = "Rat Slap";
 			productName = "Rat Slap Touch";
 			productReference = 0A209EAF17CA8079002B6ACF /* Rat Slap Touch.app */;
 			productType = "com.apple.product-type.application";
@@ -176,7 +176,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0A209EAE17CA8079002B6ACF /* Rat Slap Touch */,
+				0A209EAE17CA8079002B6ACF /* Rat Slap */,
 			);
 		};
 /* End PBXProject section */
@@ -348,7 +348,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0A209EE417CA8079002B6ACF /* Build configuration list for PBXNativeTarget "Rat Slap Touch" */ = {
+		0A209EE417CA8079002B6ACF /* Build configuration list for PBXNativeTarget "Rat Slap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A209EE517CA8079002B6ACF /* Debug */,
