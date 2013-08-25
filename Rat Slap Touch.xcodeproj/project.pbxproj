@@ -19,6 +19,7 @@
 		0A209ECE17CA8079002B6ACF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A209ECD17CA8079002B6ACF /* Images.xcassets */; };
 		0A209EEB17CA89D6002B6ACF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209EEA17CA89D6002B6ACF /* Security.framework */; };
 		0A209EEF17CA8A1C002B6ACF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */; };
+		0A209EF217CA8B08002B6ACF /* RSNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209EF117CA8B08002B6ACF /* RSNetworkController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		0A209EEA17CA89D6002B6ACF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0A209EED17CA8A1C002B6ACF /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		0A209EF017CA8B08002B6ACF /* RSNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNetworkController.h; sourceTree = "<group>"; };
+		0A209EF117CA8B08002B6ACF /* RSNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNetworkController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 		0A209EB817CA8079002B6ACF /* Rat Slap Touch */ = {
 			isa = PBXGroup;
 			children = (
+				0A209EF017CA8B08002B6ACF /* RSNetworkController.h */,
+				0A209EF117CA8B08002B6ACF /* RSNetworkController.m */,
 				0A209EC117CA8079002B6ACF /* RSAppDelegate.h */,
 				0A209EC217CA8079002B6ACF /* RSAppDelegate.m */,
 				0A209EC417CA8079002B6ACF /* Main_iPhone.storyboard */,
@@ -198,6 +203,7 @@
 				0A209EEF17CA8A1C002B6ACF /* GCDAsyncSocket.m in Sources */,
 				0A209EBF17CA8079002B6ACF /* main.m in Sources */,
 				0A209EC317CA8079002B6ACF /* RSAppDelegate.m in Sources */,
+				0A209EF217CA8B08002B6ACF /* RSNetworkController.m in Sources */,
 				0A209ECC17CA8079002B6ACF /* RSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
