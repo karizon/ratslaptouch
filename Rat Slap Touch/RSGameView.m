@@ -10,10 +10,25 @@
 
 @implementation RSGameView
 
+- (void) gameViewInit {
+    NSLog(@"Game View: Initializing");
+    return;
+}
+
+- (id)initWithCoder:(NSCoder*)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self gameViewInit];
+    }
+    
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    NSLog(@"Game View: Initializing w/ frame");
     if (self) {
+        [self gameViewInit];
     }
     return self;
 }
