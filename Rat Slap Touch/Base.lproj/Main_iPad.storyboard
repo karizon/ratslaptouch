@@ -77,6 +77,9 @@
                                 <state key="normal" title="Join a 2 Player Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="joinTwoPlayerGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LSV-te-lpL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siT-oz-s84">
                                 <rect key="frame" x="266" y="596" width="236" height="66"/>
@@ -85,10 +88,19 @@
                                 <state key="normal" title="Join a 4 Player Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="joinFourPlayerGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1iu-g2-qmD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="activeGamesLabel" destination="bWh-0a-2Ej" id="uBk-ha-T6w"/>
+                        <outlet property="activePlayersLabel" destination="QKM-RL-Utm" id="bjR-C7-Tpo"/>
+                        <outlet property="waitingFourPlayerGames" destination="xC2-pl-7NR" id="Gz3-Hu-Jep"/>
+                        <outlet property="waitingTwoPlayerGames" destination="T6T-zl-Ar1" id="pKb-oj-iDU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

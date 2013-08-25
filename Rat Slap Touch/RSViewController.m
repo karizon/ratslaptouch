@@ -26,4 +26,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)joinTwoPlayerGame:(id)sender {
+}
+
+- (IBAction)joinFourPlayerGame:(id)sender {
+}
 @end

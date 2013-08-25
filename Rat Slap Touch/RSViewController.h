@@ -10,4 +10,12 @@
 
 @interface RSViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *activePlayersLabel;
+@property (weak, nonatomic) IBOutlet UILabel *activeGamesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *waitingTwoPlayerGames;
+@property (weak, nonatomic) IBOutlet UILabel *waitingFourPlayerGames;
+
+- (IBAction)joinTwoPlayerGame:(id)sender;
+- (IBAction)joinFourPlayerGame:(id)sender;
+
 @end
