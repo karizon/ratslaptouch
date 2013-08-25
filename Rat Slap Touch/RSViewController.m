@@ -7,6 +7,7 @@
 //
 
 #import "RSViewController.h"
+#import "RSAppDelegate.h"
 
 @interface RSViewController ()
 
@@ -16,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"RSView: Loaded");
+    appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,10 +27,10 @@
 }
 
 - (IBAction)joinTwoPlayerGame:(id)sender {
-    NSLog(@"We're in a 2 player game now");
+    [appDelegate joinTwoPlayerGame];
 }
 
 - (IBAction)joinFourPlayerGame:(id)sender {
-    NSLog(@"We're in a 4 player game now");
+    [appDelegate joinFourPlayerGame];
 }
 @end

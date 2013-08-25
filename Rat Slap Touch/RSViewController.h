@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSViewController : UIViewController
+@class RSAppDelegate;
+
+@interface RSViewController : UIViewController {
+    RSAppDelegate *appDelegate;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *activePlayersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activeGamesLabel;
