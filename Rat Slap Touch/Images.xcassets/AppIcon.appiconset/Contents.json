@@ -3,55 +3,55 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "ratslap_29pt.png",
+      "filename" : "ratslap_58.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "ratslap_40pt.png",
+      "filename" : "ratslap_40.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "ratslap_60pt.png",
+      "filename" : "ratslap_120.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "ratslap_29pt-1.png",
+      "filename" : "ratslap_29.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "ratslap_58pt.png",
+      "filename" : "ratslap_58-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "ratslap_40pt-1.png",
+      "filename" : "ratslap_40-1.png",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "ratslap_80pt.png",
+      "filename" : "ratslap_40-2.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "ratslap_76pt.png",
+      "filename" : "ratslap_76_new.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "ratslap_152pt.png",
+      "filename" : "ratslap_76.png",
       "scale" : "2x"
     }
   ],
