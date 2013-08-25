@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C062D75B-86B7-423F-9239-485AC7815609</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Rat Slap Touch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CFD0B51E-D91E-4482-A310-F2F40A1A699A</key>
+		<string>https://github.com/karizon/ratslaptouch.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Rat Slap Touch.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CFD0B51E-D91E-4482-A310-F2F40A1A699A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/karizon/ratslaptouch.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CFD0B51E-D91E-4482-A310-F2F40A1A699A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CFD0B51E-D91E-4482-A310-F2F40A1A699A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ratslaptouch</string>
+		</dict>
+	</array>
+</dict>
+</plist>
