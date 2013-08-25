@@ -14,21 +14,21 @@
 
 @implementation RSViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)joinTwoPlayerGame:(id)sender {
+    NSLog(@"We're in a 2 player game now");
 }
 
 - (IBAction)joinFourPlayerGame:(id)sender {
+    NSLog(@"We're in a 4 player game now");
 }
 @end
