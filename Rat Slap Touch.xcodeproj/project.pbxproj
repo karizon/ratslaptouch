@@ -17,6 +17,8 @@
 		0A209EC917CA8079002B6ACF /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A209EC717CA8079002B6ACF /* Main_iPad.storyboard */; };
 		0A209ECC17CA8079002B6ACF /* RSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209ECB17CA8079002B6ACF /* RSViewController.m */; };
 		0A209ECE17CA8079002B6ACF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A209ECD17CA8079002B6ACF /* Images.xcassets */; };
+		0A209EEB17CA89D6002B6ACF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209EEA17CA89D6002B6ACF /* Security.framework */; };
+		0A209EEF17CA8A1C002B6ACF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,9 @@
 		0A209ECB17CA8079002B6ACF /* RSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSViewController.m; sourceTree = "<group>"; };
 		0A209ECD17CA8079002B6ACF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0A209ED417CA8079002B6ACF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0A209EEA17CA89D6002B6ACF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0A209EED17CA8A1C002B6ACF /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A209EEB17CA89D6002B6ACF /* Security.framework in Frameworks */,
 				0A209EB517CA8079002B6ACF /* CoreGraphics.framework in Frameworks */,
 				0A209EB717CA8079002B6ACF /* UIKit.framework in Frameworks */,
 				0A209EB317CA8079002B6ACF /* Foundation.framework in Frameworks */,
@@ -55,6 +61,7 @@
 		0A209EA617CA8079002B6ACF = {
 			isa = PBXGroup;
 			children = (
+				0A209EEC17CA89E9002B6ACF /* GCDAsyncSocket */,
 				0A209EB817CA8079002B6ACF /* Rat Slap Touch */,
 				0A209EB117CA8079002B6ACF /* Frameworks */,
 				0A209EB017CA8079002B6ACF /* Products */,
@@ -72,6 +79,7 @@
 		0A209EB117CA8079002B6ACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A209EEA17CA89D6002B6ACF /* Security.framework */,
 				0A209EB217CA8079002B6ACF /* Foundation.framework */,
 				0A209EB417CA8079002B6ACF /* CoreGraphics.framework */,
 				0A209EB617CA8079002B6ACF /* UIKit.framework */,
@@ -106,6 +114,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0A209EEC17CA89E9002B6ACF /* GCDAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				0A209EED17CA8A1C002B6ACF /* GCDAsyncSocket.h */,
+				0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */,
+			);
+			name = GCDAsyncSocket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +152,11 @@
 				CLASSPREFIX = RS;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = mandrake;
+				TargetAttributes = {
+					0A209EAE17CA8079002B6ACF = {
+						DevelopmentTeam = D2FA7YYCVS;
+					};
+				};
 			};
 			buildConfigurationList = 0A209EAA17CA8079002B6ACF /* Build configuration list for PBXProject "Rat Slap Touch" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -173,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A209EEF17CA8A1C002B6ACF /* GCDAsyncSocket.m in Sources */,
 				0A209EBF17CA8079002B6ACF /* main.m in Sources */,
 				0A209EC317CA8079002B6ACF /* RSAppDelegate.m in Sources */,
 				0A209ECC17CA8079002B6ACF /* RSViewController.m in Sources */,
@@ -284,6 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rat Slap Touch/Rat Slap Touch-Prefix.pch";
 				INFOPLIST_FILE = "Rat Slap Touch/Rat Slap Touch-Info.plist";
@@ -297,6 +321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rat Slap Touch/Rat Slap Touch-Prefix.pch";
 				INFOPLIST_FILE = "Rat Slap Touch/Rat Slap Touch-Info.plist";
@@ -324,6 +349,7 @@
 				0A209EE617CA8079002B6ACF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
