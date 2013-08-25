@@ -12,15 +12,15 @@
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
+    NSLog(@"Game View: Initializing w/ frame");
     if (self) {
-        // Initialization code
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect {
     
-    NSLog(@"Drawing on the game view");
+    NSLog(@"Game View: Drawing on the game view");
     // General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();

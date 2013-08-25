@@ -96,6 +96,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="joinTwoPlayerGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="i9s-AU-QQU"/>
                                     <segue destination="05X-Xz-Pc1" kind="push" id="V5d-xD-9oQ"/>
                                 </connections>
                             </button>
@@ -107,6 +108,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="joinFourPlayerGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="p1Y-5Q-Ph5"/>
                                     <segue destination="05X-Xz-Pc1" kind="push" id="oYn-Pd-E3p"/>
                                 </connections>
                             </button>

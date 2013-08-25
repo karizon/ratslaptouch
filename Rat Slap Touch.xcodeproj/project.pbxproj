@@ -99,14 +99,14 @@
 			children = (
 				0A209EF017CA8B08002B6ACF /* RSNetworkController.h */,
 				0A209EF117CA8B08002B6ACF /* RSNetworkController.m */,
-				0A209EC117CA8079002B6ACF /* RSAppDelegate.h */,
-				0A209EC217CA8079002B6ACF /* RSAppDelegate.m */,
-				0A209EC417CA8079002B6ACF /* Main_iPhone.storyboard */,
-				0A209EC717CA8079002B6ACF /* Main_iPad.storyboard */,
 				0AAF7B7017CAB25B001E74D8 /* RSGameView.h */,
 				0AAF7B7117CAB25B001E74D8 /* RSGameView.m */,
 				0A209ECA17CA8079002B6ACF /* RSViewController.h */,
 				0A209ECB17CA8079002B6ACF /* RSViewController.m */,
+				0A209EC117CA8079002B6ACF /* RSAppDelegate.h */,
+				0A209EC217CA8079002B6ACF /* RSAppDelegate.m */,
+				0A209EC417CA8079002B6ACF /* Main_iPhone.storyboard */,
+				0A209EC717CA8079002B6ACF /* Main_iPad.storyboard */,
 				0A209ECD17CA8079002B6ACF /* Images.xcassets */,
 				0A209EB917CA8079002B6ACF /* Supporting Files */,
 			);
