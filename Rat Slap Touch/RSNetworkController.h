@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class RSAppDelegate;
+@class GCDAsyncSocket;
 
 @interface RSNetworkController : NSObject {
     RSAppDelegate *appDelegate;
+    GCDAsyncSocket *remoteClient;
+    NSMutableData *oldData;
+
 }
 
 @end

@@ -16,6 +16,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"Delegate: Initializing");
     gameType = NO_CURRENT_GAME;
+    networkClient = [[RSNetworkController alloc] init];
+    
     return YES;
 }
 							
