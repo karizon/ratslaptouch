@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"RSView: Loaded");
-    appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning {

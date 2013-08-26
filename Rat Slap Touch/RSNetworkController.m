@@ -7,7 +7,16 @@
 //
 
 #import "RSNetworkController.h"
+#import "RSAppDelegate.h"
 
 @implementation RSNetworkController
+
+- (id) init {
+    self = [super init];
+    if(self) {
+        appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
+    }
+    return self;
+}
 
 @end

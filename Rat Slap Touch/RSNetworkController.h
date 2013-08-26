@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RSNetworkController : NSObject
+@class RSAppDelegate;
+
+@interface RSNetworkController : NSObject {
+    RSAppDelegate *appDelegate;
+}
 
 @end
