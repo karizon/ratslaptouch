@@ -14,10 +14,13 @@
 #define FOUR_PLAYER_GAME 2
 
 @class RSNetworkController;
+@class RSStatusUpdate;
+@class RSViewController;
 
 @interface RSAppDelegate : UIResponder <UIApplicationDelegate> {
     int gameType;
     RSNetworkController *networkClient;
+    RSViewController *viewController;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -25,5 +28,10 @@
 
 - (void) joinTwoPlayerGame;
 - (void) joinFourPlayerGame;
+
+- (void) assignViewController:(RSViewController *) newViewController;
+
+- (void) processDisconnect;
+- (void) processServerStatistics:(RSStatusUpdate *) newStats;
 
 @end

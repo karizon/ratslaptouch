@@ -11,11 +11,18 @@
 @class RSAppDelegate;
 @class GCDAsyncSocket;
 
+#define SERVER_STATUS_TAG 1
+
 @interface RSNetworkController : NSObject {
     RSAppDelegate *appDelegate;
     GCDAsyncSocket *remoteClient;
     NSMutableData *oldData;
 
 }
+
+- (BOOL) isConnected;
+- (BOOL) connectToHost;
+- (void) forceDisconnect;
+- (void) requestServerStatistics;
 
 @end

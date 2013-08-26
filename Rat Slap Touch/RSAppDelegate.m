@@ -8,13 +8,14 @@
 
 #import "RSAppDelegate.h"
 #import "RSNetworkController.h"
+#import "RSStatusUpdate.h"
+#import "RSViewController.h"
 
 @implementation RSAppDelegate
 
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"Delegate: Initializing");
+    viewController = nil;
     gameType = NO_CURRENT_GAME;
     networkClient = [[RSNetworkController alloc] init];
     
@@ -27,8 +28,10 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    if([networkClient isConnected]) {
+        [networkClient forceDisconnect];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -51,6 +54,22 @@
 - (void) joinFourPlayerGame {
     NSLog(@"Delegate: We're in a 4 player game now");
     gameType = FOUR_PLAYER_GAME;
+}
+
+- (void) processDisconnect {
+    NSLog(@"Delegate: We have been disconnected from the server");
+    gameType = NO_CURRENT_GAME;
+}
+
+- (void) processServerStatistics:(RSStatusUpdate *) newStats {
+    NSLog(@"Delegate: Updating View with new Statistics");
+    if(viewController) {
+        [viewController updateServerStatistics:newStats];
+    }    
+}
+
+- (void) assignViewController:(RSViewController *) newViewController {
+    viewController = newViewController;
 }
 
 @end

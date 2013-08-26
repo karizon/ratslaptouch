@@ -8,6 +8,8 @@
 
 #import "RSNetworkController.h"
 #import "RSAppDelegate.h"
+#import "RSStatusUpdate.h"
+
 #import "GCDAsyncSocket.h"
 
 @implementation RSNetworkController
@@ -41,6 +43,47 @@
     return YES;
 }
 
+- (BOOL) isConnected {
+    if(remoteClient)
+        return TRUE;
+    
+    return FALSE;
+}
+
+- (void) gracefulDisconnect {
+    if(remoteClient) {
+        NSLog(@"Gracefully logging out of game server");
+        // Let's send a graceful game exit first
+
+        [remoteClient disconnectAfterWriting];
+        remoteClient = nil;
+    }
+
+}
+
+- (void) forceDisconnect {
+    if(remoteClient) {
+        NSLog(@"Network: Forcing connection drop");
+        [remoteClient disconnect];
+        remoteClient = nil;
+    }
+}
+
+- (void) requestServerStatistics {
+    if(remoteClient) {
+        NSError *error;
+        NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"STATISTICS", @"type",
+                                        @"REQUEST", @"status",
+                                        nil];
+        if(jsonDictionary) {
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
+            NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"Network: Sending %@",resultAsString);
+            [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
+        }
+    }
+}
 
 #pragma mark socket communications
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
@@ -95,8 +138,11 @@
         NSString* dataType = [serverResponse valueForKey:@"type"];
         if([dataType isEqualToString:@"HELO"]) {
             NSLog(@"Network: Successfully received HELO string, requesting current statistics");
+            [self requestServerStatistics];
         } else if([dataType isEqualToString:@"STATISTICS"]) {
             if([[serverResponse valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
+                NSLog(@"Network: Received Server Statistics");
+                [self processStatistics:serverResponse];
             }
         }
         oldData = nil;
@@ -112,14 +158,22 @@
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
 	NSLog(@"Network: socketDidDisconnect:%p withError: %@", sock, err);
     remoteClient = nil;
-    // [appDelegate processLogout];
+    [appDelegate processDisconnect];
 }
 
-- (BOOL) isConnected {
-    if(remoteClient)
-        return TRUE;
+#pragma mark Statistics Processing:
+
+- (void) processStatistics: (NSDictionary *) statsDict {
+    NSNumber *clients = [statsDict valueForKey:@"clients"];
+    NSNumber *games = [statsDict valueForKey:@"games"];
+    NSNumber *twoWaiting = [statsDict valueForKey:@"twowaiting"];
+    NSNumber *fourWaiting =[statsDict valueForKey:@"fourwaiting"];
     
-    return FALSE;
+    RSStatusUpdate *stats = [[RSStatusUpdate alloc] initWithClients:[clients intValue]
+                                                              games:[games intValue]
+                                                         twoWaiting:[twoWaiting intValue]
+                                                        fourWaiting:[fourWaiting intValue]];
+    [appDelegate processServerStatistics:stats];
 }
 
 

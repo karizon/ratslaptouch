@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class RSAppDelegate;
+@class RSStatusUpdate;
 
 @interface RSViewController : UIViewController {
     RSAppDelegate *appDelegate;
@@ -21,5 +22,7 @@
 
 - (IBAction)joinTwoPlayerGame:(id)sender;
 - (IBAction)joinFourPlayerGame:(id)sender;
+
+- (void) updateServerStatistics:(RSStatusUpdate *) stats;
 
 @end
