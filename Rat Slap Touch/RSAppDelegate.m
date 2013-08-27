@@ -52,14 +52,17 @@
     }
 }
 
-- (void) joinTwoPlayerGame {
-    NSLog(@"Delegate: We're in a 2 player game now");
-    gameType = TWO_PLAYER_GAME;
+- (int) isInGameType {
+    return gameType;
 }
 
-- (void) joinFourPlayerGame {
-    NSLog(@"Delegate: We're in a 4 player game now");
-    gameType = FOUR_PLAYER_GAME;
+- (void) resumeGame {
+    NSLog(@"Resuming Game");
+}
+
+- (void) joinGame:(int) newGameType {
+    NSLog(@"Delegate: We're joining a new game now");
+    gameType = newGameType;
 }
 
 - (void) processDisconnect {
@@ -77,5 +80,6 @@
 - (void) assignViewController:(RSViewController *) newViewController {
     viewController = newViewController;
 }
+
 
 @end

@@ -29,11 +29,13 @@
 }
 
 - (IBAction)joinTwoPlayerGame:(id)sender {
-    [appDelegate joinTwoPlayerGame];
+    NSLog(@"RSView: About to join two player game");
+    queuedGameType = TWO_PLAYER_GAME;
 }
 
 - (IBAction)joinFourPlayerGame:(id)sender {
-    [appDelegate joinFourPlayerGame];
+    NSLog(@"RSView: About to join four player game");
+    queuedGameType = FOUR_PLAYER_GAME;
 }
 
 - (void) updateServerStatistics:(RSStatusUpdate *)stats {
@@ -44,4 +46,16 @@
     [_waitingFourPlayerGames setText:[NSString stringWithFormat:@"%d",[stats fourWaiting]]];
 }
 
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    NSLog(@"RSView: Testing to see if we should transition");
+    int gameType = [appDelegate isInGameType];
+    if(gameType == queuedGameType) {
+        [appDelegate resumeGame];
+        return YES;
+    } else if(gameType == NO_CURRENT_GAME) {
+        [appDelegate joinGame:queuedGameType];
+        return YES;
+    }
+    return NO;
+}
 @end

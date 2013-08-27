@@ -25,13 +25,14 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-
-- (void) joinTwoPlayerGame;
-- (void) joinFourPlayerGame;
+- (void) resumeGame;
+- (void) joinGame:(int) newGameType;
+- (int) isInGameType;
 
 - (void) assignViewController:(RSViewController *) newViewController;
 
 - (void) processDisconnect;
 - (void) processServerStatistics:(RSStatusUpdate *) newStats;
+
 
 @end

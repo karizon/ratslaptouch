@@ -13,6 +13,7 @@
 
 @interface RSViewController : UIViewController {
     RSAppDelegate *appDelegate;
+    int queuedGameType;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *activePlayersLabel;
