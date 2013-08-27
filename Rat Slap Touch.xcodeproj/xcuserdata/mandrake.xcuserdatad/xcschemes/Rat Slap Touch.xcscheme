@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0A209EAE17CA8079002B6ACF"
-               BuildableName = "Rat Slap Touch.app"
-               BlueprintName = "Rat Slap Touch"
+               BuildableName = "Rat Slap.app"
+               BlueprintName = "Rat Slap"
                ReferencedContainer = "container:Rat Slap Touch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0A209EAE17CA8079002B6ACF"
-            BuildableName = "Rat Slap Touch.app"
-            BlueprintName = "Rat Slap Touch"
+            BuildableName = "Rat Slap.app"
+            BlueprintName = "Rat Slap"
             ReferencedContainer = "container:Rat Slap Touch.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0A209EAE17CA8079002B6ACF"
-            BuildableName = "Rat Slap Touch.app"
-            BlueprintName = "Rat Slap Touch"
+            BuildableName = "Rat Slap.app"
+            BlueprintName = "Rat Slap"
             ReferencedContainer = "container:Rat Slap Touch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0A209EAE17CA8079002B6ACF"
-            BuildableName = "Rat Slap Touch.app"
-            BlueprintName = "Rat Slap Touch"
+            BuildableName = "Rat Slap.app"
+            BlueprintName = "Rat Slap"
             ReferencedContainer = "container:Rat Slap Touch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
