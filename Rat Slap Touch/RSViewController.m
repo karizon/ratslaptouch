@@ -57,7 +57,7 @@
         return YES;
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Abandon Game?"
-                                                        message:@"Are you sure that you want to abandon your curent game and join a new one?"
+                                                        message:@"Are you sure that you want to abandon your current game and join a new one?"
                                                        delegate:self
                                               cancelButtonTitle:@"No!"
                                               otherButtonTitles:@"Yes!", nil];
