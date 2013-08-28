@@ -57,7 +57,7 @@
         return YES;
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Abandon Game?"
-                                                        message:@"Are you sure that you want to abandon your curent game?"
+                                                        message:@"Are you sure that you want to abandon your curent game and join a new one?"
                                                        delegate:self
                                               cancelButtonTitle:@"No!"
                                               otherButtonTitles:@"Yes!", nil];
@@ -71,6 +71,7 @@
         NSLog(@"RSView: We apparently want to kill the old game!");
         [appDelegate abandonGame];
         [appDelegate joinGame:queuedGameType];
+        [self performSegueWithIdentifier:@"gameStartSegue" sender:self];
     }
 }
 

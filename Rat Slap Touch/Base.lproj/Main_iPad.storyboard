@@ -79,7 +79,7 @@
                                 </state>
                                 <connections>
                                     <action selector="joinTwoPlayerGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LSV-te-lpL"/>
-                                    <segue destination="5Oh-jW-ejv" kind="push" id="Wyh-Dj-Be9"/>
+                                    <segue destination="5Oh-jW-ejv" kind="push" identifier="gameStartSegue" id="Wyh-Dj-Be9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siT-oz-s84">

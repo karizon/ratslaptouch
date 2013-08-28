@@ -97,7 +97,7 @@
                                 </state>
                                 <connections>
                                     <action selector="joinTwoPlayerGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="i9s-AU-QQU"/>
-                                    <segue destination="05X-Xz-Pc1" kind="push" id="V5d-xD-9oQ"/>
+                                    <segue destination="05X-Xz-Pc1" kind="push" identifier="gameStartSegue" id="V5d-xD-9oQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWA-sS-QTe">
@@ -184,6 +184,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oYn-Pd-E3p"/>
+        <segue reference="V5d-xD-9oQ"/>
     </inferredMetricsTieBreakers>
 </document>
