@@ -57,7 +57,12 @@
 }
 
 - (void) resumeGame {
-    NSLog(@"Resuming Game");
+    NSLog(@"Delegate: Resuming Game");
+}
+
+- (void) abandonGame {
+    NSLog(@"Delegate: Abandoning Game");
+    gameType = NO_CURRENT_GAME;
 }
 
 - (void) joinGame:(int) newGameType {

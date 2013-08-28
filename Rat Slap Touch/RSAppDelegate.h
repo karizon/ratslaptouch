@@ -26,6 +26,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (void) resumeGame;
+- (void) abandonGame;
 - (void) joinGame:(int) newGameType;
 - (int) isInGameType;
 

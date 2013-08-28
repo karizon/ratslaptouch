@@ -55,7 +55,23 @@
     } else if(gameType == NO_CURRENT_GAME) {
         [appDelegate joinGame:queuedGameType];
         return YES;
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Abandon Game?"
+                                                        message:@"Are you sure that you want to abandon your curent game?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"No!"
+                                              otherButtonTitles:@"Yes!", nil];
+        [alert show];
     }
     return NO;
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {
+        NSLog(@"RSView: We apparently want to kill the old game!");
+        [appDelegate abandonGame];
+        [appDelegate joinGame:queuedGameType];
+    }
+}
+
 @end
