@@ -67,6 +67,7 @@
 
 - (void) joinGame:(int) newGameType {
     NSLog(@"Delegate: We're joining a new game now");
+    [networkClient joinGame:newGameType];
     gameType = newGameType;
 }
 

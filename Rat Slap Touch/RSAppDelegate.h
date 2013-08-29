@@ -10,8 +10,8 @@
 
 
 #define NO_CURRENT_GAME 0
-#define TWO_PLAYER_GAME 1
-#define FOUR_PLAYER_GAME 2
+#define TWO_PLAYER_GAME 2
+#define FOUR_PLAYER_GAME 4
 
 @class RSNetworkController;
 @class RSStatusUpdate;

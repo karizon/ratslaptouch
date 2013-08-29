@@ -85,6 +85,23 @@
     }
 }
 
+- (void) joinGame:(int) players {
+    if(remoteClient) {
+        NSError *error;
+        NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"JOIN", @"type",
+                                        @"REQUEST", @"status",
+                                        [NSString stringWithFormat:@"%d",players],@"players",
+                                        nil];
+        if(jsonDictionary) {
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
+            NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"Network: Sending %@",resultAsString);
+            [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
+        }
+    }
+}
+
 #pragma mark socket communications
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
 	
