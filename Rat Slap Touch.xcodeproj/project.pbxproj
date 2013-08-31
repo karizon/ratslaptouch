@@ -21,6 +21,7 @@
 		0A209EEF17CA8A1C002B6ACF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */; };
 		0A209EF217CA8B08002B6ACF /* RSNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209EF117CA8B08002B6ACF /* RSNetworkController.m */; };
 		0A3979FE17CBF420003466AF /* RSStatusUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3979FD17CBF420003466AF /* RSStatusUpdate.m */; };
+		0A4ABAAD17D16F28007848FB /* RSGCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4ABAAC17D16F28007848FB /* RSGCHelper.m */; };
 		0AAF7B7217CAB25B001E74D8 /* RSGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF7B7117CAB25B001E74D8 /* RSGameView.m */; };
 		0AAF7B7417CACBEE001E74D8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF7B7317CACBEE001E74D8 /* GameKit.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,8 @@
 		0A209EF117CA8B08002B6ACF /* RSNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNetworkController.m; sourceTree = "<group>"; };
 		0A3979FC17CBF420003466AF /* RSStatusUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStatusUpdate.h; sourceTree = "<group>"; };
 		0A3979FD17CBF420003466AF /* RSStatusUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStatusUpdate.m; sourceTree = "<group>"; };
+		0A4ABAAB17D16F28007848FB /* RSGCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGCHelper.h; sourceTree = "<group>"; };
+		0A4ABAAC17D16F28007848FB /* RSGCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGCHelper.m; sourceTree = "<group>"; };
 		0AAF7B7017CAB25B001E74D8 /* RSGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGameView.h; sourceTree = "<group>"; };
 		0AAF7B7117CAB25B001E74D8 /* RSGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGameView.m; sourceTree = "<group>"; };
 		0AAF7B7317CACBEE001E74D8 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -108,6 +111,8 @@
 				0A209EF117CA8B08002B6ACF /* RSNetworkController.m */,
 				0A3979FC17CBF420003466AF /* RSStatusUpdate.h */,
 				0A3979FD17CBF420003466AF /* RSStatusUpdate.m */,
+				0A4ABAAB17D16F28007848FB /* RSGCHelper.h */,
+				0A4ABAAC17D16F28007848FB /* RSGCHelper.m */,
 				0AAF7B7017CAB25B001E74D8 /* RSGameView.h */,
 				0AAF7B7117CAB25B001E74D8 /* RSGameView.m */,
 				0A209ECA17CA8079002B6ACF /* RSViewController.h */,
@@ -225,6 +230,7 @@
 				0A209EC317CA8079002B6ACF /* RSAppDelegate.m in Sources */,
 				0AAF7B7217CAB25B001E74D8 /* RSGameView.m in Sources */,
 				0A209EF217CA8B08002B6ACF /* RSNetworkController.m in Sources */,
+				0A4ABAAD17D16F28007848FB /* RSGCHelper.m in Sources */,
 				0A209ECC17CA8079002B6ACF /* RSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

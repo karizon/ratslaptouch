@@ -10,6 +10,7 @@
 #import "RSNetworkController.h"
 #import "RSStatusUpdate.h"
 #import "RSViewController.h"
+#import "RSGCHelper.h"
 
 @implementation RSAppDelegate
 
@@ -18,6 +19,8 @@
     viewController = nil;
     gameType = NO_CURRENT_GAME;
     networkClient = [[RSNetworkController alloc] init];
+    
+    [[RSGCHelper sharedInstance] authenticateLocalUser];
     
     return YES;
 }
