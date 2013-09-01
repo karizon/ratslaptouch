@@ -16,11 +16,13 @@
 @class RSNetworkController;
 @class RSStatusUpdate;
 @class RSViewController;
+@class RSGCHelper;
 
 @interface RSAppDelegate : UIResponder <UIApplicationDelegate> {
     int gameType;
     RSNetworkController *networkClient;
     RSViewController *viewController;
+    RSGCHelper *gameCenter;
 }
 
 @property (strong, nonatomic) UIWindow *window;

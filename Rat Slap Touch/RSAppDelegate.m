@@ -20,8 +20,8 @@
     gameType = NO_CURRENT_GAME;
     networkClient = [[RSNetworkController alloc] init];
     
-    [[RSGCHelper sharedInstance] authenticateLocalUser];
-    
+    gameCenter = [RSGCHelper sharedInstance];
+    [gameCenter authenticateLocalUser];
     return YES;
 }
 							
