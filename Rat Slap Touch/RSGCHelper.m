@@ -64,11 +64,16 @@ static RSGCHelper *sharedHelper = nil;
     if (!gameCenterAvailable) return;
     
     NSLog(@"Authenticating local user...");
-    if ([GKLocalPlayer localPlayer].authenticated == NO) {
-        [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:nil];
-    } else {
-        NSLog(@"Already authenticated!");
-    }
+    [GKLocalPlayer localPlayer].authenticateHandler = ^(UIViewController *viewController,NSError *error) {
+        if ([GKLocalPlayer localPlayer].authenticated) {
+            //already authenticated
+        } else if(viewController) {
+            UIViewController *presentingController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+            [presentingController presentViewController:viewController animated:NO completion:nil];//present the login form
+        } else {
+            //problem with authentication,probably bc the user doesn't use Game Center
+        }
+    };
 }
 
 @end
