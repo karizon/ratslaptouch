@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3734.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Main Menu-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RSViewController" sceneMemberID="viewController">
@@ -121,7 +121,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Vuy-qS-rU2"/>
+                    <navigationItem key="navigationItem" title="Main Menu" id="Vuy-qS-rU2">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="IcH-Cl-3zH">
+                            <connections>
+                                <action selector="mainMenuHelp:" destination="vXZ-lx-hvc" id="cR0-iF-6ZD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activeGamesLabel" destination="I0l-4w-HiZ" id="fOh-Wd-IzR"/>
                         <outlet property="activePlayersLabel" destination="3aR-3U-jJE" id="EsT-jR-Qhh"/>
@@ -133,7 +139,7 @@
             </objects>
             <point key="canvasLocation" x="823" y="351"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Game-->
         <scene sceneID="Rau-5W-bjR">
             <objects>
                 <viewController id="05X-Xz-Pc1" sceneMemberID="viewController">
@@ -153,11 +159,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Qni-58-mku"/>
+                    <navigationItem key="navigationItem" title="Game" id="Qni-58-mku">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="DTl-eI-WqR"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddw-qA-0Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1227" y="358"/>
+            <point key="canvasLocation" x="1241" y="351"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mWZ-Qx-qiS">
