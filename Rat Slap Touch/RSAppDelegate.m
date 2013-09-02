@@ -71,7 +71,7 @@
 }
 
 - (void) joinGame:(int) newGameType {
-    NSLog(@"Delegate: We're joining a new game now");
+    NSLog(@"Delegate: We're joining a new game now for %d players",newGameType);
     [networkClient joinGame:newGameType];
     gameType = newGameType;
 }

@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"RSView: Loaded");
+    // NSLog(@"RSView: Loaded");
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignViewController:self];
     queuedGameType = NO_CURRENT_GAME;
@@ -32,19 +32,15 @@
 
 - (IBAction)joinTwoPlayerGame:(id)sender {
     if(queuedGameType != TWO_PLAYER_GAME) {
-        NSLog(@"RSView: About to join two player game");
+        // NSLog(@"RSView: About to join new two player game");
         queuedGameType = TWO_PLAYER_GAME;
-    } else {
-        NSLog(@"RSView: Rejoining two player game");
     }
 }
 
 - (IBAction)joinFourPlayerGame:(id)sender {
     if(queuedGameType != FOUR_PLAYER_GAME) {
-        NSLog(@"RSView: About to join four player game");
+        // NSLog(@"RSView: About to join new four player game");
         queuedGameType = FOUR_PLAYER_GAME;
-    } else {
-        NSLog(@"RSView: Rejoining four player game");
     }
 }
 
@@ -78,7 +74,7 @@
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1) {
-        NSLog(@"RSView: We apparently want to kill the old game!");
+        // NSLog(@"RSView: We apparently want to kill the old game!");
         [appDelegate abandonGame];
         [appDelegate joinGame:queuedGameType];
         [self performSegueWithIdentifier:@"gameStartSegue" sender:self];

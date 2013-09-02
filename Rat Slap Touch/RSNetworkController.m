@@ -135,7 +135,7 @@
 }
 
 - (void)socketDidSecure:(GCDAsyncSocket *)sock{
-	NSLog(@"Network: TLS Encryped Session Established");
+	// NSLog(@"Network: TLS Encryped Session Established");
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
@@ -169,11 +169,11 @@
         
         NSString* dataType = [serverResponse valueForKey:@"type"];
         if([dataType isEqualToString:@"HELO"]) {
-            NSLog(@"Network: Successfully received HELO string, requesting current statistics");
-            [self requestServerStatistics];
+            // NSLog(@"Network: Successfully received HELO string");
+            // [self requestServerStatistics];
         } else if([dataType isEqualToString:@"STATISTICS"]) {
             if([[serverResponse valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
-                NSLog(@"Network: Received Server Statistics");
+                // NSLog(@"Network: Received Server Statistics");
                 [self processStatistics:serverResponse];
             }
         }
