@@ -21,6 +21,7 @@
     networkClient = [[RSNetworkController alloc] init];
     
     gameCenter = [RSGCHelper sharedInstance];
+    [gameCenter assignDelegate:self];
     [gameCenter authenticateLocalUser];
     return YES;
 }
@@ -84,6 +85,11 @@
     if(viewController) {
         [viewController updateServerStatistics:newStats];
     }    
+}
+
+- (void) gameCenterLoginSuccessful: (NSString *) playerNickname {
+    NSLog(@"Delegate: GameCenter tells us that %@ is authenticated", playerNickname);
+    [networkClient assignNickname:playerNickname];
 }
 
 - (void) assignViewController:(RSViewController *) newViewController {

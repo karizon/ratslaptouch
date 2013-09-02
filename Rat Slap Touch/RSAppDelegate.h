@@ -37,5 +37,6 @@
 - (void) processDisconnect;
 - (void) processServerStatistics:(RSStatusUpdate *) newStats;
 
+- (void) gameCenterLoginSuccessful: (NSString *)playerNickname;
 
 @end

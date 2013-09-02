@@ -101,6 +101,21 @@
         }
     }
 }
+- (void) assignNickname:(NSString *)newNickname {
+    if(remoteClient && newNickname) {
+        NSError *error;
+        NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"NICKNAME", @"type",
+                                        newNickname,@"nickname",
+                                        nil];
+        if(jsonDictionary) {
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
+            NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"Network: Sending %@",resultAsString);
+            [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
+        }
+    }
+}
 
 #pragma mark socket communications
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {

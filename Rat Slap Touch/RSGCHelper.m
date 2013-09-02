@@ -7,6 +7,7 @@
 //
 
 #import "RSGCHelper.h"
+#import "RSAppDelegate.h"
 
 
 @implementation RSGCHelper
@@ -33,6 +34,10 @@ static RSGCHelper *sharedHelper = nil;
     
 }
 
+- (void) assignDelegate: (RSAppDelegate *) delegate {
+    appDelegate = delegate;    
+}
+
 - (id) init {
     self = [super init];
     if(self) {
@@ -53,6 +58,7 @@ static RSGCHelper *sharedHelper = nil;
     if([GKLocalPlayer localPlayer].isAuthenticated && !userAuthenticated) {
         NSLog(@"GameCenter: Authentication Changed - player authenticated");
         userAuthenticated = YES;
+        [appDelegate gameCenterLoginSuccessful: [GKLocalPlayer localPlayer].alias];
     } else if(![GKLocalPlayer localPlayer].isAuthenticated && userAuthenticated) {
         NSLog(@"GameCenter: Authentication Changed - player not authenticated");
         userAuthenticated = NO;
@@ -63,11 +69,12 @@ static RSGCHelper *sharedHelper = nil;
     
     if (!gameCenterAvailable) return;
     
-    NSLog(@"Authenticating local user...");
+    NSLog(@"GameCenter: Authenticating local user...");
     [GKLocalPlayer localPlayer].authenticateHandler = ^(UIViewController *viewController,NSError *error) {
         if ([GKLocalPlayer localPlayer].authenticated) {
-            //already authenticated
+            // Do nothing. already logged in.
         } else if(viewController) {
+            NSLog(@"GameCenter: Presenting login dialog box");
             UIViewController *presentingController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
             [presentingController presentViewController:viewController animated:NO completion:nil];//present the login form
         } else {
