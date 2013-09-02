@@ -142,6 +142,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="gameView" destination="izL-PJ-VBD" id="AG0-vg-Myh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDQ-nM-zUx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

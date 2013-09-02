@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class RSAppDelegate;
+@class RSGameView;
 
 @interface RSGameViewController : UIViewController {
     RSAppDelegate *appDelegate;
+    __weak IBOutlet RSGameView *gameView;
 }
 
 - (IBAction)gameMenuHelp:(id)sender;
