@@ -139,7 +139,7 @@
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-	NSLog(@"Network: Data written successfully for tag:%ld", tag);
+	// NSLog(@"Network: Data written successfully for tag:%ld", tag);
 }
 
 
