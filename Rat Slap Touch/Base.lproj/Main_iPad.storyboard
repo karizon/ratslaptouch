@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="1047" y="123"/>
         </scene>
-        <!--View Controller - Rat Slap - Game-->
+        <!--Game View Controller - Rat Slap - Game-->
         <scene sceneID="ntE-o9-9vO">
             <objects>
-                <viewController id="5Oh-jW-ejv" sceneMemberID="viewController">
+                <viewController id="5Oh-jW-ejv" customClass="RSGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cww-54-4vW"/>
                         <viewControllerLayoutGuide type="bottom" id="1EE-LM-QJF"/>
@@ -136,7 +136,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Rat Slap - Game" id="ByF-7Z-wtx">
-                        <barButtonItem key="rightBarButtonItem" title="Help" id="a75-aa-pEB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="a75-aa-pEB">
+                            <connections>
+                                <action selector="gameMenuHelp:" destination="5Oh-jW-ejv" id="oPY-kw-Ib2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDQ-nM-zUx" userLabel="First Responder" sceneMemberID="firstResponder"/>

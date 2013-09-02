@@ -14,6 +14,7 @@
 @interface RSViewController : UIViewController {
     RSAppDelegate *appDelegate;
     int queuedGameType;
+    int currentGameType;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *activePlayersLabel;
@@ -24,7 +25,6 @@
 - (IBAction)joinTwoPlayerGame:(id)sender;
 - (IBAction)joinFourPlayerGame:(id)sender;
 - (IBAction)mainMenuHelp:(id)sender;
-- (IBAction)gameMenuHelp:(id)sender;
 
 - (void) updateServerStatistics:(RSStatusUpdate *) stats;
 

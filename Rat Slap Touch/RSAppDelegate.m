@@ -11,6 +11,7 @@
 #import "RSStatusUpdate.h"
 #import "RSViewController.h"
 #import "RSGCHelper.h"
+#import "RSGameViewController.h"
 
 @implementation RSAppDelegate
 
@@ -96,5 +97,8 @@
     viewController = newViewController;
 }
 
+- (void) assignGameViewController:(RSGameViewController *) newViewController {
+    gameViewController = newViewController;
+}
 
 @end

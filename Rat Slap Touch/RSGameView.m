@@ -11,7 +11,7 @@
 @implementation RSGameView
 
 - (void) gameViewInit {
-    NSLog(@"Game View: Initializing");
+    NSLog(@"Game View: Initializing (new game board)");
     return;
 }
 
@@ -35,7 +35,7 @@
 
 - (void)drawRect:(CGRect)rect {
     
-    NSLog(@"Game View: Drawing on the game view");
+    NSLog(@"Game View: redrawing game view");
     // General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();

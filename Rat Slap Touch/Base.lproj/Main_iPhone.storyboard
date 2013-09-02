@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="823" y="351"/>
         </scene>
-        <!--View Controller - Game-->
+        <!--Game View Controller - Game-->
         <scene sceneID="Rau-5W-bjR">
             <objects>
-                <viewController id="05X-Xz-Pc1" sceneMemberID="viewController">
+                <viewController id="05X-Xz-Pc1" customClass="RSGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hkF-go-DFR"/>
                         <viewControllerLayoutGuide type="bottom" id="iy3-Y7-VtM"/>
@@ -160,7 +160,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Game" id="Qni-58-mku">
-                        <barButtonItem key="rightBarButtonItem" title="Help" id="DTl-eI-WqR"/>
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="DTl-eI-WqR">
+                            <connections>
+                                <action selector="gameMenuHelp:" destination="05X-Xz-Pc1" id="o8N-0s-vdL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddw-qA-0Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>

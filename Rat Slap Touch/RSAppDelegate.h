@@ -16,12 +16,14 @@
 @class RSNetworkController;
 @class RSStatusUpdate;
 @class RSViewController;
+@class RSGameViewController;
 @class RSGCHelper;
 
 @interface RSAppDelegate : UIResponder <UIApplicationDelegate> {
     int gameType;
     RSNetworkController *networkClient;
     RSViewController *viewController;
+    RSGameViewController *gameViewController;
     RSGCHelper *gameCenter;
 }
 
@@ -33,6 +35,7 @@
 - (int) isInGameType;
 
 - (void) assignViewController:(RSViewController *) newViewController;
+- (void) assignGameViewController:(RSGameViewController *) newViewController;
 
 - (void) processDisconnect;
 - (void) processServerStatistics:(RSStatusUpdate *) newStats;

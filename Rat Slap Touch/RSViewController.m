@@ -21,6 +21,7 @@
     NSLog(@"RSView: Loaded");
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignViewController:self];
+    queuedGameType = NO_CURRENT_GAME;
 
 }
 
@@ -30,13 +31,21 @@
 }
 
 - (IBAction)joinTwoPlayerGame:(id)sender {
-    NSLog(@"RSView: About to join two player game");
-    queuedGameType = TWO_PLAYER_GAME;
+    if(queuedGameType != TWO_PLAYER_GAME) {
+        NSLog(@"RSView: About to join two player game");
+        queuedGameType = TWO_PLAYER_GAME;
+    } else {
+        NSLog(@"RSView: Rejoining two player game");
+    }
 }
 
 - (IBAction)joinFourPlayerGame:(id)sender {
-    NSLog(@"RSView: About to join four player game");
-    queuedGameType = FOUR_PLAYER_GAME;
+    if(queuedGameType != FOUR_PLAYER_GAME) {
+        NSLog(@"RSView: About to join four player game");
+        queuedGameType = FOUR_PLAYER_GAME;
+    } else {
+        NSLog(@"RSView: Rejoining four player game");
+    }
 }
 
 
@@ -49,7 +58,6 @@
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    NSLog(@"RSView: Testing to see if we should transition");
     int gameType = [appDelegate isInGameType];
     if(gameType == queuedGameType) {
         [appDelegate resumeGame];
@@ -75,19 +83,6 @@
         [appDelegate joinGame:queuedGameType];
         [self performSegueWithIdentifier:@"gameStartSegue" sender:self];
     }
-}
-
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    // parent is nil if this view controller was removed
-    if(parent) {
-        NSLog(@"RSView: Move to Parent");
-    } else {
-        NSLog(@"RSView: Move but no Parent");
-    }
-}
-
-- (IBAction) gameMenuHelp: (id) sender {
-    NSLog(@"RSView: Game Menu Help Called");
 }
 
 - (IBAction)mainMenuHelp:(id)sender {
