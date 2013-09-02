@@ -21,6 +21,7 @@
     NSLog(@"RSView: Loaded");
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignViewController:self];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,6 +38,7 @@
     NSLog(@"RSView: About to join four player game");
     queuedGameType = FOUR_PLAYER_GAME;
 }
+
 
 - (void) updateServerStatistics:(RSStatusUpdate *)stats {
     NSLog(@"RSView: Updating Stats on display");
@@ -66,13 +68,30 @@
     return NO;
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1) {
         NSLog(@"RSView: We apparently want to kill the old game!");
         [appDelegate abandonGame];
         [appDelegate joinGame:queuedGameType];
         [self performSegueWithIdentifier:@"gameStartSegue" sender:self];
     }
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    // parent is nil if this view controller was removed
+    if(parent) {
+        NSLog(@"RSView: Move to Parent");
+    } else {
+        NSLog(@"RSView: Move but no Parent");
+    }
+}
+
+- (IBAction) gameMenuHelp: (id) sender {
+    NSLog(@"RSView: Game Menu Help Called");
+}
+
+- (IBAction)mainMenuHelp:(id)sender {
+    NSLog(@"RSView: Main Menu Help Called");
 }
 
 @end

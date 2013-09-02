@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3734.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Rat Slap - Main Menu-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RSViewController" sceneMemberID="viewController">
@@ -97,7 +97,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fB8-IC-ffv"/>
+                    <navigationItem key="navigationItem" title="Rat Slap - Main Menu" id="fB8-IC-ffv">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="oL3-y5-1jr">
+                            <connections>
+                                <action selector="mainMenuHelp:" destination="BYZ-38-t0r" id="0XX-8X-VCa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activeGamesLabel" destination="bWh-0a-2Ej" id="uBk-ha-T6w"/>
                         <outlet property="activePlayersLabel" destination="QKM-RL-Utm" id="bjR-C7-Tpo"/>
@@ -109,7 +115,7 @@
             </objects>
             <point key="canvasLocation" x="1047" y="123"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Rat Slap - Game-->
         <scene sceneID="ntE-o9-9vO">
             <objects>
                 <viewController id="5Oh-jW-ejv" sceneMemberID="viewController">
@@ -129,7 +135,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ByF-7Z-wtx"/>
+                    <navigationItem key="navigationItem" title="Rat Slap - Game" id="ByF-7Z-wtx">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="a75-aa-pEB"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDQ-nM-zUx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

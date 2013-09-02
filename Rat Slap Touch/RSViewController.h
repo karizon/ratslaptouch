@@ -23,6 +23,8 @@
 
 - (IBAction)joinTwoPlayerGame:(id)sender;
 - (IBAction)joinFourPlayerGame:(id)sender;
+- (IBAction)mainMenuHelp:(id)sender;
+- (IBAction)gameMenuHelp:(id)sender;
 
 - (void) updateServerStatistics:(RSStatusUpdate *) stats;
 
