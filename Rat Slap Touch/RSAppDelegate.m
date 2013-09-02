@@ -82,14 +82,12 @@
 }
 
 - (void) processServerStatistics:(RSStatusUpdate *) newStats {
-    NSLog(@"Delegate: Updating View with new Statistics");
     if(viewController) {
         [viewController updateServerStatistics:newStats];
     }    
 }
 
 - (void) gameCenterLoginSuccessful: (NSString *) playerNickname {
-    NSLog(@"Delegate: GameCenter tells us that %@ is authenticated", playerNickname);
     [networkClient assignNickname:playerNickname];
 }
 
