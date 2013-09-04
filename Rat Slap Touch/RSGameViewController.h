@@ -17,5 +17,5 @@
 }
 
 - (IBAction)gameMenuHelp:(id)sender;
-
+- (void) gameEnded:(BOOL) winner;
 @end

@@ -42,5 +42,5 @@
 - (void) processServerStatistics:(RSStatusUpdate *) newStats;
 
 - (void) gameCenterLoginSuccessful: (NSString *)playerNickname;
-
+- (void) gameEnded:(BOOL) winner;
 @end

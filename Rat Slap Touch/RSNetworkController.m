@@ -176,9 +176,17 @@
         if([dataType isEqualToString:@"HELO"]) {
             // NSLog(@"Network: Successfully received HELO string");
             // [self requestServerStatistics];
+        } else if([dataType isEqualToString:@"GAME"]) {
+            NSLog(@"Network: Received Game Update");
+            if([[serverResponse valueForKey:@"status"] isEqualToString:@"ENDED"]) {
+                if([[serverResponse valueForKey:@"winner"] integerValue]) {
+                    [appDelegate gameEnded:YES];
+                } else {
+                    [appDelegate gameEnded:NO];
+                }
+            }
         } else if([dataType isEqualToString:@"STATISTICS"]) {
             if([[serverResponse valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
-                // NSLog(@"Network: Received Server Statistics");
                 [self processStatistics:serverResponse];
             }
         }
