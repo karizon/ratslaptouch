@@ -541,7 +541,7 @@
     [ovalPath fill];
 
     //// Upper Left Drawing
-    CGRect upperLeftRect = CGRectMake(103, 13, 21, 19);
+    CGRect upperLeftRect = CGRectMake(101, 12, 21, 19);
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, letteringOffset, letteringBlurRadius, lettering.CGColor);
     [[UIColor blackColor] setFill];
@@ -559,7 +559,7 @@
     //// Cleanup
     CGGradientRelease(gradient2);
     CGColorSpaceRelease(colorSpace);
-
+    
 }
 
 - (void) drawBackground {
