@@ -475,7 +475,6 @@
     UIColor* gradient2Color = [UIColor colorWithRed: 0.227 green: 0.667 blue: 0.812 alpha: 1];
     UIColor* color2 = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
     UIColor* gradient2Color2 = [UIColor colorWithRed: 0.169 green: 0.169 blue: 0.169 alpha: 1];
-    UIColor* color4 = [UIColor colorWithRed: 1 green: 1 blue: 0.8 alpha: 1];
     
     //// Gradient Declarations
     NSArray* gradient2Colors = [NSArray arrayWithObjects:
@@ -488,13 +487,9 @@
     UIColor* shadow = [[UIColor blackColor] colorWithAlphaComponent: 0.65];
     CGSize shadowOffset = CGSizeMake(3.1, 3.1);
     CGFloat shadowBlurRadius = 4.5;
-    UIColor* lettering = color4;
-    CGSize letteringOffset = CGSizeMake(0.1, -0.1);
-    CGFloat letteringBlurRadius = 3;
     
     //// Abstracted Attributes
     NSString* upperLeftContent = @"K";
-    NSString* upperLeft2Content = @"K";
     
     //// Outer Card Drawing
     UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(95.5, 5.5, 75, 120) cornerRadius: 4];
@@ -541,19 +536,20 @@
     [ovalPath fill];
 
     //// Upper Left Drawing
-    CGRect upperLeftRect = CGRectMake(101, 12, 21, 19);
+    CGRect upperLeftRect = CGRectMake(104, 12, 21, 19);
     CGContextSaveGState(context);
-    CGContextSetShadowWithColor(context, letteringOffset, letteringBlurRadius, lettering.CGColor);
     [[UIColor blackColor] setFill];
-    [upperLeftContent drawInRect: upperLeftRect withFont: [UIFont fontWithName: @"Georgia-Bold" size: [UIFont labelFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    NSMutableDictionary *strAttribs = [[NSMutableDictionary alloc] init];
+    [strAttribs setObject:[UIFont fontWithName: @"Georgia-Bold" size: [UIFont labelFontSize]] forKey:NSFontAttributeName];
+    [upperLeftContent drawInRect:upperLeftRect withAttributes:strAttribs];
+    
     CGContextRestoreGState(context);
     
     //// Upper Left 2 Drawing
-    CGRect upperLeft2Rect = CGRectMake(142, 98, 21, 19);
+    CGRect upperLeft2Rect = CGRectMake(146, 98, 21, 19);
     CGContextSaveGState(context);
-    CGContextSetShadowWithColor(context, letteringOffset, letteringBlurRadius, lettering.CGColor);
     [[UIColor blackColor] setFill];
-    [upperLeft2Content drawInRect: upperLeft2Rect withFont: [UIFont fontWithName: @"Georgia-Bold" size: [UIFont labelFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    [upperLeftContent drawInRect:upperLeft2Rect withAttributes:strAttribs];
     CGContextRestoreGState(context);
     
     //// Cleanup
