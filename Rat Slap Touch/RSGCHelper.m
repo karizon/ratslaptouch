@@ -69,7 +69,7 @@ static RSGCHelper *sharedHelper = nil;
     
     if (!gameCenterAvailable) return;
     
-    NSLog(@"GameCenter: Authenticating local user...");
+    NSLog(@"GameCenter: Testing user authentication...");
     [GKLocalPlayer localPlayer].authenticateHandler = ^(UIViewController *viewController,NSError *error) {
         if ([GKLocalPlayer localPlayer].authenticated) {
             // Do nothing. already logged in.
@@ -84,6 +84,7 @@ static RSGCHelper *sharedHelper = nil;
 }
 
 - (NSString *) getNickname {
+    [self authenticateLocalUser];
     if([GKLocalPlayer localPlayer].isAuthenticated && userAuthenticated) {
         return [GKLocalPlayer localPlayer].alias;
     }

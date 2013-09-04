@@ -17,7 +17,7 @@
     RSAppDelegate *appDelegate;
     GCDAsyncSocket *remoteClient;
     NSMutableData *oldData;
-
+    BOOL canTransmit;
 }
 
 - (BOOL) isConnected;

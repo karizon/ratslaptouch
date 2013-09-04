@@ -18,6 +18,7 @@
     self = [super init];
     if(self) {
         appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
+        canTransmit = NO;
         if(![self connectToHost]) {
             return nil;
         }
@@ -44,19 +45,21 @@
 }
 
 - (BOOL) isConnected {
-    if(remoteClient)
+    if(remoteClient && canTransmit)
         return TRUE;
     
     return FALSE;
 }
 
 - (void) gracefulDisconnect {
-    if(remoteClient) {
+    if(remoteClient && canTransmit) {
         NSLog(@"Gracefully logging out of game server");
         // Let's send a graceful game exit first
 
         [remoteClient disconnectAfterWriting];
         remoteClient = nil;
+    } else {
+        [self forceDisconnect];
     }
 
 }
@@ -70,7 +73,7 @@
 }
 
 - (void) requestServerStatistics {
-    if(remoteClient) {
+    if(remoteClient && canTransmit) {
         NSError *error;
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"STATISTICS", @"type",
@@ -86,7 +89,7 @@
 }
 
 - (void) joinGame:(int) players {
-    if(remoteClient) {
+    if(remoteClient && canTransmit) {
         NSError *error;
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"JOIN", @"type",
@@ -102,7 +105,7 @@
     }
 }
 - (void) assignNickname:(NSString *)newNickname {
-    if(remoteClient && newNickname) {
+    if(remoteClient && newNickname && canTransmit) {
         NSError *error;
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"NICKNAME", @"type",
@@ -135,7 +138,9 @@
 }
 
 - (void)socketDidSecure:(GCDAsyncSocket *)sock{
-	// NSLog(@"Network: TLS Encryped Session Established");
+	NSLog(@"Network: TLS Encryped Session Established");
+    canTransmit = YES;
+    [appDelegate assignNickname];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {

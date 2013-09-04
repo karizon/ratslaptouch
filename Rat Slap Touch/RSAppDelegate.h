@@ -33,6 +33,7 @@
 - (void) abandonGame;
 - (void) joinGame:(int) newGameType;
 - (int) isInGameType;
+- (void) assignNickname;
 
 - (void) assignViewController:(RSViewController *) newViewController;
 - (void) assignGameViewController:(RSGameViewController *) newViewController;

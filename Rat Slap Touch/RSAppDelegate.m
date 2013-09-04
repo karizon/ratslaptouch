@@ -43,10 +43,6 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     if(![networkClient isConnected]) {
         [networkClient connectToHost];
-        NSString *nick = [gameCenter getNickname];
-        if(nick) {
-            [networkClient assignNickname:nick];
-        }
     }
 }
 
@@ -93,6 +89,13 @@
 
 - (void) gameCenterLoginSuccessful: (NSString *) playerNickname {
     [networkClient assignNickname:playerNickname];
+}
+
+- (void) assignNickname {
+    NSString *nick = [gameCenter getNickname];
+    if(nick && [networkClient isConnected]) {
+        [networkClient assignNickname:nick];
+    }
 }
 
 - (void) assignViewController:(RSViewController *) newViewController {
