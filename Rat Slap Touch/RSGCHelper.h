@@ -22,5 +22,6 @@
 + (RSGCHelper *) sharedInstance;
 - (void) authenticateLocalUser;
 - (void) assignDelegate:(RSAppDelegate *) delegate;
+- (NSString *) getNickname;
 
 @end

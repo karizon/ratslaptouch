@@ -83,4 +83,11 @@ static RSGCHelper *sharedHelper = nil;
     };
 }
 
+- (NSString *) getNickname {
+    if([GKLocalPlayer localPlayer].isAuthenticated && userAuthenticated) {
+        return [GKLocalPlayer localPlayer].alias;
+    }
+    
+    return nil;
+}
 @end
