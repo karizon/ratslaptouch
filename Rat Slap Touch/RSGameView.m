@@ -496,7 +496,6 @@
     NSString* upperLeftContent = @"K";
     NSString* upperLeft2Content = @"K";
     
-    
     //// Outer Card Drawing
     UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(95.5, 5.5, 75, 120) cornerRadius: 4];
     CGContextSaveGState(context);
@@ -511,7 +510,6 @@
     outerCardPath.lineWidth = 1;
     [outerCardPath stroke];
     
-    
     //// Inner Card Drawing
     UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(100.5, 10.5, 65, 110) cornerRadius: 4];
     CGContextSaveGState(context);
@@ -523,7 +521,6 @@
     [[UIColor blackColor] setStroke];
     innerCardPath.lineWidth = 1;
     [innerCardPath stroke];
-    
     
     //// Oval Drawing
     UIBezierPath* ovalPath = [UIBezierPath bezierPath];
@@ -542,32 +539,26 @@
     [ovalPath closePath];
     [color2 setFill];
     [ovalPath fill];
-    
-    
+
     //// Upper Left Drawing
-    CGRect upperLeftRect = CGRectMake(100, 10, 21, 19);
+    CGRect upperLeftRect = CGRectMake(103, 13, 21, 19);
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, letteringOffset, letteringBlurRadius, lettering.CGColor);
     [[UIColor blackColor] setFill];
-    [upperLeftContent drawInRect: upperLeftRect withFont: [UIFont fontWithName: @"Helvetica" size: [UIFont labelFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    [upperLeftContent drawInRect: upperLeftRect withFont: [UIFont fontWithName: @"Georgia-Bold" size: [UIFont labelFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
     CGContextRestoreGState(context);
-    
-    
     
     //// Upper Left 2 Drawing
-    CGRect upperLeft2Rect = CGRectMake(145, 101, 21, 19);
+    CGRect upperLeft2Rect = CGRectMake(142, 98, 21, 19);
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, letteringOffset, letteringBlurRadius, lettering.CGColor);
     [[UIColor blackColor] setFill];
-    [upperLeft2Content drawInRect: upperLeft2Rect withFont: [UIFont fontWithName: @"Helvetica" size: [UIFont labelFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    [upperLeft2Content drawInRect: upperLeft2Rect withFont: [UIFont fontWithName: @"Georgia-Bold" size: [UIFont labelFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
     CGContextRestoreGState(context);
-    
-    
     
     //// Cleanup
     CGGradientRelease(gradient2);
     CGColorSpaceRelease(colorSpace);
-    
 
 }
 
