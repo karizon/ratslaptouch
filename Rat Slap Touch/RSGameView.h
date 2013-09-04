@@ -11,5 +11,6 @@
 @interface RSGameView : UIView
 
 - (void) drawBackground;
+- (void) drawCardBack;
 - (void) drawCard;
 @end

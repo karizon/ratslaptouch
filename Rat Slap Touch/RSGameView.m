@@ -33,15 +33,15 @@
     return self;
 }
 
-- (void)drawCard {
+- (void)drawCardBack {
     //// General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     //// Color Declarations
-    UIColor* gradient2Color = [UIColor colorWithRed: 0.243 green: 0.125 blue: 0.525 alpha: 1];
-    UIColor* color2 = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
-    UIColor* color3 = [UIColor colorWithRed: 0.141 green:0  blue: 0.427 alpha: 0.294];
+    UIColor* gradient2Color = [UIColor colorWithRed: 0.227 green: 0.667 blue: 0.812 alpha: 1];
+    UIColor* color2 =  [UIColor colorWithRed: 0.169 green: 0.169 blue: 0.169 alpha: 1];
+    UIColor* color3 =  [UIColor colorWithRed: 0.227 green: 0.667 blue: 0.812 alpha: 0.3];
     
     //// Gradient Declarations
     NSArray* gradient2Colors = [NSArray arrayWithObjects:
@@ -466,6 +466,111 @@
 
 }
 
+- (void) drawCard {
+    //// General Declarations
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //// Color Declarations
+    UIColor* gradient2Color = [UIColor colorWithRed: 0.227 green: 0.667 blue: 0.812 alpha: 1];
+    UIColor* color2 = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
+    UIColor* gradient2Color2 = [UIColor colorWithRed: 0.169 green: 0.169 blue: 0.169 alpha: 1];
+    UIColor* color4 = [UIColor colorWithRed: 1 green: 1 blue: 0.8 alpha: 1];
+    
+    //// Gradient Declarations
+    NSArray* gradient2Colors = [NSArray arrayWithObjects:
+                                (id)gradient2Color.CGColor,
+                                (id)gradient2Color2.CGColor, nil];
+    CGFloat gradient2Locations[] = {0, 1};
+    CGGradientRef gradient2 = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradient2Colors, gradient2Locations);
+    
+    //// Shadow Declarations
+    UIColor* shadow = [[UIColor blackColor] colorWithAlphaComponent: 0.65];
+    CGSize shadowOffset = CGSizeMake(3.1, 3.1);
+    CGFloat shadowBlurRadius = 4.5;
+    UIColor* lettering = color4;
+    CGSize letteringOffset = CGSizeMake(0.1, -0.1);
+    CGFloat letteringBlurRadius = 3;
+    
+    //// Abstracted Attributes
+    NSString* upperLeftContent = @"K";
+    NSString* upperLeft2Content = @"K";
+    
+    
+    //// Outer Card Drawing
+    UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(95.5, 5.5, 75, 120) cornerRadius: 4];
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+    CGContextBeginTransparencyLayer(context, NULL);
+    [outerCardPath addClip];
+    CGContextDrawLinearGradient(context, gradient2, CGPointMake(85.42, 17.92), CGPointMake(180.58, 113.08), 0);
+    CGContextEndTransparencyLayer(context);
+    CGContextRestoreGState(context);
+    
+    [[UIColor blackColor] setStroke];
+    outerCardPath.lineWidth = 1;
+    [outerCardPath stroke];
+    
+    
+    //// Inner Card Drawing
+    UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(100.5, 10.5, 65, 110) cornerRadius: 4];
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+    [[UIColor whiteColor] setFill];
+    [innerCardPath fill];
+    CGContextRestoreGState(context);
+    
+    [[UIColor blackColor] setStroke];
+    innerCardPath.lineWidth = 1;
+    [innerCardPath stroke];
+    
+    
+    //// Oval Drawing
+    UIBezierPath* ovalPath = [UIBezierPath bezierPath];
+    [ovalPath moveToPoint: CGPointMake(125.92, 78.49)];
+    [ovalPath addCurveToPoint: CGPointMake(129.97, 85.02) controlPoint1: CGPointMake(126.72, 77.97) controlPoint2: CGPointMake(130.17, 81.48)];
+    [ovalPath addCurveToPoint: CGPointMake(125.92, 92) controlPoint1: CGPointMake(129.77, 88.5) controlPoint2: CGPointMake(125.92, 92)];
+    [ovalPath addLineToPoint: CGPointMake(134.01, 92)];
+    [ovalPath addLineToPoint: CGPointMake(140.08, 92)];
+    [ovalPath addCurveToPoint: CGPointMake(136.03, 85.02) controlPoint1: CGPointMake(140.08, 92) controlPoint2: CGPointMake(136.22, 88.23)];
+    [ovalPath addCurveToPoint: CGPointMake(140.08, 78.49) controlPoint1: CGPointMake(135.81, 81.26) controlPoint2: CGPointMake(139.3, 78)];
+    [ovalPath addCurveToPoint: CGPointMake(152.21, 78.49) controlPoint1: CGPointMake(144.24, 81.1) controlPoint2: CGPointMake(149.45, 81.63)];
+    [ovalPath addCurveToPoint: CGPointMake(140.43, 46.22) controlPoint1: CGPointMake(161.75, 67.64) controlPoint2: CGPointMake(149.97, 57.06)];
+    [ovalPath addCurveToPoint: CGPointMake(125.57, 46.22) controlPoint1: CGPointMake(130.89, 35.37) controlPoint2: CGPointMake(135.11, 35.37)];
+    [ovalPath addCurveToPoint: CGPointMake(113.79, 78.49) controlPoint1: CGPointMake(116.03, 57.06) controlPoint2: CGPointMake(104.25, 67.64)];
+    [ovalPath addCurveToPoint: CGPointMake(125.92, 78.49) controlPoint1: CGPointMake(116.78, 81.89) controlPoint2: CGPointMake(121.96, 81.08)];
+    [ovalPath closePath];
+    [color2 setFill];
+    [ovalPath fill];
+    
+    
+    //// Upper Left Drawing
+    CGRect upperLeftRect = CGRectMake(100, 10, 21, 19);
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, letteringOffset, letteringBlurRadius, lettering.CGColor);
+    [[UIColor blackColor] setFill];
+    [upperLeftContent drawInRect: upperLeftRect withFont: [UIFont fontWithName: @"Helvetica" size: [UIFont labelFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    CGContextRestoreGState(context);
+    
+    
+    
+    //// Upper Left 2 Drawing
+    CGRect upperLeft2Rect = CGRectMake(145, 101, 21, 19);
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, letteringOffset, letteringBlurRadius, lettering.CGColor);
+    [[UIColor blackColor] setFill];
+    [upperLeft2Content drawInRect: upperLeft2Rect withFont: [UIFont fontWithName: @"Helvetica" size: [UIFont labelFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    CGContextRestoreGState(context);
+    
+    
+    
+    //// Cleanup
+    CGGradientRelease(gradient2);
+    CGColorSpaceRelease(colorSpace);
+    
+
+}
+
 - (void) drawBackground {
     // General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -504,6 +609,7 @@
     
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
+    [self drawCardBack];
     [self drawCard];
     
 }
