@@ -24,6 +24,7 @@
         NSLog(@"Game View: We're drawing on an iPad, folks!");
     }
     return;
+    [UIViewController attemptRotationToDeviceOrientation];
 }
 
 - (id)initWithCoder:(NSCoder*)aDecoder {

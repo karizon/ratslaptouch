@@ -17,7 +17,7 @@
     // NSLog(@"RSGameView: Loaded");
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignGameViewController:self];
-    
+    [UIViewController attemptRotationToDeviceOrientation];
 }
 
 
