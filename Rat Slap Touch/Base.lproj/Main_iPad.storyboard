@@ -127,13 +127,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="izL-PJ-VBD" customClass="RSGameView">
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="izL-PJ-VBD" customClass="RSGameView">
                                 <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="izL-PJ-VBD" firstAttribute="leading" secondItem="gR3-kz-EAz" secondAttribute="leading" id="0jo-BD-q90"/>
+                            <constraint firstAttribute="bottom" secondItem="izL-PJ-VBD" secondAttribute="bottom" id="2Da-Y9-uMR"/>
+                            <constraint firstItem="izL-PJ-VBD" firstAttribute="top" secondItem="Cww-54-4vW" secondAttribute="bottom" id="UGN-rR-6EQ"/>
+                            <constraint firstAttribute="trailing" secondItem="izL-PJ-VBD" secondAttribute="trailing" id="pkw-Zc-F51"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rat Slap - Game" id="ByF-7Z-wtx">
                         <barButtonItem key="rightBarButtonItem" title="Help" id="a75-aa-pEB">
