@@ -10,7 +10,15 @@
 
 @interface RSGameView : UIView
 
+#define SUIT_SPADE 1
+#define SUIT_CLUB 2
+#define SUIT_HEART 3
+#define SUIT_DIAMOND 4
+
 - (void) drawBackground;
+
 - (void) drawCardBack;
-- (void) drawCard;
+
+- (void) drawCardAtX: (float) x y:(float) y suit:(int) suit card:(NSString *) card;
+
 @end
