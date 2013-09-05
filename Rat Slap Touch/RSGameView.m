@@ -51,7 +51,7 @@
     [star1Path fill];
 }
 
-- (void)drawCardBack {
+- (void)drawCardBackAtX: (float) x y: (float) y {
     //// General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -74,12 +74,12 @@
     CGFloat shadowBlurRadius = 4.5;
     
     //// Outer Card Drawing
-    UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(5.5, 5.5, 75, 120) cornerRadius: 4];
+    UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 75, 120) cornerRadius: 4];
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
     CGContextBeginTransparencyLayer(context, NULL);
     [outerCardPath addClip];
-    CGContextDrawLinearGradient(context, gradient2, CGPointMake(-4.58, 17.92), CGPointMake(90.58, 113.08), 0);
+    CGContextDrawLinearGradient(context, gradient2, CGPointMake(x - 10, y + 12), CGPointMake(x + 85, y + 110), 0);
     CGContextEndTransparencyLayer(context);
     CGContextRestoreGState(context);
     
@@ -88,37 +88,18 @@
     [outerCardPath stroke];
     
     //// Inner Card Drawing
-    UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(10.5, 10.5, 64, 110) cornerRadius: 4];
+    UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x + 5, y + 5, 64, 110) cornerRadius: 4];
     [color3 setFill];
     [innerCardPath fill];
     
     // Draw star card backs
-    [self drawStarAtX:18 y:14.5];
-    [self drawStarAtX:35 y:14.5];
-    [self drawStarAtX:51 y:14.5];
-    [self drawStarAtX:67 y:14.5];
-    [self drawStarAtX:18 y:31.5];
-    [self drawStarAtX:36 y:31.5];
-    [self drawStarAtX:51 y:31.5];
-    [self drawStarAtX:67 y:31.5];
-    [self drawStarAtX:18 y:48.5];
-    [self drawStarAtX:35 y:48.5];
-    [self drawStarAtX:51 y:48.5];
-    [self drawStarAtX:67 y:48.5];
-    [self drawStarAtX:18 y:65.5];
-    [self drawStarAtX:35 y:65.5];
-    [self drawStarAtX:51 y:65.5];
-    [self drawStarAtX:67 y:65.5];
-    [self drawStarAtX:18 y:82.5];
-    [self drawStarAtX:35 y:82.5];
-    [self drawStarAtX:51 y:82.5];
-    [self drawStarAtX:67 y:82.5];
-    [self drawStarAtX:18 y:99.5];
-    [self drawStarAtX:35 y:99.5];
-    [self drawStarAtX:51 y:99.5];
-    [self drawStarAtX:67 y:99.5];
-    
-    //// Cleanup
+    for(float x2 = (x + 11); x2 < (x + 75); x2 += 17) {
+        for(float y2 = (y + 9); y2 < (y + 100); y2 += 17) {
+            [self drawStarAtX:x2 y:y2];
+        }
+    }
+
+    // Cleanup
     CGGradientRelease(gradient2);
     CGColorSpaceRelease(colorSpace);
 
@@ -331,7 +312,8 @@
     
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
-    [self drawCardBack];
+    [self drawCardBackAtX:5.5 y:5.5];
+    [self drawCardBackAtX:5.5 y:135];
     [self drawCardAtX:100 y:5.5 suit:SUIT_SPADE card:@"3"];
     [self drawCardAtX:190 y:5.5 suit:SUIT_HEART card:@"K"];
     [self drawCardAtX:100 y:135 suit:SUIT_CLUB card:@"J"];
