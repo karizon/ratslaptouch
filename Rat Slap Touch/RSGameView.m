@@ -10,13 +10,20 @@
 
 @implementation RSGameView
 
+
++ (BOOL) isPad {
+#ifdef UI_USER_INTERFACE_IDIOM
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+#endif
+    return NO;
+}
+
 - (void) gameViewInit {
     NSLog(@"Game View: Initializing (new game board)");
     return;
 }
 
-- (id)initWithCoder:(NSCoder*)aDecoder
-{
+- (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self gameViewInit];
@@ -51,7 +58,7 @@
     [star1Path fill];
 }
 
-- (void)drawCardBackAtX: (float) x y: (float) y {
+- (void) drawCardBackAtX: (float) x y: (float) y {
     //// General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
