@@ -18,7 +18,7 @@
 - (void) drawBackground;
 
 - (void) drawCardBack;
+- (void) drawStarAtX: (float) x y: (float) y;
 
 - (void) drawCardAtX: (float) x y:(float) y suit:(int) suit card:(NSString *) card;
-
 @end

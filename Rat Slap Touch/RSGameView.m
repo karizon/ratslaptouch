@@ -33,6 +33,24 @@
     return self;
 }
 
+- (void) drawStarAtX: (float) x y: (float) y {
+    // Draw Star w/ first point @ x,y
+    UIBezierPath* star1Path = [UIBezierPath bezierPath];
+    [star1Path moveToPoint: CGPointMake(x, y)];
+    [star1Path addLineToPoint: CGPointMake(x + 2.65, y + 4.37)];
+    [star1Path addLineToPoint: CGPointMake(x + 7.13, y + 5.87)];
+    [star1Path addLineToPoint: CGPointMake(x + 4.28, y + 10.08)];
+    [star1Path addLineToPoint: CGPointMake(x + 4.41, y + 15.38)];
+    [star1Path addLineToPoint: CGPointMake(x, y + 13.6)];
+    [star1Path addLineToPoint: CGPointMake(x - 4.41, y + 15.38)];
+    [star1Path addLineToPoint: CGPointMake(x - 4.28, y + 10.08)];
+    [star1Path addLineToPoint: CGPointMake(x - 7.13, y + 5.87)];
+    [star1Path addLineToPoint: CGPointMake(x - 2.65, y + 4.37)];
+    [star1Path closePath];
+    [[UIColor whiteColor] setFill];
+    [star1Path fill];
+}
+
 - (void)drawCardBack {
     //// General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -74,389 +92,31 @@
     [color3 setFill];
     [innerCardPath fill];
     
-    //// Star 1 Drawing
-    UIBezierPath* star1Path = [UIBezierPath bezierPath];
-    [star1Path moveToPoint: CGPointMake(18, 14.5)];
-    [star1Path addLineToPoint: CGPointMake(20.65, 18.87)];
-    [star1Path addLineToPoint: CGPointMake(25.13, 20.37)];
-    [star1Path addLineToPoint: CGPointMake(22.28, 24.58)];
-    [star1Path addLineToPoint: CGPointMake(22.41, 29.88)];
-    [star1Path addLineToPoint: CGPointMake(18, 28.1)];
-    [star1Path addLineToPoint: CGPointMake(13.59, 29.88)];
-    [star1Path addLineToPoint: CGPointMake(13.72, 24.58)];
-    [star1Path addLineToPoint: CGPointMake(10.87, 20.37)];
-    [star1Path addLineToPoint: CGPointMake(15.35, 18.87)];
-    [star1Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star1Path fill];
-    
-    //// Star 2 Drawing
-    UIBezierPath* star2Path = [UIBezierPath bezierPath];
-    [star2Path moveToPoint: CGPointMake(35, 14.5)];
-    [star2Path addLineToPoint: CGPointMake(37.65, 18.87)];
-    [star2Path addLineToPoint: CGPointMake(42.13, 20.37)];
-    [star2Path addLineToPoint: CGPointMake(39.28, 24.58)];
-    [star2Path addLineToPoint: CGPointMake(39.41, 29.88)];
-    [star2Path addLineToPoint: CGPointMake(35, 28.1)];
-    [star2Path addLineToPoint: CGPointMake(30.59, 29.88)];
-    [star2Path addLineToPoint: CGPointMake(30.72, 24.58)];
-    [star2Path addLineToPoint: CGPointMake(27.87, 20.37)];
-    [star2Path addLineToPoint: CGPointMake(32.35, 18.87)];
-    [star2Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star2Path fill];
-    
-    //// Star 3 Drawing
-    UIBezierPath* star3Path = [UIBezierPath bezierPath];
-    [star3Path moveToPoint: CGPointMake(51, 14.5)];
-    [star3Path addLineToPoint: CGPointMake(53.65, 18.87)];
-    [star3Path addLineToPoint: CGPointMake(58.13, 20.37)];
-    [star3Path addLineToPoint: CGPointMake(55.28, 24.58)];
-    [star3Path addLineToPoint: CGPointMake(55.41, 29.88)];
-    [star3Path addLineToPoint: CGPointMake(51, 28.1)];
-    [star3Path addLineToPoint: CGPointMake(46.59, 29.88)];
-    [star3Path addLineToPoint: CGPointMake(46.72, 24.58)];
-    [star3Path addLineToPoint: CGPointMake(43.87, 20.37)];
-    [star3Path addLineToPoint: CGPointMake(48.35, 18.87)];
-    [star3Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star3Path fill];
-    
-    //// Star 4 Drawing
-    UIBezierPath* star4Path = [UIBezierPath bezierPath];
-    [star4Path moveToPoint: CGPointMake(67, 14.5)];
-    [star4Path addLineToPoint: CGPointMake(69.65, 18.87)];
-    [star4Path addLineToPoint: CGPointMake(74.13, 20.37)];
-    [star4Path addLineToPoint: CGPointMake(71.28, 24.58)];
-    [star4Path addLineToPoint: CGPointMake(71.41, 29.88)];
-    [star4Path addLineToPoint: CGPointMake(67, 28.1)];
-    [star4Path addLineToPoint: CGPointMake(62.59, 29.88)];
-    [star4Path addLineToPoint: CGPointMake(62.72, 24.58)];
-    [star4Path addLineToPoint: CGPointMake(59.87, 20.37)];
-    [star4Path addLineToPoint: CGPointMake(64.35, 18.87)];
-    [star4Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star4Path fill];
-    
-    //// Star 5 Drawing
-    UIBezierPath* star5Path = [UIBezierPath bezierPath];
-    [star5Path moveToPoint: CGPointMake(18, 31.5)];
-    [star5Path addLineToPoint: CGPointMake(20.65, 35.87)];
-    [star5Path addLineToPoint: CGPointMake(25.13, 37.37)];
-    [star5Path addLineToPoint: CGPointMake(22.28, 41.58)];
-    [star5Path addLineToPoint: CGPointMake(22.41, 46.88)];
-    [star5Path addLineToPoint: CGPointMake(18, 45.1)];
-    [star5Path addLineToPoint: CGPointMake(13.59, 46.88)];
-    [star5Path addLineToPoint: CGPointMake(13.72, 41.58)];
-    [star5Path addLineToPoint: CGPointMake(10.87, 37.37)];
-    [star5Path addLineToPoint: CGPointMake(15.35, 35.87)];
-    [star5Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star5Path fill];
-    
-    //// Star 6 Drawing
-    UIBezierPath* star6Path = [UIBezierPath bezierPath];
-    [star6Path moveToPoint: CGPointMake(35, 31.5)];
-    [star6Path addLineToPoint: CGPointMake(37.65, 35.87)];
-    [star6Path addLineToPoint: CGPointMake(42.13, 37.37)];
-    [star6Path addLineToPoint: CGPointMake(39.28, 41.58)];
-    [star6Path addLineToPoint: CGPointMake(39.41, 46.88)];
-    [star6Path addLineToPoint: CGPointMake(35, 45.1)];
-    [star6Path addLineToPoint: CGPointMake(30.59, 46.88)];
-    [star6Path addLineToPoint: CGPointMake(30.72, 41.58)];
-    [star6Path addLineToPoint: CGPointMake(27.87, 37.37)];
-    [star6Path addLineToPoint: CGPointMake(32.35, 35.87)];
-    [star6Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star6Path fill];
-    
-    //// Star 7 Drawing
-    UIBezierPath* star7Path = [UIBezierPath bezierPath];
-    [star7Path moveToPoint: CGPointMake(51, 31.5)];
-    [star7Path addLineToPoint: CGPointMake(53.65, 35.87)];
-    [star7Path addLineToPoint: CGPointMake(58.13, 37.37)];
-    [star7Path addLineToPoint: CGPointMake(55.28, 41.58)];
-    [star7Path addLineToPoint: CGPointMake(55.41, 46.88)];
-    [star7Path addLineToPoint: CGPointMake(51, 45.1)];
-    [star7Path addLineToPoint: CGPointMake(46.59, 46.88)];
-    [star7Path addLineToPoint: CGPointMake(46.72, 41.58)];
-    [star7Path addLineToPoint: CGPointMake(43.87, 37.37)];
-    [star7Path addLineToPoint: CGPointMake(48.35, 35.87)];
-    [star7Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star7Path fill];
-    
-    //// Star 8 Drawing
-    UIBezierPath* star8Path = [UIBezierPath bezierPath];
-    [star8Path moveToPoint: CGPointMake(67, 31.5)];
-    [star8Path addLineToPoint: CGPointMake(69.65, 35.87)];
-    [star8Path addLineToPoint: CGPointMake(74.13, 37.37)];
-    [star8Path addLineToPoint: CGPointMake(71.28, 41.58)];
-    [star8Path addLineToPoint: CGPointMake(71.41, 46.88)];
-    [star8Path addLineToPoint: CGPointMake(67, 45.1)];
-    [star8Path addLineToPoint: CGPointMake(62.59, 46.88)];
-    [star8Path addLineToPoint: CGPointMake(62.72, 41.58)];
-    [star8Path addLineToPoint: CGPointMake(59.87, 37.37)];
-    [star8Path addLineToPoint: CGPointMake(64.35, 35.87)];
-    [star8Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star8Path fill];
-    
-    //// Star 9 Drawing
-    UIBezierPath* star9Path = [UIBezierPath bezierPath];
-    [star9Path moveToPoint: CGPointMake(18, 48.5)];
-    [star9Path addLineToPoint: CGPointMake(20.65, 52.87)];
-    [star9Path addLineToPoint: CGPointMake(25.13, 54.37)];
-    [star9Path addLineToPoint: CGPointMake(22.28, 58.58)];
-    [star9Path addLineToPoint: CGPointMake(22.41, 63.88)];
-    [star9Path addLineToPoint: CGPointMake(18, 62.1)];
-    [star9Path addLineToPoint: CGPointMake(13.59, 63.88)];
-    [star9Path addLineToPoint: CGPointMake(13.72, 58.58)];
-    [star9Path addLineToPoint: CGPointMake(10.87, 54.37)];
-    [star9Path addLineToPoint: CGPointMake(15.35, 52.87)];
-    [star9Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star9Path fill];
-    
-    //// Star 10 Drawing
-    UIBezierPath* star10Path = [UIBezierPath bezierPath];
-    [star10Path moveToPoint: CGPointMake(35, 48.5)];
-    [star10Path addLineToPoint: CGPointMake(37.65, 52.87)];
-    [star10Path addLineToPoint: CGPointMake(42.13, 54.37)];
-    [star10Path addLineToPoint: CGPointMake(39.28, 58.58)];
-    [star10Path addLineToPoint: CGPointMake(39.41, 63.88)];
-    [star10Path addLineToPoint: CGPointMake(35, 62.1)];
-    [star10Path addLineToPoint: CGPointMake(30.59, 63.88)];
-    [star10Path addLineToPoint: CGPointMake(30.72, 58.58)];
-    [star10Path addLineToPoint: CGPointMake(27.87, 54.37)];
-    [star10Path addLineToPoint: CGPointMake(32.35, 52.87)];
-    [star10Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star10Path fill];
-    
-    //// Star 11 Drawing
-    UIBezierPath* star11Path = [UIBezierPath bezierPath];
-    [star11Path moveToPoint: CGPointMake(51, 48.5)];
-    [star11Path addLineToPoint: CGPointMake(53.65, 52.87)];
-    [star11Path addLineToPoint: CGPointMake(58.13, 54.37)];
-    [star11Path addLineToPoint: CGPointMake(55.28, 58.58)];
-    [star11Path addLineToPoint: CGPointMake(55.41, 63.88)];
-    [star11Path addLineToPoint: CGPointMake(51, 62.1)];
-    [star11Path addLineToPoint: CGPointMake(46.59, 63.88)];
-    [star11Path addLineToPoint: CGPointMake(46.72, 58.58)];
-    [star11Path addLineToPoint: CGPointMake(43.87, 54.37)];
-    [star11Path addLineToPoint: CGPointMake(48.35, 52.87)];
-    [star11Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star11Path fill];
-    
-    //// Star 12 Drawing
-    UIBezierPath* star12Path = [UIBezierPath bezierPath];
-    [star12Path moveToPoint: CGPointMake(67, 48.5)];
-    [star12Path addLineToPoint: CGPointMake(69.65, 52.87)];
-    [star12Path addLineToPoint: CGPointMake(74.13, 54.37)];
-    [star12Path addLineToPoint: CGPointMake(71.28, 58.58)];
-    [star12Path addLineToPoint: CGPointMake(71.41, 63.88)];
-    [star12Path addLineToPoint: CGPointMake(67, 62.1)];
-    [star12Path addLineToPoint: CGPointMake(62.59, 63.88)];
-    [star12Path addLineToPoint: CGPointMake(62.72, 58.58)];
-    [star12Path addLineToPoint: CGPointMake(59.87, 54.37)];
-    [star12Path addLineToPoint: CGPointMake(64.35, 52.87)];
-    [star12Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star12Path fill];
-    
-    //// Star 13 Drawing
-    UIBezierPath* star13Path = [UIBezierPath bezierPath];
-    [star13Path moveToPoint: CGPointMake(18, 65.5)];
-    [star13Path addLineToPoint: CGPointMake(20.65, 69.87)];
-    [star13Path addLineToPoint: CGPointMake(25.13, 71.37)];
-    [star13Path addLineToPoint: CGPointMake(22.28, 75.58)];
-    [star13Path addLineToPoint: CGPointMake(22.41, 80.88)];
-    [star13Path addLineToPoint: CGPointMake(18, 79.1)];
-    [star13Path addLineToPoint: CGPointMake(13.59, 80.88)];
-    [star13Path addLineToPoint: CGPointMake(13.72, 75.58)];
-    [star13Path addLineToPoint: CGPointMake(10.87, 71.37)];
-    [star13Path addLineToPoint: CGPointMake(15.35, 69.87)];
-    [star13Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star13Path fill];
-    
-    //// Star 14 Drawing
-    UIBezierPath* star14Path = [UIBezierPath bezierPath];
-    [star14Path moveToPoint: CGPointMake(35, 65.5)];
-    [star14Path addLineToPoint: CGPointMake(37.65, 69.87)];
-    [star14Path addLineToPoint: CGPointMake(42.13, 71.37)];
-    [star14Path addLineToPoint: CGPointMake(39.28, 75.58)];
-    [star14Path addLineToPoint: CGPointMake(39.41, 80.88)];
-    [star14Path addLineToPoint: CGPointMake(35, 79.1)];
-    [star14Path addLineToPoint: CGPointMake(30.59, 80.88)];
-    [star14Path addLineToPoint: CGPointMake(30.72, 75.58)];
-    [star14Path addLineToPoint: CGPointMake(27.87, 71.37)];
-    [star14Path addLineToPoint: CGPointMake(32.35, 69.87)];
-    [star14Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star14Path fill];
-    
-    //// Star 15 Drawing
-    UIBezierPath* star15Path = [UIBezierPath bezierPath];
-    [star15Path moveToPoint: CGPointMake(51, 65.5)];
-    [star15Path addLineToPoint: CGPointMake(53.65, 69.87)];
-    [star15Path addLineToPoint: CGPointMake(58.13, 71.37)];
-    [star15Path addLineToPoint: CGPointMake(55.28, 75.58)];
-    [star15Path addLineToPoint: CGPointMake(55.41, 80.88)];
-    [star15Path addLineToPoint: CGPointMake(51, 79.1)];
-    [star15Path addLineToPoint: CGPointMake(46.59, 80.88)];
-    [star15Path addLineToPoint: CGPointMake(46.72, 75.58)];
-    [star15Path addLineToPoint: CGPointMake(43.87, 71.37)];
-    [star15Path addLineToPoint: CGPointMake(48.35, 69.87)];
-    [star15Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star15Path fill];
-    
-    //// Star 16 Drawing
-    UIBezierPath* star16Path = [UIBezierPath bezierPath];
-    [star16Path moveToPoint: CGPointMake(67, 65.5)];
-    [star16Path addLineToPoint: CGPointMake(69.65, 69.87)];
-    [star16Path addLineToPoint: CGPointMake(74.13, 71.37)];
-    [star16Path addLineToPoint: CGPointMake(71.28, 75.58)];
-    [star16Path addLineToPoint: CGPointMake(71.41, 80.88)];
-    [star16Path addLineToPoint: CGPointMake(67, 79.1)];
-    [star16Path addLineToPoint: CGPointMake(62.59, 80.88)];
-    [star16Path addLineToPoint: CGPointMake(62.72, 75.58)];
-    [star16Path addLineToPoint: CGPointMake(59.87, 71.37)];
-    [star16Path addLineToPoint: CGPointMake(64.35, 69.87)];
-    [star16Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star16Path fill];
-    
-    //// Star 17 Drawing
-    UIBezierPath* star17Path = [UIBezierPath bezierPath];
-    [star17Path moveToPoint: CGPointMake(18, 82.5)];
-    [star17Path addLineToPoint: CGPointMake(20.65, 86.87)];
-    [star17Path addLineToPoint: CGPointMake(25.13, 88.37)];
-    [star17Path addLineToPoint: CGPointMake(22.28, 92.58)];
-    [star17Path addLineToPoint: CGPointMake(22.41, 97.88)];
-    [star17Path addLineToPoint: CGPointMake(18, 96.1)];
-    [star17Path addLineToPoint: CGPointMake(13.59, 97.88)];
-    [star17Path addLineToPoint: CGPointMake(13.72, 92.58)];
-    [star17Path addLineToPoint: CGPointMake(10.87, 88.37)];
-    [star17Path addLineToPoint: CGPointMake(15.35, 86.87)];
-    [star17Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star17Path fill];
-    
-    //// Star 18 Drawing
-    UIBezierPath* star18Path = [UIBezierPath bezierPath];
-    [star18Path moveToPoint: CGPointMake(35, 82.5)];
-    [star18Path addLineToPoint: CGPointMake(37.65, 86.87)];
-    [star18Path addLineToPoint: CGPointMake(42.13, 88.37)];
-    [star18Path addLineToPoint: CGPointMake(39.28, 92.58)];
-    [star18Path addLineToPoint: CGPointMake(39.41, 97.88)];
-    [star18Path addLineToPoint: CGPointMake(35, 96.1)];
-    [star18Path addLineToPoint: CGPointMake(30.59, 97.88)];
-    [star18Path addLineToPoint: CGPointMake(30.72, 92.58)];
-    [star18Path addLineToPoint: CGPointMake(27.87, 88.37)];
-    [star18Path addLineToPoint: CGPointMake(32.35, 86.87)];
-    [star18Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star18Path fill];
-    
-    //// Star 19 Drawing
-    UIBezierPath* star19Path = [UIBezierPath bezierPath];
-    [star19Path moveToPoint: CGPointMake(51, 82.5)];
-    [star19Path addLineToPoint: CGPointMake(53.65, 86.87)];
-    [star19Path addLineToPoint: CGPointMake(58.13, 88.37)];
-    [star19Path addLineToPoint: CGPointMake(55.28, 92.58)];
-    [star19Path addLineToPoint: CGPointMake(55.41, 97.88)];
-    [star19Path addLineToPoint: CGPointMake(51, 96.1)];
-    [star19Path addLineToPoint: CGPointMake(46.59, 97.88)];
-    [star19Path addLineToPoint: CGPointMake(46.72, 92.58)];
-    [star19Path addLineToPoint: CGPointMake(43.87, 88.37)];
-    [star19Path addLineToPoint: CGPointMake(48.35, 86.87)];
-    [star19Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star19Path fill];
-    
-    //// Star 20 Drawing
-    UIBezierPath* star20Path = [UIBezierPath bezierPath];
-    [star20Path moveToPoint: CGPointMake(67, 82.5)];
-    [star20Path addLineToPoint: CGPointMake(69.65, 86.87)];
-    [star20Path addLineToPoint: CGPointMake(74.13, 88.37)];
-    [star20Path addLineToPoint: CGPointMake(71.28, 92.58)];
-    [star20Path addLineToPoint: CGPointMake(71.41, 97.88)];
-    [star20Path addLineToPoint: CGPointMake(67, 96.1)];
-    [star20Path addLineToPoint: CGPointMake(62.59, 97.88)];
-    [star20Path addLineToPoint: CGPointMake(62.72, 92.58)];
-    [star20Path addLineToPoint: CGPointMake(59.87, 88.37)];
-    [star20Path addLineToPoint: CGPointMake(64.35, 86.87)];
-    [star20Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star20Path fill];
-    
-    //// Star 21 Drawing
-    UIBezierPath* star21Path = [UIBezierPath bezierPath];
-    [star21Path moveToPoint: CGPointMake(18, 99.5)];
-    [star21Path addLineToPoint: CGPointMake(20.65, 103.87)];
-    [star21Path addLineToPoint: CGPointMake(25.13, 105.37)];
-    [star21Path addLineToPoint: CGPointMake(22.28, 109.58)];
-    [star21Path addLineToPoint: CGPointMake(22.41, 114.88)];
-    [star21Path addLineToPoint: CGPointMake(18, 113.1)];
-    [star21Path addLineToPoint: CGPointMake(13.59, 114.88)];
-    [star21Path addLineToPoint: CGPointMake(13.72, 109.58)];
-    [star21Path addLineToPoint: CGPointMake(10.87, 105.37)];
-    [star21Path addLineToPoint: CGPointMake(15.35, 103.87)];
-    [star21Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star21Path fill];
-    
-    //// Star 22 Drawing
-    UIBezierPath* star22Path = [UIBezierPath bezierPath];
-    [star22Path moveToPoint: CGPointMake(35, 99.5)];
-    [star22Path addLineToPoint: CGPointMake(37.65, 103.87)];
-    [star22Path addLineToPoint: CGPointMake(42.13, 105.37)];
-    [star22Path addLineToPoint: CGPointMake(39.28, 109.58)];
-    [star22Path addLineToPoint: CGPointMake(39.41, 114.88)];
-    [star22Path addLineToPoint: CGPointMake(35, 113.1)];
-    [star22Path addLineToPoint: CGPointMake(30.59, 114.88)];
-    [star22Path addLineToPoint: CGPointMake(30.72, 109.58)];
-    [star22Path addLineToPoint: CGPointMake(27.87, 105.37)];
-    [star22Path addLineToPoint: CGPointMake(32.35, 103.87)];
-    [star22Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star22Path fill];
-    
-    //// Star 23 Drawing
-    UIBezierPath* star23Path = [UIBezierPath bezierPath];
-    [star23Path moveToPoint: CGPointMake(51, 99.5)];
-    [star23Path addLineToPoint: CGPointMake(53.65, 103.87)];
-    [star23Path addLineToPoint: CGPointMake(58.13, 105.37)];
-    [star23Path addLineToPoint: CGPointMake(55.28, 109.58)];
-    [star23Path addLineToPoint: CGPointMake(55.41, 114.88)];
-    [star23Path addLineToPoint: CGPointMake(51, 113.1)];
-    [star23Path addLineToPoint: CGPointMake(46.59, 114.88)];
-    [star23Path addLineToPoint: CGPointMake(46.72, 109.58)];
-    [star23Path addLineToPoint: CGPointMake(43.87, 105.37)];
-    [star23Path addLineToPoint: CGPointMake(48.35, 103.87)];
-    [star23Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star23Path fill];
-    
-    //// Star 24 Drawing
-    UIBezierPath* star24Path = [UIBezierPath bezierPath];
-    [star24Path moveToPoint: CGPointMake(67, 99.5)];
-    [star24Path addLineToPoint: CGPointMake(69.65, 103.87)];
-    [star24Path addLineToPoint: CGPointMake(74.13, 105.37)];
-    [star24Path addLineToPoint: CGPointMake(71.28, 109.58)];
-    [star24Path addLineToPoint: CGPointMake(71.41, 114.88)];
-    [star24Path addLineToPoint: CGPointMake(67, 113.1)];
-    [star24Path addLineToPoint: CGPointMake(62.59, 114.88)];
-    [star24Path addLineToPoint: CGPointMake(62.72, 109.58)];
-    [star24Path addLineToPoint: CGPointMake(59.87, 105.37)];
-    [star24Path addLineToPoint: CGPointMake(64.35, 103.87)];
-    [star24Path closePath];
-    [[UIColor whiteColor] setFill];
-    [star24Path fill];
+    // Draw star card backs
+    [self drawStarAtX:18 y:14.5];
+    [self drawStarAtX:35 y:14.5];
+    [self drawStarAtX:51 y:14.5];
+    [self drawStarAtX:67 y:14.5];
+    [self drawStarAtX:18 y:31.5];
+    [self drawStarAtX:36 y:31.5];
+    [self drawStarAtX:51 y:31.5];
+    [self drawStarAtX:67 y:31.5];
+    [self drawStarAtX:18 y:48.5];
+    [self drawStarAtX:35 y:48.5];
+    [self drawStarAtX:51 y:48.5];
+    [self drawStarAtX:67 y:48.5];
+    [self drawStarAtX:18 y:65.5];
+    [self drawStarAtX:35 y:65.5];
+    [self drawStarAtX:51 y:65.5];
+    [self drawStarAtX:67 y:65.5];
+    [self drawStarAtX:18 y:82.5];
+    [self drawStarAtX:35 y:82.5];
+    [self drawStarAtX:51 y:82.5];
+    [self drawStarAtX:67 y:82.5];
+    [self drawStarAtX:18 y:99.5];
+    [self drawStarAtX:35 y:99.5];
+    [self drawStarAtX:51 y:99.5];
+    [self drawStarAtX:67 y:99.5];
     
     //// Cleanup
     CGGradientRelease(gradient2);
