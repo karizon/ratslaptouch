@@ -56,4 +56,16 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
+    NSLog(@"RSGameView: Being asked if I rotate in a direction.  Answering Yes");
+    return YES;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"RSGameView: have changed to landscape");
+    } else if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"RSGameView: have changed to portrait");
+    }
+}
 @end
