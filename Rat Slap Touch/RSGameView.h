@@ -21,4 +21,7 @@
 - (void) drawStarAtX: (float) x y: (float) y;
 
 - (void) drawCardAtX: (float) x y:(float) y suit:(int) suit card:(NSString *) card;
+
++ (BOOL) isPad;
+
 @end

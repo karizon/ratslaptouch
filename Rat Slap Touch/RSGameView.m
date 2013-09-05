@@ -20,6 +20,9 @@
 
 - (void) gameViewInit {
     NSLog(@"Game View: Initializing (new game board)");
+    if([RSGameView isPad]) {
+        NSLog(@"Game View: We're drawing on an iPad, folks!");
+    }
     return;
 }
 
