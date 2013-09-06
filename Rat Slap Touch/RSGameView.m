@@ -48,7 +48,7 @@
     // Draw Star w/ first point @ x,y
     UIBezierPath* starPath = [UIBezierPath bezierPath];
     if([RSGameView isPad]) {
-        [starPath moveToPoint: CGPointMake(x + 0, y + 0)];
+        [starPath moveToPoint: CGPointMake(x, y)];
         [starPath addLineToPoint: CGPointMake(x + 5.82, y + 9.01)];
         [starPath addLineToPoint: CGPointMake(x + 15.69, y + 12.09)];
         [starPath addLineToPoint: CGPointMake(x + 9.42, y + 20.74)];
@@ -58,6 +58,7 @@
         [starPath addLineToPoint: CGPointMake(x - 9.42, y + 20.74)];
         [starPath addLineToPoint: CGPointMake(x - 15.69, y + 12.09)];
         [starPath addLineToPoint: CGPointMake(x - 5.82, y + 9.01)];
+        [starPath addLineToPoint: CGPointMake(x , y)];
         [[UIColor blackColor] setStroke];
         starPath.lineWidth = 1;
         [starPath stroke];
@@ -72,6 +73,7 @@
         [starPath addLineToPoint: CGPointMake(x - 4.28, y + 10.08)];
         [starPath addLineToPoint: CGPointMake(x - 7.13, y + 5.87)];
         [starPath addLineToPoint: CGPointMake(x - 2.65, y + 4.37)];
+        [starPath addLineToPoint: CGPointMake(x , y)];
         [[UIColor blackColor] setStroke];
         starPath.lineWidth = 1;
         [starPath stroke];
