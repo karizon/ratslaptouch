@@ -23,6 +23,7 @@
     if([RSGameView isPad]) {
         NSLog(@"Game View: We're drawing on an iPad, folks!");
     }
+    stillWaiting = YES;
     return;
     [UIViewController attemptRotationToDeviceOrientation];
 }
@@ -464,25 +465,100 @@
     CGColorSpaceRelease(colorSpace);
 }
 
+- (void) drawWaitingDisplayatX: (float) x y: (float) y {
+    // General Declarations
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+
+    CGRect textRect = CGRectMake(x + 34, y + 19, 136, 62);
+
+    // Text we want to display
+    NSString* textContent = @"Waiting for more players to join the game.";
+
+    // Shadow Declarations
+    UIColor* shadow = [UIColor blackColor];
+    CGSize shadowOffset = CGSizeMake(3.1, 3.1);
+    CGFloat shadowBlurRadius = 5;
+    
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+
+    // bounding box
+    if([RSGameView isPad]) {
+        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 400, 200) cornerRadius: 8];
+        [[UIColor whiteColor] setFill];
+        [roundedRectanglePath fill];
+        CGContextRestoreGState(context);
+
+        [[UIColor blackColor] setStroke];
+        roundedRectanglePath.lineWidth = 1;
+        [roundedRectanglePath stroke];
+
+        
+        // Overwrite the text rect for ipad only
+        textRect = CGRectMake(x + 54, y + 37, 294, 124);
+    } else {
+        // bounding box
+        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 200, 100) cornerRadius: 4];
+        [[UIColor whiteColor] setFill];
+        [roundedRectanglePath fill];
+        CGContextRestoreGState(context);
+        
+        [[UIColor blackColor] setStroke];
+        roundedRectanglePath.lineWidth = 1;
+        [roundedRectanglePath stroke];
+    }
+
+
+    
+    // Font styling for waiting text:
+    NSMutableDictionary *strAttribs = [[NSMutableDictionary alloc] init];
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSTextAlignmentCenter];
+    if([RSGameView isPad]) {
+        [strAttribs setObject:[UIFont fontWithName: @"Georgia-Italic" size: 34] forKey:NSFontAttributeName];
+    } else {
+        [strAttribs setObject:[UIFont fontWithName: @"Georgia-Italic" size: [UIFont labelFontSize]] forKey:NSFontAttributeName];
+    }
+
+    [strAttribs setObject:style forKey:NSParagraphStyleAttributeName];
+    
+    // Text Drawing
+    [[UIColor blackColor] setFill];
+    [textContent drawInRect:textRect withAttributes:strAttribs];
+}
+
 - (void)drawRect:(CGRect)rect {
     
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
+
     if([RSGameView isPad]) {
-        [self drawCardBackAtX:11 y:11];
-        [self drawCardBackAtX:11 y:270];
-        [self drawCardAtX:200 y:11 suit:SUIT_SPADE card:@"3"];
-        [self drawCardAtX:380 y:11 suit:SUIT_HEART card:@"K"];
-        [self drawCardAtX:200 y:270 suit:SUIT_CLUB card:@"J"];
-        [self drawCardAtX:380 y:270 suit:SUIT_DIAMOND card:@"7"];
+        [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11];
+        [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251))];
+        [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120)];
+        [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120)];
     } else {
-        [self drawCardBackAtX:5.5 y:5.5];
-        [self drawCardBackAtX:5.5 y:135];
-        [self drawCardAtX:100 y:5.5 suit:SUIT_SPADE card:@"3"];
-        [self drawCardAtX:190 y:5.5 suit:SUIT_HEART card:@"K"];
-        [self drawCardAtX:100 y:135 suit:SUIT_CLUB card:@"J"];
-        [self drawCardAtX:190 y:135 suit:SUIT_DIAMOND card:@"7"];
+        [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:5.5];
+        [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:((self.bounds.size.height - 125.5))];
+        [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60)];
+        [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60)];
+    }
+
+    if(stillWaiting) {
+        if([RSGameView isPad]) {
+            [self drawWaitingDisplayatX:self.bounds.size.width / 2 - 200 y:self.bounds.size.height / 2 - 100];
+        } else {
+            [self drawWaitingDisplayatX:self.bounds.size.width / 2 - 100 y:self.bounds.size.height / 2 - 50];
+        }
     }
 }
 
+- (void) setWaiting: (BOOL) waiting {
+    stillWaiting = waiting;
+}
+
+- (void) setPlayers: (int) current total:(int) total {
+    
+}
 @end

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSGameView : UIView
+@interface RSGameView : UIView {
+    BOOL stillWaiting;
+}
 
 #define SUIT_SPADE 1
 #define SUIT_CLUB 2
@@ -23,5 +25,8 @@
 - (void) drawCardAtX: (float) x y:(float) y suit:(int) suit card:(NSString *) card;
 
 + (BOOL) isPad;
+
+- (void) setWaiting: (BOOL) waiting;
+- (void) setPlayers: (int) current total:(int) total;
 
 @end
