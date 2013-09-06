@@ -245,18 +245,19 @@
     if(suit == SUIT_SPADE) {
         if([RSGameView isPad]) {
             UIBezierPath* ovalPath = [UIBezierPath bezierPath];
-            [ovalPath moveToPoint: CGPointMake(x + 63, y + 147.95)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 69.71, y + 163.69) controlPoint1: CGPointMake(x + 64.33, y + 146.68) controlPoint2: CGPointMake(x + 70.05, y + 155.15)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 63, y + 180.5) controlPoint1: CGPointMake(x + 69.38, y + 172.07) controlPoint2: CGPointMake(x + 63, y + 180.5)];
-            [ovalPath addLineToPoint: CGPointMake(x + 76.42, y + 180.5)];
-            [ovalPath addLineToPoint: CGPointMake(x + 86.49, y + 180.5)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 79.78, y + 163.69) controlPoint1: CGPointMake(x + 86.39, y + 180.5) controlPoint2: CGPointMake(x + 80.09, y + 171.41)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 86.49, y + 147.95) controlPoint1: CGPointMake(x + 79.41, y + 154.62) controlPoint2: CGPointMake(x + 85.21, y + 146.78)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 106.63, y + 147.95) controlPoint1: CGPointMake(x + 93.39, y + 154.23) controlPoint2: CGPointMake(x + 102.05, y + 155.51)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 87.08, y + 70.58) controlPoint1: CGPointMake(x + 122.46, y + 121.81) controlPoint2: CGPointMake(x + 102.91, y + 96.31)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 62.41, y + 70.18) controlPoint1: CGPointMake(x + 71.25, y + 44.05) controlPoint2: CGPointMake(x + 78.24, y + 44.05)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 42.86, y + 147.95) controlPoint1: CGPointMake(x + 46.58, y + 96.31) controlPoint2: CGPointMake(x + 27.03, y + 121.81)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 63, y + 147.95) controlPoint1: CGPointMake(x + 47.83, y + 156.15) controlPoint2: CGPointMake(x + 56.42, y + 154.18)];
+            [ovalPath moveToPoint: CGPointMake(x + 59.11, y + 151.45)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 68.04, y + 167.19) controlPoint1: CGPointMake(x + 60.88, y + 150.18) controlPoint2: CGPointMake(x + 68.5, y + 158.65)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 59.11, y + 184) controlPoint1: CGPointMake(x + 67.6, y + 175.57) controlPoint2: CGPointMake(x + 59.11, y + 184)];
+            [ovalPath addLineToPoint: CGPointMake(x + 76.98, y + 184)];
+            [ovalPath addLineToPoint: CGPointMake(x + 90.38, y + 184)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 81.45, y + 167.19) controlPoint1: CGPointMake(x + 90.38, y + 184) controlPoint2: CGPointMake(x + 81.86, y + 174.91)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 90.38, y + 151.45) controlPoint1: CGPointMake(x + 80.96, y + 158.12) controlPoint2: CGPointMake(x + 88.67, y + 150.28)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 117.19, y + 151.45) controlPoint1: CGPointMake(x + 99.56, y + 157.73) controlPoint2: CGPointMake(x + 111.09, y + 159.01)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 91.17, y + 73.68) controlPoint1: CGPointMake(x + 138.26, y + 125.31) controlPoint2: CGPointMake(x + 112.24, y + 99.81)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 58.32, y + 73.68) controlPoint1: CGPointMake(x + 70.1, y + 47.55) controlPoint2: CGPointMake(x + 79.4, y + 47.55)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 32.3, y + 151.45) controlPoint1: CGPointMake(x + 37.25, y + 99.81) controlPoint2: CGPointMake(x + 11.23, y + 125.31)];
+            [ovalPath addCurveToPoint: CGPointMake(x + 59.11, y + 151.45) controlPoint1: CGPointMake(x + 38.91, y + 159.65) controlPoint2: CGPointMake(x + 50.35, y + 157.68)];
+
             [ovalPath closePath];
             CGContextSaveGState(context);
             CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
@@ -303,50 +304,50 @@
             [oval2Path fill];
             CGContextRestoreGState(context);
         } else {
-            UIBezierPath* ovalPath = [UIBezierPath bezierPath];
-            [ovalPath moveToPoint: CGPointMake(x + 37.95, y + 86.5)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 53.5, y + 65.68) controlPoint1: CGPointMake(x + 37.95, y + 86.5) controlPoint2: CGPointMake(x + 49.91, y + 70.61)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 57.5, y + 35.46) controlPoint1: CGPointMake(x + 60.68, y + 55.81) controlPoint2: CGPointMake(x + 64.68, y + 45.33)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 42.13, y + 35.39) controlPoint1: CGPointMake(x + 55.71, y + 33.01) controlPoint2: CGPointMake(x + 45.58, y + 32.71)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 37.95, y + 43.91) controlPoint1: CGPointMake(x + 38.51, y + 38.2) controlPoint2: CGPointMake(x + 37.95, y + 43.91)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 33.77, y + 35.39) controlPoint1: CGPointMake(x + 37.95, y + 43.91) controlPoint2: CGPointMake(x + 37.21, y + 38.11)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 17.5, y + 35.46) controlPoint1: CGPointMake(x + 30.19, y + 32.56) controlPoint2: CGPointMake(x + 19.29, y + 33)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 22.5, y + 65.68) controlPoint1: CGPointMake(x + 10.32, y + 45.33) controlPoint2: CGPointMake(x + 15.32, y + 55.81)];
-            [ovalPath addCurveToPoint: CGPointMake(x + 37.95, y + 86.5) controlPoint1: CGPointMake(x + 26.09, y + 70.61) controlPoint2: CGPointMake(x + 37.95, y + 86.5)];
-            [ovalPath closePath];
+            UIBezierPath* oval2Path = [UIBezierPath bezierPath];
+            [oval2Path moveToPoint: CGPointMake(x + 36.57, y + 87)];
+            [oval2Path addCurveToPoint: CGPointMake(x + 52.48, y + 65.03) controlPoint1: CGPointMake(x + 36.57, y + 87) controlPoint2: CGPointMake(x + 48.8, y + 70.24)];
+            [oval2Path addCurveToPoint: CGPointMake(x + 58.05, y + 35.93) controlPoint1: CGPointMake(x + 59.82, y + 54.62) controlPoint2: CGPointMake(x + 65.39, y + 46.34)];
+            [oval2Path addCurveToPoint: CGPointMake(x + 42.97, y + 33.08) controlPoint1: CGPointMake(x + 56.22, y + 33.34) controlPoint2: CGPointMake(x + 48.09, y + 30.25)];
+            [oval2Path addCurveToPoint: CGPointMake(x + 36.57, y + 40.07) controlPoint1: CGPointMake(x + 37.59, y + 36.05) controlPoint2: CGPointMake(x + 36.57, y + 40.07)];
+            [oval2Path addCurveToPoint: CGPointMake(x + 29.63, y + 33.08) controlPoint1: CGPointMake(x + 36.57, y + 40.07) controlPoint2: CGPointMake(x + 35.46, y + 35.95)];
+            [oval2Path addCurveToPoint: CGPointMake(x + 15, y + 35.93) controlPoint1: CGPointMake(x + 23.58, y + 30.09) controlPoint2: CGPointMake(x + 16.83, y + 33.33)];
+            [oval2Path addCurveToPoint: CGPointMake(x + 20.77, y + 65.03) controlPoint1: CGPointMake(x + 7.65, y + 46.34) controlPoint2: CGPointMake(x + 13.42, y + 54.62)];
+            [oval2Path addCurveToPoint: CGPointMake(x + 36.57, y + 87) controlPoint1: CGPointMake(x + 24.44, y + 70.24) controlPoint2: CGPointMake(x + 36.57, y + 87)];
+            [oval2Path closePath];
             CGContextSaveGState(context);
             CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
             [fillColor setFill];
-            [ovalPath fill];
+            [oval2Path fill];
             CGContextRestoreGState(context);
         }
     } else if(suit == SUIT_DIAMOND) {
         if([RSGameView isPad]) {
             UIBezierPath* oval3Path = [UIBezierPath bezierPath];
-            [oval3Path moveToPoint: CGPointMake(x + 75.5, y + 185.5)];
-            [oval3Path addLineToPoint: CGPointMake(x + 111.5, y + 120.12)];
-            [oval3Path addLineToPoint: CGPointMake(x + 75.5, y + 49.5)];
-            [oval3Path addLineToPoint: CGPointMake(x + 39.5, y + 120.12)];
-            [oval3Path addLineToPoint: CGPointMake(x + 75.5, y + 185.5)];
-            [oval3Path closePath];
+            [oval3Path moveToPoint: CGPointMake(x + 75.5, y + 198.5)];
+            [oval3Path addLineToPoint: CGPointMake(x + 119.5, y + 118.98)];
+            [oval3Path addLineToPoint: CGPointMake(x + 75.5, y + 40.5)];
+            [oval3Path addLineToPoint: CGPointMake(x + 31.5, y + 118.98)];
+            [oval3Path addLineToPoint: CGPointMake(x + 75.5, y + 198.5)];
             CGContextSaveGState(context);
             CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
             [fillColor setFill];
             [oval3Path fill];
             CGContextRestoreGState(context);
         } else {
-            UIBezierPath* ovalPath = [UIBezierPath bezierPath];
-            [ovalPath moveToPoint: CGPointMake(x + 38, y + 87)];
-            [ovalPath addLineToPoint: CGPointMake(x + 53, y + 61.52)];
-            [ovalPath addLineToPoint: CGPointMake(x + 38, y + 34)];
-            [ovalPath addLineToPoint: CGPointMake(x + 23, y + 61.52)];
-            [ovalPath addLineToPoint: CGPointMake(x + 38, y + 87)];
-            [ovalPath closePath];
+            UIBezierPath* oval3Path = [UIBezierPath bezierPath];
+            [oval3Path moveToPoint: CGPointMake(x + 38, y + 98.5)];
+            [oval3Path addLineToPoint: CGPointMake(x + 58.5, y + 61.96)];
+            [oval3Path addLineToPoint: CGPointMake(x + 38, y + 22.5)];
+            [oval3Path addLineToPoint: CGPointMake(x + 17.5, y + 61.96)];
+            [oval3Path addLineToPoint: CGPointMake(x + 38, y + 98.5)];
+            [oval3Path closePath];
             CGContextSaveGState(context);
             CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
             [fillColor setFill];
-            [ovalPath fill];
+            [oval3Path fill];
             CGContextRestoreGState(context);
+
         }
     } else if(suit == SUIT_CLUB) {
         if([RSGameView isPad]) {
@@ -389,33 +390,12 @@
             CGContextRestoreGState(context);
             
         } else {
-            UIBezierPath* oval5Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 36.5, y + 46.5, 20, 20)];
-            CGContextSaveGState(context);
-            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
-            [color2 setFill];
-            [oval5Path fill];
-            CGContextRestoreGState(context);
-            
-            UIBezierPath* oval6Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 20.5, y + 46.5, 18, 20)];
-            CGContextSaveGState(context);
-            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
-            [color2 setFill];
-            [oval6Path fill];
-            CGContextRestoreGState(context);
-            
-            UIBezierPath* oval4Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 29, y + 30.5, 18, 20)];
-            CGContextSaveGState(context);
-            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
-            [color2 setFill];
-            [oval4Path fill];
-            CGContextRestoreGState(context);
-            
             UIBezierPath* rectanglePath = [UIBezierPath bezierPath];
-            [rectanglePath moveToPoint: CGPointMake(x + 33, y + 79)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 43, y + 79)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 39, y + 48)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 36, y + 48)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 33, y + 79)];
+            [rectanglePath moveToPoint: CGPointMake(x + 33.5, y + 88.5)];
+            [rectanglePath addLineToPoint: CGPointMake(x + 39.5, y + 88.5)];
+            [rectanglePath addLineToPoint: CGPointMake(x + 37.1, y + 46.5)];
+            [rectanglePath addLineToPoint: CGPointMake(x + 35.3, y + 46.5)];
+            [rectanglePath addLineToPoint: CGPointMake(x + 33.5, y + 88.5)];
             [rectanglePath closePath];
             CGContextSaveGState(context);
             CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
@@ -426,6 +406,27 @@
             [[UIColor blackColor] setStroke];
             rectanglePath.lineWidth = 1;
             [rectanglePath stroke];
+            
+            UIBezierPath* oval4Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 35, y + 51, 27, 27)];
+            CGContextSaveGState(context);
+            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+            [color2 setFill];
+            [oval4Path fill];
+            CGContextRestoreGState(context);
+            
+            UIBezierPath* oval5Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 23, y + 30, 27, 27)];
+            CGContextSaveGState(context);
+            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+            [color2 setFill];
+            [oval5Path fill];
+            CGContextRestoreGState(context);
+
+            UIBezierPath* oval6Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 12, y + 51, 27, 27)];
+            CGContextSaveGState(context);
+            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+            [color2 setFill];
+            [oval6Path fill];
+            CGContextRestoreGState(context);
         }
     }
     
@@ -512,10 +513,10 @@
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
     if([RSGameView isPad]) {
-        [self drawCardBackAtX:5.5 y:5.5];
-        [self drawCardBackAtX:5.5 y:270];
-        [self drawCardAtX:200 y:5.5 suit:SUIT_SPADE card:@"3"];
-        [self drawCardAtX:380 y:5.5 suit:SUIT_HEART card:@"K"];
+        [self drawCardBackAtX:11 y:11];
+        [self drawCardBackAtX:11 y:270];
+        [self drawCardAtX:200 y:11 suit:SUIT_SPADE card:@"3"];
+        [self drawCardAtX:380 y:11 suit:SUIT_HEART card:@"K"];
         [self drawCardAtX:200 y:270 suit:SUIT_CLUB card:@"J"];
         [self drawCardAtX:380 y:270 suit:SUIT_DIAMOND card:@"7"];
     } else {
