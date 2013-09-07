@@ -69,6 +69,7 @@
 - (void) abandonGame {
     NSLog(@"Delegate: Abandoning Game");
     gameType = NO_CURRENT_GAME;
+    [networkClient leaveGame];
 }
 
 - (void) joinGame:(int) newGameType {
@@ -111,6 +112,7 @@
         NSLog(@"Delegate: Game has ended, we have lost!");
     }
     [gameViewController gameEnded:winner];
+    [self abandonGame];
 }
 
 - (void) assignViewController:(RSViewController *) newViewController {

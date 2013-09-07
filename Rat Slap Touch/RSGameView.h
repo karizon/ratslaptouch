@@ -11,6 +11,8 @@
 @interface RSGameView : UIView {
     BOOL stillWaiting;
     BOOL horizontal;
+    int totalPlayers;
+    int currentPlayers;
 }
 
 #define SUIT_SPADE 1

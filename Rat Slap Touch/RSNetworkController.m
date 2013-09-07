@@ -91,6 +91,22 @@
     }
 }
 
+- (void) leaveGame {
+    if(remoteClient && canTransmit) {
+        NSError *error;
+        NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"LEAVE", @"type",
+                                        @"REQUEST", @"status",
+                                        nil];
+        if(jsonDictionary) {
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
+            NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"Network: Sending %@",resultAsString);
+            [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
+        }
+    }
+}
+
 - (void) assignNickname:(NSString *)newNickname {
     if(remoteClient && newNickname && canTransmit) {
         NSError *error;

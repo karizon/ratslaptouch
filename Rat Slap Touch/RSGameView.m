@@ -24,6 +24,8 @@
         NSLog(@"Game View: We're drawing on an iPad, folks!");
     }
     stillWaiting = YES;
+    totalPlayers = 0;
+    currentPlayers = 0;
     return;
     [UIViewController attemptRotationToDeviceOrientation];
 }
@@ -530,17 +532,45 @@
     
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
-
-    if([RSGameView isPad]) {
-        [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11];
-        [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251))];
-        [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120)];
-        [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120)];
+    
+    // only draw players 3 + 4 if we are in a 4 player game
+    if(totalPlayers == 4) {
+        if(horizontal) {
+            if([RSGameView isPad]) {
+                [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11];
+                [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251))];
+            } else {
+                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120)];
+                [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120)];
+            }
+        } else {
+            if([RSGameView isPad]) {
+                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120)];
+                [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120)];
+            } else {
+                [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60)];
+                [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60)];
+            }
+        }
+    }
+    
+    // draw players 1 + 2 in all casess
+    if(horizontal) {
+        if([RSGameView isPad]) {
+            [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120)];
+            [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120)];
+        } else {
+            [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60)];
+            [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60)];
+        }
     } else {
-        [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:5.5];
-        [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:((self.bounds.size.height - 125.5))];
-        [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60)];
-        [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60)];
+        if([RSGameView isPad]) {
+            [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11];
+            [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251))];
+        } else {
+            [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:5.5];
+            [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:((self.bounds.size.height - 125.5))];
+        }
     }
 
     if(stillWaiting) {
@@ -553,12 +583,16 @@
 }
 
 - (void) setWaiting: (BOOL) waiting {
+    NSLog(@"Game View: Changing whether or not we're waiting on players");
     stillWaiting = waiting;
     [self setNeedsDisplay];
 }
 
 - (void) setPlayers: (int) current total:(int) total {
     NSLog(@"Game View: changing number of players on the board");
+    totalPlayers = total;
+    currentPlayers = total;
+    [self setNeedsDisplay];
 }
 
 - (void) setOrientationHorizontal: (BOOL) isHorizontal {

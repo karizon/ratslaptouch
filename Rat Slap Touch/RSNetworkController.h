@@ -24,6 +24,7 @@
 - (BOOL) connectToHost;
 - (void) forceDisconnect;
 - (void) joinGame:(int) players;
+- (void) leaveGame;
 - (void) assignNickname:(NSString *) newNickname;
 
 @end

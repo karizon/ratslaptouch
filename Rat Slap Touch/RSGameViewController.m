@@ -33,7 +33,6 @@
     // parent is nil if this view controller was removed
     if(!parent) {
         NSLog(@"RSGameView: We should be pausing the game, returning to main menu now");
-        [appDelegate abandonGame];
     }
 }
 
@@ -62,6 +61,7 @@
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [appDelegate abandonGame];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
