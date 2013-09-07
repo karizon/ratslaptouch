@@ -89,6 +89,7 @@
         }
     }
 }
+
 - (void) assignNickname:(NSString *)newNickname {
     if(remoteClient && newNickname && canTransmit) {
         NSError *error;
@@ -151,12 +152,6 @@
             }
         }
     } else {
-        /* NSEnumerator *enumKey = [serverResponse keyEnumerator];
-         id key;
-         while((key = [enumKey nextObject])) {
-         NSLog(@"JSON: %@: %@",key, [serverResponse objectForKey:key]);
-         } */
-        
         NSString* dataType = [serverResponse valueForKey:@"type"];
         if([dataType isEqualToString:@"HELO"]) {
             NSLog(@"Network: Successfully received HELO string");
@@ -168,6 +163,8 @@
                 } else {
                     [appDelegate gameEnded:NO];
                 }
+            } else {
+                
             }
         } else if([dataType isEqualToString:@"STATISTICS"]) {
             if([[serverResponse valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
