@@ -22,7 +22,7 @@
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignViewController:self];
     queuedGameType = NO_CURRENT_GAME;
-    [UIViewController attemptRotationToDeviceOrientation];
+//    [UIViewController attemptRotationToDeviceOrientation];
 }
 
 - (void)didReceiveMemoryWarning {

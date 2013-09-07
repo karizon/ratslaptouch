@@ -18,7 +18,13 @@
     // NSLog(@"RSGameView: Loaded");
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignGameViewController:self];
-    [UIViewController attemptRotationToDeviceOrientation];
+
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if((orientation == 0) || (orientation == UIInterfaceOrientationPortrait))  {
+        [gameView setOrientationHorizontal:NO];
+    } else if((orientation == UIInterfaceOrientationLandscapeLeft) || (orientation == UIInterfaceOrientationLandscapeRight)) {
+        [gameView setOrientationHorizontal:YES];
+    }
 }
 
 

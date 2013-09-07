@@ -561,6 +561,7 @@
 }
 
 - (void) setOrientationHorizontal: (BOOL) isHorizontal {
+    NSLog(@"Game View: Setting orientation");
     horizontal = isHorizontal;
 }
 
