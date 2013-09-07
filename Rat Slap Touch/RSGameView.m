@@ -509,8 +509,6 @@
         [roundedRectanglePath stroke];
     }
 
-
-    
     // Font styling for waiting text:
     NSMutableDictionary *strAttribs = [[NSMutableDictionary alloc] init];
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
@@ -561,4 +559,9 @@
 - (void) setPlayers: (int) current total:(int) total {
     
 }
+
+- (void) setOrientationHorizontal: (BOOL) isHorizontal {
+    horizontal = isHorizontal;
+}
+
 @end

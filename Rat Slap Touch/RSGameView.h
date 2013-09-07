@@ -10,6 +10,7 @@
 
 @interface RSGameView : UIView {
     BOOL stillWaiting;
+    BOOL horizontal;
 }
 
 #define SUIT_SPADE 1
@@ -28,5 +29,6 @@
 
 - (void) setWaiting: (BOOL) waiting;
 - (void) setPlayers: (int) current total:(int) total;
+- (void) setOrientationHorizontal: (BOOL) isHorizontal;
 
 @end
