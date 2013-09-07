@@ -20,6 +20,7 @@
     NSLog(@"Delegate: Initializing");
     viewController = nil;
     gameType = NO_CURRENT_GAME;
+    
     networkClient = [[RSNetworkController alloc] init];
     
     gameCenter = [RSGCHelper sharedInstance];
@@ -80,7 +81,7 @@
 
 - (void) processDisconnect {
     NSLog(@"Delegate: We have been disconnected from the server");
-    gameType = NO_CURRENT_GAME;
+    [self abandonGame];
 }
 
 - (void) processServerStatistics:(RSStatusUpdate *) newStats {

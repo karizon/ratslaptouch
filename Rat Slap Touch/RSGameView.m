@@ -573,12 +573,22 @@
         }
     }
 
+    
+    // If we're waiting, let's make sure the player knows
     if(stillWaiting) {
         if([RSGameView isPad]) {
             [self drawWaitingDisplayatX:self.bounds.size.width / 2 - 200 y:self.bounds.size.height / 2 - 100];
         } else {
             [self drawWaitingDisplayatX:self.bounds.size.width / 2 - 100 y:self.bounds.size.height / 2 - 50];
         }
+    } else {
+        // draw the card on top of the stack if we're not waiting!
+        if([RSGameView isPad]) {
+            [self drawCardAtX:((self.bounds.size.width / 2) - 75) y:self.bounds.size.height / 2 - 120 suit:SUIT_SPADE card:@"K"];
+        } else {
+            [self drawCardAtX:((self.bounds.size.width / 2) - 37.5) y:self.bounds.size.height / 2 - 60 suit:SUIT_SPADE card:@"K"];
+        }
+
     }
 }
 
