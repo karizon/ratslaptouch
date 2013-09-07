@@ -89,7 +89,8 @@
 }
 
 - (void) processGameUpdate:(RSGameUpdate *) newUpdate {
-    NSLog(@"Processing updated Game information");
+    NSLog(@"Delegate: Processing updated Game information");
+    [gameViewController processGameUpdate:newUpdate];
 }
 
 - (void) gameCenterLoginSuccessful: (NSString *) playerNickname {
@@ -110,7 +111,6 @@
         NSLog(@"Delegate: Game has ended, we have lost!");
     }
     [gameViewController gameEnded:winner];
-    gameType = NO_CURRENT_GAME;
 }
 
 - (void) assignViewController:(RSViewController *) newViewController {

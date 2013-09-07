@@ -554,10 +554,11 @@
 
 - (void) setWaiting: (BOOL) waiting {
     stillWaiting = waiting;
+    [self setNeedsDisplay];
 }
 
 - (void) setPlayers: (int) current total:(int) total {
-    
+    NSLog(@"Game View: changing number of players on the board");
 }
 
 - (void) setOrientationHorizontal: (BOOL) isHorizontal {

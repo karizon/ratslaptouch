@@ -12,7 +12,8 @@
 #define GAME_PLAYING 1
 #define GAME_NEWPLAYER 2
 #define GAME_PLAYERLEAVE 3
-#define GAME_OVER 4
+#define GAME_STARTING 4
+#define GAME_OVER 5
 
 @interface RSGameUpdate : NSObject {
     int players;
@@ -22,4 +23,11 @@
 }
 
 - (id) initWithPlayers: (int) newPlayers newGameSize:(int) newGameSize gameID:(int) newGameID status:(NSString *) newStatus;
+
+- (char) gameStatus;
+- (char) status;
+- (int) gameID;
+- (int) gameSize;
+- (int) players;
+
 @end

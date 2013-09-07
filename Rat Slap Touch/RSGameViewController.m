@@ -9,6 +9,7 @@
 #import "RSGameViewController.h"
 #import "RSAppDelegate.h"
 #import "RSGameView.h"
+#import "RSGameUpdate.h"
 
 @implementation RSGameViewController
 
@@ -32,6 +33,7 @@
     // parent is nil if this view controller was removed
     if(!parent) {
         NSLog(@"RSGameView: We should be pausing the game, returning to main menu now");
+        [appDelegate abandonGame];
     }
 }
 
@@ -66,6 +68,13 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
     NSLog(@"RSGameView: Being asked if I rotate in a direction.  Answering Yes");
     return YES;
+}
+
+- (void) processGameUpdate:(RSGameUpdate *) newUpdate {
+    [gameView setPlayers:[newUpdate players] total:[newUpdate gameSize]];
+    if([newUpdate gameStatus] == GAME_STARTING) {
+        [gameView setWaiting:NO];
+    }
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

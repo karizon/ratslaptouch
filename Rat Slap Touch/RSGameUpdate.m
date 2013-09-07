@@ -21,12 +21,32 @@
         } else if([newStatus isEqualToString:@"UPDATE"]) {
             gameStatus = GAME_PLAYING;
         } else if([newStatus isEqualToString:@"GAMESTART"]) {
-            gameStatus = GAME_PLAYING;
+            gameStatus = GAME_STARTING;
         } else if([newStatus isEqualToString:@"PLAYERPART"]) {
             gameStatus = GAME_PLAYERLEAVE;
         }
-
     }
     return self;
 }
+
+- (int) players {
+    return players;
+}
+
+- (int) gameSize {
+    return gameSize;
+}
+
+- (int) gameID {
+    return gameID;
+}
+
+- (char) status {
+    return gameStatus;
+}
+
+- (char) gameStatus {
+    return gameStatus;
+}
+
 @end
