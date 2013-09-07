@@ -21,4 +21,5 @@
     char gameStatus;
 }
 
+- (id) initWithPlayers: (int) newPlayers newGameSize:(int) newGameSize gameID:(int) newGameID status:(NSString *) newStatus;
 @end

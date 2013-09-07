@@ -40,6 +40,7 @@
 
 - (void) processDisconnect;
 - (void) processServerStatistics:(RSStatusUpdate *) newStats;
+- (void) processGameUpdate:(RSGameUpdate *) newUpdate;
 
 - (void) gameCenterLoginSuccessful: (NSString *)playerNickname;
 - (void) gameEnded:(BOOL) winner;

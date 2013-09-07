@@ -9,6 +9,7 @@
 #import "RSAppDelegate.h"
 #import "RSNetworkController.h"
 #import "RSStatusUpdate.h"
+#import "RSGameUpdate.h"
 #import "RSViewController.h"
 #import "RSGCHelper.h"
 #import "RSGameViewController.h"
@@ -85,6 +86,10 @@
     if(viewController) {
         [viewController updateServerStatistics:newStats];
     }    
+}
+
+- (void) processGameUpdate:(RSGameUpdate *) newUpdate {
+    NSLog(@"Processing updated Game information");
 }
 
 - (void) gameCenterLoginSuccessful: (NSString *) playerNickname {

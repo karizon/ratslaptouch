@@ -9,6 +9,7 @@
 #import "RSNetworkController.h"
 #import "RSAppDelegate.h"
 #import "RSStatusUpdate.h"
+#import "RSGameUpdate.h"
 
 #import "GCDAsyncSocket.h"
 
@@ -164,7 +165,10 @@
                     [appDelegate gameEnded:NO];
                 }
             } else {
-                
+                [appDelegate processGameUpdate:[[RSGameUpdate alloc] initWithPlayers:[[serverResponse valueForKey:@"playerCount"] integerValue]
+                                                                         newGameSize:[[serverResponse valueForKey:@"gameSize"] integerValue]
+                                                                              gameID:[[serverResponse valueForKey:@"gameID"] integerValue]
+                                                                              status:[serverResponse valueForKey:@"status"]]];
             }
         } else if([dataType isEqualToString:@"STATISTICS"]) {
             if([[serverResponse valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
