@@ -12,7 +12,7 @@
                         <viewControllerLayoutGuide type="top" id="XG9-M3-IUp"/>
                         <viewControllerLayoutGuide type="bottom" id="JWk-fP-sB1"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="redraw" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -70,12 +70,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXQ-Ki-G3J">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXQ-Ki-G3J">
                                 <rect key="frame" x="266" y="479" width="236" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="236" id="0mU-Gt-KKh"/>
-                                    <constraint firstAttribute="height" constant="66" id="wYT-gd-L4z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Join a 2 Player Game">
@@ -86,7 +85,7 @@
                                     <segue destination="5Oh-jW-ejv" kind="push" identifier="gameStartSegue" id="Wyh-Dj-Be9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siT-oz-s84">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siT-oz-s84">
                                 <rect key="frame" x="266" y="596" width="236" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -118,7 +117,6 @@
                             <constraint firstItem="xC2-pl-7NR" firstAttribute="leading" secondItem="T6T-zl-Ar1" secondAttribute="leading" id="XIS-oV-N8c"/>
                             <constraint firstItem="Hwe-cg-sku" firstAttribute="top" secondItem="O5S-MJ-t1h" secondAttribute="bottom" constant="8" symbolic="YES" id="Y9B-02-P4k"/>
                             <constraint firstItem="Hwe-cg-sku" firstAttribute="leading" secondItem="UXN-9A-5yC" secondAttribute="leading" id="fkx-Vw-wfx"/>
-                            <constraint firstItem="JWk-fP-sB1" firstAttribute="top" secondItem="siT-oz-s84" secondAttribute="bottom" constant="362" id="gO7-CI-zAS"/>
                             <constraint firstAttribute="trailing" secondItem="QKM-RL-Utm" secondAttribute="trailing" constant="150" id="hyV-XL-EiZ"/>
                             <constraint firstItem="FvD-Wc-RrW" firstAttribute="leading" secondItem="O5S-MJ-t1h" secondAttribute="leading" id="nqJ-qt-Kr0"/>
                             <constraint firstItem="O5S-MJ-t1h" firstAttribute="top" secondItem="FvD-Wc-RrW" secondAttribute="bottom" constant="8" symbolic="YES" id="oap-Io-dm7"/>
