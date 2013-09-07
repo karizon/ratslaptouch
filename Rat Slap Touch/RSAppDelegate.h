@@ -18,6 +18,7 @@
 @class RSViewController;
 @class RSGameViewController;
 @class RSGCHelper;
+@class RSGameUpdate;
 
 @interface RSAppDelegate : UIResponder <UIApplicationDelegate> {
     int gameType;
