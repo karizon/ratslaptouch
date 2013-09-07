@@ -23,7 +23,6 @@
 - (BOOL) isConnected;
 - (BOOL) connectToHost;
 - (void) forceDisconnect;
-- (void) requestServerStatistics;
 - (void) joinGame:(int) players;
 - (void) assignNickname:(NSString *) newNickname;
 

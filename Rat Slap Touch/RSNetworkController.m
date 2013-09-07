@@ -72,21 +72,6 @@
     }
 }
 
-- (void) requestServerStatistics {
-    if(remoteClient && canTransmit) {
-        NSError *error;
-        NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        @"STATISTICS", @"type",
-                                        @"REQUEST", @"status",
-                                        nil];
-        if(jsonDictionary) {
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
-            NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            NSLog(@"Network: Sending %@",resultAsString);
-            [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
-        }
-    }
-}
 
 - (void) joinGame:(int) players {
     if(remoteClient && canTransmit) {
@@ -174,8 +159,7 @@
         
         NSString* dataType = [serverResponse valueForKey:@"type"];
         if([dataType isEqualToString:@"HELO"]) {
-            // NSLog(@"Network: Successfully received HELO string");
-            // [self requestServerStatistics];
+            NSLog(@"Network: Successfully received HELO string");
         } else if([dataType isEqualToString:@"GAME"]) {
             NSLog(@"Network: Received Game Update");
             if([[serverResponse valueForKey:@"status"] isEqualToString:@"ENDED"]) {
