@@ -546,19 +546,19 @@
                     alpha = 1.0;
                 [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251)) alpha:alpha];
             } else {
-                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:1];
+                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
                 [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120) alpha:alpha];
             }
         } else {
             if([RSGameView isPad]) {
-                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:1];
+                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
                 [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120) alpha:alpha];
             } else {
-                [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60) alpha:1];
+                [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
                 [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60) alpha:alpha];
