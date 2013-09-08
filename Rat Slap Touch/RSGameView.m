@@ -48,36 +48,36 @@
     return self;
 }
 
-- (void) drawStarAtX: (float) x y: (float) y  alpha: (float) alpha{
+- (void) drawStarAt:(CGPoint) point alpha: (float) alpha{
     // Draw Star w/ first point @ x,y
     UIBezierPath* starPath = [UIBezierPath bezierPath];
     if([RSGameView isPad]) {
-        [starPath moveToPoint: CGPointMake(x, y)];
-        [starPath addLineToPoint: CGPointMake(x + 5.82, y + 9.01)];
-        [starPath addLineToPoint: CGPointMake(x + 15.69, y + 12.09)];
-        [starPath addLineToPoint: CGPointMake(x + 9.42, y + 20.74)];
-        [starPath addLineToPoint: CGPointMake(x + 9.7, y + 31.66)];
-        [starPath addLineToPoint: CGPointMake(x + 0, y + 28)];
-        [starPath addLineToPoint: CGPointMake(x - 9.7, y + 31.66)];
-        [starPath addLineToPoint: CGPointMake(x - 9.42, y + 20.74)];
-        [starPath addLineToPoint: CGPointMake(x - 15.69, y + 12.09)];
-        [starPath addLineToPoint: CGPointMake(x - 5.82, y + 9.01)];
-        [starPath addLineToPoint: CGPointMake(x , y)];
+        [starPath moveToPoint: CGPointMake(point.x, point.y)];
+        [starPath addLineToPoint: CGPointMake(point.x + 5.82, point.y + 9.01)];
+        [starPath addLineToPoint: CGPointMake(point.x + 15.69, point.y + 12.09)];
+        [starPath addLineToPoint: CGPointMake(point.x + 9.42, point.y + 20.74)];
+        [starPath addLineToPoint: CGPointMake(point.x + 9.7, point.y + 31.66)];
+        [starPath addLineToPoint: CGPointMake(point.x + 0, point.y + 28)];
+        [starPath addLineToPoint: CGPointMake(point.x - 9.7, point.y + 31.66)];
+        [starPath addLineToPoint: CGPointMake(point.x - 9.42, point.y + 20.74)];
+        [starPath addLineToPoint: CGPointMake(point.x - 15.69, point.y + 12.09)];
+        [starPath addLineToPoint: CGPointMake(point.x - 5.82, point.y + 9.01)];
+        [starPath addLineToPoint: CGPointMake(point.x , point.y)];
         [[UIColor blackColor] setStroke];
         starPath.lineWidth = 1;
         [starPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
-        [starPath moveToPoint: CGPointMake(x, y)];
-        [starPath addLineToPoint: CGPointMake(x + 2.65, y + 4.37)];
-        [starPath addLineToPoint: CGPointMake(x + 7.13, y + 5.87)];
-        [starPath addLineToPoint: CGPointMake(x + 4.28, y + 10.08)];
-        [starPath addLineToPoint: CGPointMake(x + 4.41, y + 15.38)];
-        [starPath addLineToPoint: CGPointMake(x, y + 13.6)];
-        [starPath addLineToPoint: CGPointMake(x - 4.41, y + 15.38)];
-        [starPath addLineToPoint: CGPointMake(x - 4.28, y + 10.08)];
-        [starPath addLineToPoint: CGPointMake(x - 7.13, y + 5.87)];
-        [starPath addLineToPoint: CGPointMake(x - 2.65, y + 4.37)];
-        [starPath addLineToPoint: CGPointMake(x , y)];
+        [starPath moveToPoint: CGPointMake(point.x, point.y)];
+        [starPath addLineToPoint: CGPointMake(point.x + 2.65, point.y + 4.37)];
+        [starPath addLineToPoint: CGPointMake(point.x + 7.13, point.y + 5.87)];
+        [starPath addLineToPoint: CGPointMake(point.x + 4.28, point.y + 10.08)];
+        [starPath addLineToPoint: CGPointMake(point.x + 4.41, point.y + 15.38)];
+        [starPath addLineToPoint: CGPointMake(point.x, point.y + 13.6)];
+        [starPath addLineToPoint: CGPointMake(point.x - 4.41, point.y + 15.38)];
+        [starPath addLineToPoint: CGPointMake(point.x - 4.28, point.y + 10.08)];
+        [starPath addLineToPoint: CGPointMake(point.x - 7.13, point.y + 5.87)];
+        [starPath addLineToPoint: CGPointMake(point.x - 2.65, point.y + 4.37)];
+        [starPath addLineToPoint: CGPointMake(point.x , point.y)];
         [[UIColor blackColor] setStroke];
         starPath.lineWidth = 1;
         [starPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
@@ -87,7 +87,7 @@
     [starPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
 }
 
-- (void) drawCardBackAtX: (float) x y: (float) y alpha: (float) alpha {
+- (void) drawCardBackAt:(CGPoint) point alpha:(float) alpha {
     // General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -111,13 +111,13 @@
     
     // Outer Card Drawing
     if([RSGameView isPad]) {
-        UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 150, 240) cornerRadius: 8];
+        UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 150, 240) cornerRadius: 8];
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         CGContextBeginTransparencyLayer(context, NULL);
         CGContextSetAlpha(context,alpha);
         [outerCardPath addClip];
-        CGContextDrawLinearGradient(context, gradient2, CGPointMake(x - 20, y + 24), CGPointMake(x + 170, y + 220), 0);
+        CGContextDrawLinearGradient(context, gradient2, CGPointMake(point.x - 20, point.y + 24), CGPointMake(point.x + 170, point.y + 220), 0);
         CGContextEndTransparencyLayer(context);
         CGContextRestoreGState(context);
         
@@ -125,13 +125,13 @@
         outerCardPath.lineWidth = 1;
         [outerCardPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
-        UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 75, 120) cornerRadius: 4];
+        UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 75, 120) cornerRadius: 4];
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         CGContextBeginTransparencyLayer(context, NULL);
         CGContextSetAlpha(context,alpha);
         [outerCardPath addClip];
-        CGContextDrawLinearGradient(context, gradient2, CGPointMake(x - 10, y + 12), CGPointMake(x + 85, y + 110), 0);
+        CGContextDrawLinearGradient(context, gradient2, CGPointMake(point.x - 10, point.y + 12), CGPointMake(point.x + 85, point.y + 110), 0);
         CGContextEndTransparencyLayer(context);
         CGContextRestoreGState(context);
         
@@ -142,26 +142,26 @@
     
     // Inner Card Drawing
     if([RSGameView isPad]) {
-        UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x + 10, y + 10, 128, 220) cornerRadius: 8];
+        UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x + 10, point.y + 10, 128, 220) cornerRadius: 8];
         [color3 setFill];
         [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
-        UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x + 5, y + 5, 64, 110) cornerRadius: 4];
+        UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x + 5, point.y + 5, 64, 110) cornerRadius: 4];
         [color3 setFill];
         [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
     }
     
     // Draw star card backs
     if([RSGameView isPad]) {
-        for(float x2 = (x + 35); x2 < (x + 140); x2 += 40) {
-            for(float y2 = (y + 24); y2 < (y + 200); y2 += 40) {
-                [self drawStarAtX:x2 y:y2 alpha:1];
+        for(float x2 = (point.x + 35); x2 < (point.x + 140); x2 += 40) {
+            for(float y2 = (point.y + 24); y2 < (point.y + 200); y2 += 40) {
+                [self drawStarAt:CGPointMake(x2,y2) alpha:1];
             }
         }
     } else {
-        for(float x2 = (x + 17); x2 < (x + 75); x2 += 20) {
-            for(float y2 = (y + 13); y2 < (y + 100); y2 += 20) {
-                [self drawStarAtX:x2 y:y2 alpha:1];
+        for(float x2 = (point.x + 17); x2 < (point.x + 75); x2 += 20) {
+            for(float y2 = (point.y + 13); y2 < (point.y + 100); y2 += 20) {
+                [self drawStarAt:CGPointMake(x2,y2) alpha:1];
             }
         }
     }
@@ -172,7 +172,7 @@
 
 }
 
-- (void) drawCardAtX: (float) x y:(float) y suit:(char) suit card:(NSString *) card {
+- (void) drawCardAt:(CGPoint) point suit:(char) suit card:(NSString *) card {
     // General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -197,12 +197,12 @@
     
     // Outer Card Drawing
     if([RSGameView isPad]) {
-        UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 150, 240) cornerRadius: 8];
+        UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 150, 240) cornerRadius: 8];
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         CGContextBeginTransparencyLayer(context, NULL);
         [outerCardPath addClip];
-        CGContextDrawLinearGradient(context, gradient2, CGPointMake(x - 20, y + 20), CGPointMake(x + 200, y + 220), 0);
+        CGContextDrawLinearGradient(context, gradient2, CGPointMake(point.x - 20, point.y + 20), CGPointMake(point.x + 200, point.y + 220), 0);
         CGContextEndTransparencyLayer(context);
         CGContextRestoreGState(context);
         
@@ -210,13 +210,12 @@
         outerCardPath.lineWidth = 1;
         [outerCardPath stroke];
     } else {
-        UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 75, 120) cornerRadius: 4];
+        UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 75, 120) cornerRadius: 4];
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         CGContextBeginTransparencyLayer(context, NULL);
         [outerCardPath addClip];
-        // CGContextDrawLinearGradient(context, gradient2, CGPointMake(85.42, 17.92), CGPointMake(180.58, 113.08), 0);
-        CGContextDrawLinearGradient(context, gradient2, CGPointMake(x - 10, y + 10), CGPointMake(x + 100, y + 110), 0);
+        CGContextDrawLinearGradient(context, gradient2, CGPointMake(point.x - 10, point.y + 10), CGPointMake(point.x + 100, point.y + 110), 0);
         CGContextEndTransparencyLayer(context);
         CGContextRestoreGState(context);
         
@@ -227,7 +226,7 @@
 
     // Inner Card Drawing
     if([RSGameView isPad]) {
-        UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x + 10, y + 10, 130, 220) cornerRadius: 8];
+        UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x + 10, point.y + 10, 130, 220) cornerRadius: 8];
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         [[UIColor whiteColor] setFill];
@@ -238,7 +237,7 @@
         innerCardPath.lineWidth = 1;
         [innerCardPath stroke];
     } else {
-        UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x + 5, y + 5, 65, 110) cornerRadius: 4];
+        UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x + 5, point.y + 5, 65, 110) cornerRadius: 4];
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         [[UIColor whiteColor] setFill];
@@ -257,32 +256,32 @@
     if(suit == SUIT_SPADE) {
         UIBezierPath* spadePath = [UIBezierPath bezierPath];
         if([RSGameView isPad]) {
-            [spadePath moveToPoint: CGPointMake(x + 59.11, y + 151.45)];
-            [spadePath addCurveToPoint: CGPointMake(x + 68.04, y + 167.19) controlPoint1: CGPointMake(x + 60.88, y + 150.18) controlPoint2: CGPointMake(x + 68.5, y + 158.65)];
-            [spadePath addCurveToPoint: CGPointMake(x + 59.11, y + 184) controlPoint1: CGPointMake(x + 67.6, y + 175.57) controlPoint2: CGPointMake(x + 59.11, y + 184)];
-            [spadePath addLineToPoint: CGPointMake(x + 76.98, y + 184)];
-            [spadePath addLineToPoint: CGPointMake(x + 90.38, y + 184)];
-            [spadePath addCurveToPoint: CGPointMake(x + 81.45, y + 167.19) controlPoint1: CGPointMake(x + 90.38, y + 184) controlPoint2: CGPointMake(x + 81.86, y + 174.91)];
-            [spadePath addCurveToPoint: CGPointMake(x + 90.38, y + 151.45) controlPoint1: CGPointMake(x + 80.96, y + 158.12) controlPoint2: CGPointMake(x + 88.67, y + 150.28)];
-            [spadePath addCurveToPoint: CGPointMake(x + 117.19, y + 151.45) controlPoint1: CGPointMake(x + 99.56, y + 157.73) controlPoint2: CGPointMake(x + 111.09, y + 159.01)];
-            [spadePath addCurveToPoint: CGPointMake(x + 91.17, y + 73.68) controlPoint1: CGPointMake(x + 138.26, y + 125.31) controlPoint2: CGPointMake(x + 112.24, y + 99.81)];
-            [spadePath addCurveToPoint: CGPointMake(x + 58.32, y + 73.68) controlPoint1: CGPointMake(x + 70.1, y + 47.55) controlPoint2: CGPointMake(x + 79.4, y + 47.55)];
-            [spadePath addCurveToPoint: CGPointMake(x + 32.3, y + 151.45) controlPoint1: CGPointMake(x + 37.25, y + 99.81) controlPoint2: CGPointMake(x + 11.23, y + 125.31)];
-            [spadePath addCurveToPoint: CGPointMake(x + 59.11, y + 151.45) controlPoint1: CGPointMake(x + 38.91, y + 159.65) controlPoint2: CGPointMake(x + 50.35, y + 157.68)];
+            [spadePath moveToPoint: CGPointMake(point.x + 59.11, point.y + 151.45)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 68.04, point.y + 167.19) controlPoint1: CGPointMake(point.x + 60.88, point.y + 150.18) controlPoint2: CGPointMake(point.x + 68.5, point.y + 158.65)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 59.11, point.y + 184) controlPoint1: CGPointMake(point.x + 67.6, point.y + 175.57) controlPoint2: CGPointMake(point.x + 59.11, point.y + 184)];
+            [spadePath addLineToPoint: CGPointMake(point.x + 76.98, point.y + 184)];
+            [spadePath addLineToPoint: CGPointMake(point.x + 90.38, point.y + 184)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 81.45, point.y + 167.19) controlPoint1: CGPointMake(point.x + 90.38, point.y + 184) controlPoint2: CGPointMake(point.x + 81.86, point.y + 174.91)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 90.38, point.y + 151.45) controlPoint1: CGPointMake(point.x + 80.96, point.y + 158.12) controlPoint2: CGPointMake(point.x + 88.67, point.y + 150.28)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 117.19, point.y + 151.45) controlPoint1: CGPointMake(point.x + 99.56, point.y + 157.73) controlPoint2: CGPointMake(point.x + 111.09, point.y + 159.01)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 91.17, point.y + 73.68) controlPoint1: CGPointMake(point.x + 138.26, point.y + 125.31) controlPoint2: CGPointMake(point.x + 112.24, point.y + 99.81)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 58.32, point.y + 73.68) controlPoint1: CGPointMake(point.x + 70.1, point.y + 47.55) controlPoint2: CGPointMake(point.x + 79.4, point.y + 47.55)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 32.3, point.y + 151.45) controlPoint1: CGPointMake(point.x + 37.25, point.y + 99.81) controlPoint2: CGPointMake(point.x + 11.23, point.y + 125.31)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 59.11, point.y + 151.45) controlPoint1: CGPointMake(point.x + 38.91, point.y + 159.65) controlPoint2: CGPointMake(point.x + 50.35, point.y + 157.68)];
 
         } else {
-            [spadePath moveToPoint: CGPointMake(x + 30.42, y + 72.99)];
-            [spadePath addCurveToPoint: CGPointMake(x + 34.47, y + 79.52) controlPoint1: CGPointMake(x + 31.22, y + 72.47) controlPoint2: CGPointMake(x + 34.67, y + 75.98)];
-            [spadePath addCurveToPoint: CGPointMake(x + 30.42, y + 86.5) controlPoint1: CGPointMake(x + 34.27, y + 83) controlPoint2: CGPointMake(x + 30.42, y + 86.5)];
-            [spadePath addLineToPoint: CGPointMake(x + 38.51, y + 86.5)];
-            [spadePath addLineToPoint: CGPointMake(x + 44.58, y + 86.5)];
-            [spadePath addCurveToPoint: CGPointMake(x + 40.53, y + 79.52) controlPoint1: CGPointMake(x + 44.58, y + 86.5) controlPoint2: CGPointMake(x + 40.72, y + 82.73)];
-            [spadePath addCurveToPoint: CGPointMake(x + 44.58, y + 72.99) controlPoint1: CGPointMake(x + 40.31, y + 75.76) controlPoint2: CGPointMake(x + 43.8, y + 72.5)];
-            [spadePath addCurveToPoint: CGPointMake(x + 56.71, y + 72.99) controlPoint1: CGPointMake(x + 48.74, y + 75.6) controlPoint2: CGPointMake(x + 53.95, y + 76.13)];
-            [spadePath addCurveToPoint: CGPointMake(x + 44.93, y + 40.72) controlPoint1: CGPointMake(x + 66.25, y + 62.14) controlPoint2: CGPointMake(x + 54.47, y + 51.56)];
-            [spadePath addCurveToPoint: CGPointMake(x + 30.07, y + 40.72) controlPoint1: CGPointMake(x + 35.39, y + 29.87) controlPoint2: CGPointMake(x + 39.61, y + 29.87)];
-            [spadePath addCurveToPoint: CGPointMake(x + 18.29, y + 72.99) controlPoint1: CGPointMake(x + 20.53, y + 51.56) controlPoint2: CGPointMake(x + 8.75, y + 62.14)];
-            [spadePath addCurveToPoint: CGPointMake(x + 30.42, y + 72.99) controlPoint1: CGPointMake(x + 21.28, y + 76.39) controlPoint2: CGPointMake(x + 26.46, y + 75.58)];
+            [spadePath moveToPoint: CGPointMake(point.x + 30.42, point.y + 72.99)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 34.47, point.y + 79.52) controlPoint1: CGPointMake(point.x + 31.22, point.y + 72.47) controlPoint2: CGPointMake(point.x + 34.67, point.y + 75.98)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 30.42, point.y + 86.5) controlPoint1: CGPointMake(point.x + 34.27, point.y + 83) controlPoint2: CGPointMake(point.x + 30.42, point.y + 86.5)];
+            [spadePath addLineToPoint: CGPointMake(point.x + 38.51, point.y + 86.5)];
+            [spadePath addLineToPoint: CGPointMake(point.x + 44.58, point.y + 86.5)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 40.53, point.y + 79.52) controlPoint1: CGPointMake(point.x + 44.58, point.y + 86.5) controlPoint2: CGPointMake(point.x + 40.72, point.y + 82.73)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 44.58, point.y + 72.99) controlPoint1: CGPointMake(point.x + 40.31, point.y + 75.76) controlPoint2: CGPointMake(point.x + 43.8, point.y + 72.5)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 56.71, point.y + 72.99) controlPoint1: CGPointMake(point.x + 48.74, point.y + 75.6) controlPoint2: CGPointMake(point.x + 53.95, point.y + 76.13)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 44.93, point.y + 40.72) controlPoint1: CGPointMake(point.x + 66.25, point.y + 62.14) controlPoint2: CGPointMake(point.x + 54.47, point.y + 51.56)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 30.07, point.y + 40.72) controlPoint1: CGPointMake(point.x + 35.39, point.y + 29.87) controlPoint2: CGPointMake(point.x + 39.61, point.y + 29.87)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 18.29, point.y + 72.99) controlPoint1: CGPointMake(point.x + 20.53, point.y + 51.56) controlPoint2: CGPointMake(point.x + 8.75, point.y + 62.14)];
+            [spadePath addCurveToPoint: CGPointMake(point.x + 30.42, point.y + 72.99) controlPoint1: CGPointMake(point.x + 21.28, point.y + 76.39) controlPoint2: CGPointMake(point.x + 26.46, point.y + 75.58)];
 
         }
         [spadePath closePath];
@@ -290,27 +289,26 @@
         [spadePath fill];
     } else if(suit == SUIT_HEART) {
         UIBezierPath* heartPath = [UIBezierPath bezierPath];
-
         if([RSGameView isPad]) {
-            [heartPath moveToPoint: CGPointMake(x + 75.58, y + 181)];
-            [heartPath addCurveToPoint: CGPointMake(x + 105.52, y + 131.53) controlPoint1: CGPointMake(x + 75.58, y + 181) controlPoint2: CGPointMake(x + 98.61, y + 143.25)];
-            [heartPath addCurveToPoint: CGPointMake(x + 116, y + 66) controlPoint1: CGPointMake(x + 119.35, y + 108.09) controlPoint2: CGPointMake(x + 129.83, y + 89.44)];
-            [heartPath addCurveToPoint: CGPointMake(x + 87.63, y + 59.58) controlPoint1: CGPointMake(x + 112.56, y + 60.17) controlPoint2: CGPointMake(x + 97.27, y + 53.21)];
-            [heartPath addCurveToPoint: CGPointMake(x + 75.59, y + 75.31) controlPoint1: CGPointMake(x + 77.52, y + 66.26) controlPoint2: CGPointMake(x + 75.59, y + 75.31)];
-            [heartPath addCurveToPoint: CGPointMake(x + 62.54, y + 59.58) controlPoint1: CGPointMake(x + 75.59, y + 75.31) controlPoint2: CGPointMake(x + 73.5, y + 66.05)];
-            [heartPath addCurveToPoint: CGPointMake(x + 35, y + 66) controlPoint1: CGPointMake(x + 51.15, y + 52.85) controlPoint2: CGPointMake(x + 38.45, y + 60.15)];
-            [heartPath addCurveToPoint: CGPointMake(x + 45.86, y + 131.53) controlPoint1: CGPointMake(x + 21.17, y + 89.44) controlPoint2: CGPointMake(x + 32.03, y + 108.09)];
-            [heartPath addCurveToPoint: CGPointMake(x + 75.58, y + 181) controlPoint1: CGPointMake(x + 52.77, y + 143.25) controlPoint2: CGPointMake(x + 75.58, y + 181)];
+            [heartPath moveToPoint: CGPointMake(point.x + 75.58, point.y + 181)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 105.52, point.y + 131.53) controlPoint1: CGPointMake(point.x + 75.58, point.y + 181) controlPoint2: CGPointMake(point.x + 98.61, point.y + 143.25)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 116, point.y + 66) controlPoint1: CGPointMake(point.x + 119.35, point.y + 108.09) controlPoint2: CGPointMake(point.x + 129.83, point.y + 89.44)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 87.63, point.y + 59.58) controlPoint1: CGPointMake(point.x + 112.56, point.y + 60.17) controlPoint2: CGPointMake(point.x + 97.27, point.y + 53.21)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 75.59, point.y + 75.31) controlPoint1: CGPointMake(point.x + 77.52, point.y + 66.26) controlPoint2: CGPointMake(point.x + 75.59, point.y + 75.31)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 62.54, point.y + 59.58) controlPoint1: CGPointMake(point.x + 75.59, point.y + 75.31) controlPoint2: CGPointMake(point.x + 73.5, point.y + 66.05)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 35, point.y + 66) controlPoint1: CGPointMake(point.x + 51.15, point.y + 52.85) controlPoint2: CGPointMake(point.x + 38.45, point.y + 60.15)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 45.86, point.y + 131.53) controlPoint1: CGPointMake(point.x + 21.17, point.y + 89.44) controlPoint2: CGPointMake(point.x + 32.03, point.y + 108.09)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 75.58, point.y + 181) controlPoint1: CGPointMake(point.x + 52.77, point.y + 143.25) controlPoint2: CGPointMake(point.x + 75.58, point.y + 181)];
         } else {
-            [heartPath moveToPoint: CGPointMake(x + 36.57, y + 87)];
-            [heartPath addCurveToPoint: CGPointMake(x + 52.48, y + 65.03) controlPoint1: CGPointMake(x + 36.57, y + 87) controlPoint2: CGPointMake(x + 48.8, y + 70.24)];
-            [heartPath addCurveToPoint: CGPointMake(x + 58.05, y + 35.93) controlPoint1: CGPointMake(x + 59.82, y + 54.62) controlPoint2: CGPointMake(x + 65.39, y + 46.34)];
-            [heartPath addCurveToPoint: CGPointMake(x + 42.97, y + 33.08) controlPoint1: CGPointMake(x + 56.22, y + 33.34) controlPoint2: CGPointMake(x + 48.09, y + 30.25)];
-            [heartPath addCurveToPoint: CGPointMake(x + 36.57, y + 40.07) controlPoint1: CGPointMake(x + 37.59, y + 36.05) controlPoint2: CGPointMake(x + 36.57, y + 40.07)];
-            [heartPath addCurveToPoint: CGPointMake(x + 29.63, y + 33.08) controlPoint1: CGPointMake(x + 36.57, y + 40.07) controlPoint2: CGPointMake(x + 35.46, y + 35.95)];
-            [heartPath addCurveToPoint: CGPointMake(x + 15, y + 35.93) controlPoint1: CGPointMake(x + 23.58, y + 30.09) controlPoint2: CGPointMake(x + 16.83, y + 33.33)];
-            [heartPath addCurveToPoint: CGPointMake(x + 20.77, y + 65.03) controlPoint1: CGPointMake(x + 7.65, y + 46.34) controlPoint2: CGPointMake(x + 13.42, y + 54.62)];
-            [heartPath addCurveToPoint: CGPointMake(x + 36.57, y + 87) controlPoint1: CGPointMake(x + 24.44, y + 70.24) controlPoint2: CGPointMake(x + 36.57, y + 87)];
+            [heartPath moveToPoint: CGPointMake(point.x + 36.57, point.y + 87)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 52.48, point.y + 65.03) controlPoint1: CGPointMake(point.x + 36.57, point.y + 87) controlPoint2: CGPointMake(point.x + 48.8, point.y + 70.24)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 58.05, point.y + 35.93) controlPoint1: CGPointMake(point.x + 59.82, point.y + 54.62) controlPoint2: CGPointMake(point.x + 65.39, point.y + 46.34)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 42.97, point.y + 33.08) controlPoint1: CGPointMake(point.x + 56.22, point.y + 33.34) controlPoint2: CGPointMake(point.x + 48.09, point.y + 30.25)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 36.57, point.y + 40.07) controlPoint1: CGPointMake(point.x + 37.59, point.y + 36.05) controlPoint2: CGPointMake(point.x + 36.57, point.y + 40.07)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 29.63, point.y + 33.08) controlPoint1: CGPointMake(point.x + 36.57, point.y + 40.07) controlPoint2: CGPointMake(point.x + 35.46, point.y + 35.95)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 15, point.y + 35.93) controlPoint1: CGPointMake(point.x + 23.58, point.y + 30.09) controlPoint2: CGPointMake(point.x + 16.83, point.y + 33.33)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 20.77, point.y + 65.03) controlPoint1: CGPointMake(point.x + 7.65, point.y + 46.34) controlPoint2: CGPointMake(point.x + 13.42, point.y + 54.62)];
+            [heartPath addCurveToPoint: CGPointMake(point.x + 36.57, point.y + 87) controlPoint1: CGPointMake(point.x + 24.44, point.y + 70.24) controlPoint2: CGPointMake(point.x + 36.57, point.y + 87)];
         }
         [heartPath closePath];
         [fillColor setFill];
@@ -318,28 +316,28 @@
     } else if(suit == SUIT_DIAMOND) {
         UIBezierPath* diamondPath = [UIBezierPath bezierPath];
         if([RSGameView isPad]) {
-            [diamondPath moveToPoint: CGPointMake(x + 75.5, y + 198.5)];
-            [diamondPath addLineToPoint: CGPointMake(x + 119.5, y + 118.98)];
-            [diamondPath addLineToPoint: CGPointMake(x + 75.5, y + 40.5)];
-            [diamondPath addLineToPoint: CGPointMake(x + 31.5, y + 118.98)];
-            [diamondPath addLineToPoint: CGPointMake(x + 75.5, y + 198.5)];
+            [diamondPath moveToPoint: CGPointMake(point.x + 75.5, point.y + 198.5)];
+            [diamondPath addLineToPoint: CGPointMake(point.x + 119.5, point.y + 118.98)];
+            [diamondPath addLineToPoint: CGPointMake(point.x + 75.5, point.y + 40.5)];
+            [diamondPath addLineToPoint: CGPointMake(point.x + 31.5, point.y + 118.98)];
+            [diamondPath addLineToPoint: CGPointMake(point.x + 75.5, point.y + 198.5)];
         } else {
-            [diamondPath moveToPoint: CGPointMake(x + 38, y + 98.5)];
-            [diamondPath addLineToPoint: CGPointMake(x + 58.5, y + 61.96)];
-            [diamondPath addLineToPoint: CGPointMake(x + 38, y + 22.5)];
-            [diamondPath addLineToPoint: CGPointMake(x + 17.5, y + 61.96)];
-            [diamondPath addLineToPoint: CGPointMake(x + 38, y + 98.5)];
+            [diamondPath moveToPoint: CGPointMake(point.x + 38, point.y + 98.5)];
+            [diamondPath addLineToPoint: CGPointMake(point.x + 58.5, point.y + 61.96)];
+            [diamondPath addLineToPoint: CGPointMake(point.x + 38, point.y + 22.5)];
+            [diamondPath addLineToPoint: CGPointMake(point.x + 17.5, point.y + 61.96)];
+            [diamondPath addLineToPoint: CGPointMake(point.x + 38, point.y + 98.5)];
         }
         [fillColor setFill];
         [diamondPath fill];
     } else if(suit == SUIT_CLUB) {
         if([RSGameView isPad]) {
             UIBezierPath* rectanglePath = [UIBezierPath bezierPath];
-            [rectanglePath moveToPoint: CGPointMake(x + 61.5, y + 178.5)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 85.5, y + 178.5)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 75.9, y + 104.5)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 68.7, y + 104.5)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 61.5, y + 178.5)];
+            [rectanglePath moveToPoint: CGPointMake(point.x + 61.5, point.y + 178.5)];
+            [rectanglePath addLineToPoint: CGPointMake(point.x + 85.5, point.y + 178.5)];
+            [rectanglePath addLineToPoint: CGPointMake(point.x + 75.9, point.y + 104.5)];
+            [rectanglePath addLineToPoint: CGPointMake(point.x + 68.7, point.y + 104.5)];
+            [rectanglePath addLineToPoint: CGPointMake(point.x + 61.5, point.y + 178.5)];
             [rectanglePath closePath];
             [color2 setFill];
             [rectanglePath fill];
@@ -348,24 +346,24 @@
             rectanglePath.lineWidth = 1;
             [rectanglePath stroke];
             
-            UIBezierPath* cloverPath1 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 67, y + 95, 51, 51)];
+            UIBezierPath* cloverPath1 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(point.x + 67, point.y + 95, 51, 51)];
             [color2 setFill];
             [cloverPath1 fill];
             
-            UIBezierPath* cloverPath2 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 49, y + 54, 51, 51)];
+            UIBezierPath* cloverPath2 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(point.x + 49, point.y + 54, 51, 51)];
             [color2 setFill];
             [cloverPath2 fill];
             
-            UIBezierPath* cloverPath3 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 30, y + 95, 51, 51)];
+            UIBezierPath* cloverPath3 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(point.x + 30, point.y + 95, 51, 51)];
             [color2 setFill];
             [cloverPath3 fill];
         } else {
             UIBezierPath* rectanglePath = [UIBezierPath bezierPath];
-            [rectanglePath moveToPoint: CGPointMake(x + 33.5, y + 88.5)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 39.5, y + 88.5)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 37.1, y + 46.5)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 35.3, y + 46.5)];
-            [rectanglePath addLineToPoint: CGPointMake(x + 33.5, y + 88.5)];
+            [rectanglePath moveToPoint: CGPointMake(point.x + 33.5, point.y + 88.5)];
+            [rectanglePath addLineToPoint: CGPointMake(point.x + 39.5, point.y + 88.5)];
+            [rectanglePath addLineToPoint: CGPointMake(point.x + 37.1, point.y + 46.5)];
+            [rectanglePath addLineToPoint: CGPointMake(point.x + 35.3, point.y + 46.5)];
+            [rectanglePath addLineToPoint: CGPointMake(point.x + 33.5, point.y + 88.5)];
             [rectanglePath closePath];
             [color2 setFill];
             [rectanglePath fill];
@@ -374,15 +372,15 @@
             rectanglePath.lineWidth = 1;
             [rectanglePath stroke];
             
-            UIBezierPath* cloverPath1 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 35, y + 51, 27, 27)];
+            UIBezierPath* cloverPath1 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(point.x + 35, point.y + 51, 27, 27)];
             [color2 setFill];
             [cloverPath1 fill];
             
-            UIBezierPath* cloverPath2 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 23, y + 30, 27, 27)];
+            UIBezierPath* cloverPath2 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(point.x + 23, point.y + 30, 27, 27)];
             [color2 setFill];
             [cloverPath2 fill];
 
-            UIBezierPath* cloverPath3 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 12, y + 51, 27, 27)];
+            UIBezierPath* cloverPath3 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(point.x + 12, point.y + 51, 27, 27)];
             [color2 setFill];
             [cloverPath3 fill];
         }
@@ -450,19 +448,19 @@
 
     // Upper Left Card # Drawing
     if([RSGameView isPad]) {
-        CGRect upperLeftRect = CGRectMake(x + 12.5 , y + 10.5 - y_offset, 43, 43);
+        CGRect upperLeftRect = CGRectMake(point.x + 12.5 , point.y + 10.5 - y_offset, 43, 43);
         [card drawInRect:upperLeftRect withAttributes:strAttribs];
     } else {
-        CGRect upperLeftRect = CGRectMake(x + 6.5, y + 6.5 - y_offset, 23, 21);
+        CGRect upperLeftRect = CGRectMake(point.x + 6.5, point.y + 6.5 - y_offset, 23, 21);
         [card drawInRect:upperLeftRect withAttributes:strAttribs];
     }
     
     // Lower Right Card # Drawing
     if([RSGameView isPad]) {
-        CGRect lowerRightRect = CGRectMake(x + 92.5, y + 184.5 - y_offset, 43, 43);
+        CGRect lowerRightRect = CGRectMake(point.x + 92.5, point.y + 184.5 - y_offset, 43, 43);
         [card drawInRect:lowerRightRect withAttributes:strAttribs];
     } else {
-        CGRect lowerRightRect = CGRectMake(x + 47.5, y + 91.5 - y_offset, 23, 22);
+        CGRect lowerRightRect = CGRectMake(point.x + 47.5, point.y + 91.5 - y_offset, 23, 22);
         [card drawInRect:lowerRightRect withAttributes:strAttribs];
     }
     
@@ -569,9 +567,9 @@
 
 - (void) drawVisibleStackedCards {
     for(RSVisibleCard *card in visibleStackedCards) {
-        if([card belongsToPlayer]) {
-            
-        }
+        float alpha = 1.0;
+        if([card belongsToPlayer] > currentPlayers)
+            alpha = 0.15;
     }
 }
 
@@ -587,27 +585,27 @@
             alpha = 1.0;
         if(horizontal) {
             if([RSGameView isPad]) {
-                [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11 alpha:alpha];
+                [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2- 75, 11) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
-                [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251)) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 75,self.bounds.size.height - 251) alpha:alpha];
             } else {
-                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(11,self.bounds.size.height / 2 - 120) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
-                [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120) alpha:alpha];
             }
         } else {
             if([RSGameView isPad]) {
-                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(11, self.bounds.size.height / 2 - 120) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
-                [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120) alpha:alpha];
             } else {
-                [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(5.5, self.bounds.size.height / 2 - 60) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
-                [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60) alpha:alpha];
             }
         }
     }
@@ -617,25 +615,25 @@
         if([RSGameView isPad]) {
             if(currentPlayers > 1)
                 alpha = 1.0;
-            [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:alpha];
-            [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120) alpha:1];
+            [self drawCardBackAt:CGPointMake(11, self.bounds.size.height / 2 - 120) alpha:alpha];
+            [self drawCardBackAt:CGPointMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120) alpha:1];
         } else {
             if(currentPlayers > 1)
                 alpha = 1.0;
-            [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60) alpha:alpha];
-            [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60) alpha:1];
+            [self drawCardBackAt:CGPointMake(5.5, self.bounds.size.height / 2 - 60) alpha:alpha];
+            [self drawCardBackAt:CGPointMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60) alpha:1];
         }
     } else {
         if([RSGameView isPad]) {
             if(currentPlayers > 1)
                 alpha = 1.0;
-            [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11 alpha:alpha];
-            [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251)) alpha:1];
+            [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 75, 11) alpha:alpha];
+            [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 75, self.bounds.size.height - 251) alpha:1];
         } else {
             if(currentPlayers > 1)
                 alpha = 1.0;
-            [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:5.5 alpha:alpha];
-            [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:((self.bounds.size.height - 125.5)) alpha:1];
+            [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 37.5, 5.5) alpha:alpha];
+            [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 125.5) alpha:1];
         }
     }
 
@@ -649,15 +647,15 @@
     } else {
         // draw the card on top of the stack if we're not waiting!
         if([RSGameView isPad]) {
-            [self drawCardAtX:((self.bounds.size.width / 2) - 180) y:self.bounds.size.height / 2 - 120 suit:SUIT_SPADE card:@"J"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 110) y:self.bounds.size.height / 2 - 120 suit:SUIT_HEART card:@"7"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 40) y:self.bounds.size.height / 2 - 120 suit:SUIT_DIAMOND card:@"K"];
-            [self drawCardAtX:((self.bounds.size.width / 2) + 30) y:self.bounds.size.height / 2 - 120 suit:SUIT_CLUB card:@"4"];
+            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 180, self.bounds.size.height / 2 - 120) suit:SUIT_SPADE card:@"J"];
+            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 110, self.bounds.size.height / 2 - 120) suit:SUIT_HEART card:@"7"];
+            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 40, self.bounds.size.height / 2 - 120) suit:SUIT_DIAMOND card:@"K"];
+            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 + 30, self.bounds.size.height / 2 - 120) suit:SUIT_CLUB card:@"4"];
         } else {
-            [self drawCardAtX:((self.bounds.size.width / 2) - 90) y:self.bounds.size.height / 2 - 60 suit:SUIT_SPADE card:@"J"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 55) y:self.bounds.size.height / 2 - 60 suit:SUIT_HEART card:@"7"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 20) y:self.bounds.size.height / 2 - 60 suit:SUIT_DIAMOND card:@"K"];
-            [self drawCardAtX:((self.bounds.size.width / 2) + 15) y:self.bounds.size.height / 2 - 60 suit:SUIT_CLUB card:@"4"];
+            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 90, self.bounds.size.height / 2 - 60) suit:SUIT_SPADE card:@"J"];
+            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 55, self.bounds.size.height / 2 - 60) suit:SUIT_HEART card:@"7"];
+            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 20, self.bounds.size.height / 2 - 60) suit:SUIT_DIAMOND card:@"K"];
+            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 + 15, self.bounds.size.height / 2 - 60) suit:SUIT_DIAMOND card:@"$"];
         }
     }
 }

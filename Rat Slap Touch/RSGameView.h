@@ -25,9 +25,9 @@
 
 - (void) drawBackground;
 
-- (void) drawStarAtX: (float) x y: (float) y alpha: (float) alpha;
-- (void) drawCardBackAtX: (float) x y: (float) y alpha: (float) alpha;
-- (void) drawCardAtX: (float) x y:(float) y suit:(char) suit card:(NSString *) card;
+- (void) drawStarAt:(CGPoint) point alpha: (float) alpha;
+- (void) drawCardBackAt:(CGPoint) point alpha:(float) alpha;
+- (void) drawCardAt:(CGPoint) point suit:(char) suit card:(NSString *) card;
 
 - (void) drawVisibleStackedCards;
 
