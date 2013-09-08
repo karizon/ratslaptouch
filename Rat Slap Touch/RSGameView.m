@@ -7,6 +7,7 @@
 //
 
 #import "RSGameView.h"
+#import "RSVisibleCard.h"
 
 @implementation RSGameView
 
@@ -171,7 +172,7 @@
 
 }
 
-- (void) drawCardAtX: (float) x y:(float) y suit:(int) suit card:(NSString *) card {
+- (void) drawCardAtX: (float) x y:(float) y suit:(char) suit card:(NSString *) card {
     // General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();

@@ -8,24 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@class RSVisibleCard;
+
 @interface RSGameView : UIView {
     BOOL stillWaiting;
     BOOL horizontal;
     int totalPlayers;
     int currentPlayers;
+    NSMutableArray *visibleCards;
 }
 
-#define SUIT_SPADE 1
-#define SUIT_CLUB 2
-#define SUIT_HEART 3
-#define SUIT_DIAMOND 4
 
 - (void) drawBackground;
 
 - (void) drawCardBackAtX: (float) x y: (float) y alpha: (float) alpha;
 - (void) drawStarAtX: (float) x y: (float) y alpha: (float) alpha;
 
-- (void) drawCardAtX: (float) x y:(float) y suit:(int) suit card:(NSString *) card;
+- (void) drawCardAtX: (float) x y:(float) y suit:(char) suit card:(NSString *) card;
 
 + (BOOL) isPad;
 
