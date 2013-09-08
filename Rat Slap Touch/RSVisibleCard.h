@@ -25,8 +25,8 @@
     int belongsToPlayer;
 }
 
-- (id) initShowingWithFace:(NSString *) newFace suit:(char) newSuit cardSize:(CGRect) newCardSize cardPosition:(CGPoint) newCardPosition;
-- (id) initWithCardSize:(CGRect) newCardSize cardPosition:(CGPoint) newCardPosition;
+- (id) initShowingWithFace:(NSString *) newFace suit:(char) newSuit cardSize:(CGRect) newCardSize;
+- (id) initWithCardSize:(CGRect) newCardSize;
 
 - (char) suit;
 - (BOOL) showing;

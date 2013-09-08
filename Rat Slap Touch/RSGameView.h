@@ -30,6 +30,7 @@
 - (void) drawCardAt:(CGPoint) point suit:(char) suit card:(NSString *) card;
 
 - (void) drawVisibleStackedCards;
+- (void) drawVisiblePlayedCards;
 
 - (void) setWaiting: (BOOL) waiting;
 - (void) setPlayers: (int) current total:(int) total;

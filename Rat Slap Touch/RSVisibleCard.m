@@ -18,27 +18,28 @@
         face = nil;
         playable = NO;
         belongsToPlayer = 0;
+        active = YES;
     }
     return self;
 }
 
-- (id) initShowingWithFace:(NSString *) newFace suit:(char) newSuit cardSize:(CGRect) newCardSize cardPosition:(CGPoint) newCardPosition {
+- (id) initShowingWithFace:(NSString *) newFace suit:(char) newSuit cardSize:(CGRect) newCardSize {
     self = [RSVisibleCard init];
     if(self) {
         face = newFace;
         suit = newSuit;
         cardSize = newCardSize;
-        cardPosition = newCardPosition;
+        cardPosition = CGPointMake(cardSize.origin.x, cardSize.origin.y);
         showing = YES;
     }
     return self;
 }
 
-- (id) initWithCardSize:(CGRect) newCardSize cardPosition:(CGPoint) newCardPosition {
+- (id) initWithCardSize:(CGRect) newCardSize {
     self = [RSVisibleCard init];
     if(self) {
         cardSize = newCardSize;
-        cardPosition = newCardPosition;
+        cardPosition = CGPointMake(cardSize.origin.x, cardSize.origin.y);
     }
     return self;
 }

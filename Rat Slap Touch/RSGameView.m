@@ -570,6 +570,15 @@
         float alpha = 1.0;
         if([card belongsToPlayer] > currentPlayers)
             alpha = 0.15;
+        if(![card active])
+            alpha = 0.15;
+        [self drawCardBackAt:[card cardPosition] alpha:alpha];
+    }
+}
+
+- (void) drawVisiblePlayedCards {
+    for(RSVisibleCard *card in visiblePlayedCards) {
+        [self drawCardAt:[card cardPosition] suit:[card suit] card:[card face]];
     }
 }
 
