@@ -128,6 +128,7 @@
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         CGContextBeginTransparencyLayer(context, NULL);
+        CGContextSetAlpha(context,alpha);
         [outerCardPath addClip];
         CGContextDrawLinearGradient(context, gradient2, CGPointMake(x - 10, y + 12), CGPointMake(x + 85, y + 110), 0);
         CGContextEndTransparencyLayer(context);
