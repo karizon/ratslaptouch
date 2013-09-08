@@ -47,7 +47,7 @@
     return self;
 }
 
-- (void) drawStarAtX: (float) x y: (float) y {
+- (void) drawStarAtX: (float) x y: (float) y  alpha: (float) alpha{
     // Draw Star w/ first point @ x,y
     UIBezierPath* starPath = [UIBezierPath bezierPath];
     if([RSGameView isPad]) {
@@ -64,7 +64,7 @@
         [starPath addLineToPoint: CGPointMake(x , y)];
         [[UIColor blackColor] setStroke];
         starPath.lineWidth = 1;
-        [starPath stroke];
+        [starPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
         [starPath moveToPoint: CGPointMake(x, y)];
         [starPath addLineToPoint: CGPointMake(x + 2.65, y + 4.37)];
@@ -79,14 +79,14 @@
         [starPath addLineToPoint: CGPointMake(x , y)];
         [[UIColor blackColor] setStroke];
         starPath.lineWidth = 1;
-        [starPath stroke];
+        [starPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     }
     [starPath closePath];
     [[UIColor whiteColor] setFill];
-    [starPath fill];
+    [starPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
 }
 
-- (void) drawCardBackAtX: (float) x y: (float) y {
+- (void) drawCardBackAtX: (float) x y: (float) y alpha: (float) alpha {
     // General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -114,6 +114,7 @@
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         CGContextBeginTransparencyLayer(context, NULL);
+        CGContextSetAlpha(context,alpha);
         [outerCardPath addClip];
         CGContextDrawLinearGradient(context, gradient2, CGPointMake(x - 20, y + 24), CGPointMake(x + 170, y + 220), 0);
         CGContextEndTransparencyLayer(context);
@@ -121,7 +122,7 @@
         
         [[UIColor blackColor] setStroke];
         outerCardPath.lineWidth = 1;
-        [outerCardPath stroke];
+        [outerCardPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
         UIBezierPath* outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 75, 120) cornerRadius: 4];
         CGContextSaveGState(context);
@@ -134,31 +135,31 @@
         
         [[UIColor blackColor] setStroke];
         outerCardPath.lineWidth = 1;
-        [outerCardPath stroke];
+        [outerCardPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     }
     
     // Inner Card Drawing
     if([RSGameView isPad]) {
         UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x + 10, y + 10, 128, 220) cornerRadius: 8];
         [color3 setFill];
-        [innerCardPath fill];
+        [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
         UIBezierPath* innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x + 5, y + 5, 64, 110) cornerRadius: 4];
         [color3 setFill];
-        [innerCardPath fill];
+        [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
     }
     
     // Draw star card backs
     if([RSGameView isPad]) {
         for(float x2 = (x + 35); x2 < (x + 140); x2 += 40) {
             for(float y2 = (y + 24); y2 < (y + 200); y2 += 40) {
-                [self drawStarAtX:x2 y:y2];
+                [self drawStarAtX:x2 y:y2 alpha:1];
             }
         }
     } else {
         for(float x2 = (x + 17); x2 < (x + 75); x2 += 20) {
             for(float y2 = (y + 13); y2 < (y + 100); y2 += 20) {
-                [self drawStarAtX:x2 y:y2];
+                [self drawStarAtX:x2 y:y2 alpha:1];
             }
         }
     }
@@ -533,47 +534,65 @@
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
     
+    float alpha = 0.15;
     // only draw players 3 + 4 if we are in a 4 player game
     if(totalPlayers == 4) {
+        if(currentPlayers > 3)
+            alpha = 1.0;
         if(horizontal) {
             if([RSGameView isPad]) {
-                [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11];
-                [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251))];
+                [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11 alpha:alpha];
+                if(currentPlayers > 2)
+                    alpha = 1.0;
+                [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251)) alpha:alpha];
             } else {
-                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120)];
-                [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120)];
+                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:1];
+                if(currentPlayers > 2)
+                    alpha = 1.0;
+                [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120) alpha:alpha];
             }
         } else {
             if([RSGameView isPad]) {
-                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120)];
-                [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120)];
+                [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:1];
+                if(currentPlayers > 2)
+                    alpha = 1.0;
+                [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120) alpha:alpha];
             } else {
-                [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60)];
-                [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60)];
+                [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60) alpha:1];
+                if(currentPlayers > 2)
+                    alpha = 1.0;
+                [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60) alpha:alpha];
             }
         }
     }
     
-    // draw players 1 + 2 in all casess
+    // draw players 1 + 2 in all cases
     if(horizontal) {
         if([RSGameView isPad]) {
-            [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120)];
-            [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120)];
+            if(currentPlayers > 1)
+                alpha = 1.0;
+            [self drawCardBackAtX:11 y:((self.bounds.size.height / 2) - 120) alpha:alpha];
+            [self drawCardBackAtX:(self.bounds.size.width - 161) y:((self.bounds.size.height / 2) - 120) alpha:1];
         } else {
-            [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60)];
-            [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60)];
+            if(currentPlayers > 1)
+                alpha = 1.0;
+            [self drawCardBackAtX:5.5 y:((self.bounds.size.height / 2) - 60) alpha:alpha];
+            [self drawCardBackAtX:(self.bounds.size.width - 80.5) y:((self.bounds.size.height / 2) - 60) alpha:1];
         }
     } else {
         if([RSGameView isPad]) {
-            [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11];
-            [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251))];
+            if(currentPlayers > 1)
+                alpha = 1.0;
+            [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:11 alpha:alpha];
+            [self drawCardBackAtX:((self.bounds.size.width / 2) - 75) y:((self.bounds.size.height - 251)) alpha:1];
         } else {
-            [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:5.5];
-            [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:((self.bounds.size.height - 125.5))];
+            if(currentPlayers > 1)
+                alpha = 1.0;
+            [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:5.5 alpha:alpha];
+            [self drawCardBackAtX:((self.bounds.size.width / 2) - 37.5) y:((self.bounds.size.height - 125.5)) alpha:1];
         }
     }
 
-    
     // If we're waiting, let's make sure the player knows
     if(stillWaiting) {
         if([RSGameView isPad]) {
@@ -601,13 +620,34 @@
 - (void) setPlayers: (int) current total:(int) total {
     NSLog(@"Game View: changing number of players on the board");
     totalPlayers = total;
-    currentPlayers = total;
+    currentPlayers = current;
+    NSLog(@"We have %d current players",current);
     [self setNeedsDisplay];
 }
 
 - (void) setOrientationHorizontal: (BOOL) isHorizontal {
     NSLog(@"Game View: Setting orientation");
     horizontal = isHorizontal;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if(!stillWaiting) {
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self];
+        NSLog(@"Game View: TOUCH at (%f,%f)", point.x, point.y);
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Game View: System says NO TOUCHING");
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if(!stillWaiting) {
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self];
+        NSLog(@"Game View: TOUCH RELEASE at (%f,%f)", point.x, point.y);
+    }
 }
 
 @end

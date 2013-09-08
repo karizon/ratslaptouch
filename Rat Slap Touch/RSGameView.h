@@ -22,8 +22,8 @@
 
 - (void) drawBackground;
 
-- (void) drawCardBackAtX: (float) x y: (float) y;
-- (void) drawStarAtX: (float) x y: (float) y;
+- (void) drawCardBackAtX: (float) x y: (float) y alpha: (float) alpha;
+- (void) drawStarAtX: (float) x y: (float) y alpha: (float) alpha;
 
 - (void) drawCardAtX: (float) x y:(float) y suit:(int) suit card:(NSString *) card;
 
