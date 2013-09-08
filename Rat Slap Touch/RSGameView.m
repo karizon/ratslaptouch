@@ -27,8 +27,8 @@
     stillWaiting = YES;
     totalPlayers = 0;
     currentPlayers = 0;
-    visibleStackCards = [NSMutableArray array];
-    visiblePlayerCards = [NSMutableArray array];
+    visibleStackedCards = [NSMutableArray array];
+    visiblePlayedCards = [NSMutableArray array];
     maxStackVisible = 3;
 }
 
