@@ -392,6 +392,38 @@
     CGContextSaveGState(context);
 
     // Font styling for card numeration:
+    
+    // Init so we can determine if it's a face card or a number, for some reason the numbers don't align right:
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    float y_offset = 0;
+
+    NSNumber *cardVal = [f numberFromString:card];
+    // Numbers are slightly offset for some reason in Georgia-Bold...
+    if(cardVal) {
+        if(([cardVal intValue] == 6) || ([cardVal intValue] == 8)) {
+            // But they're NOT the same offset for 6 or 8.
+            if([RSGameView isPad]) {
+                y_offset = 1;
+            } else {
+                y_offset = 0.5;
+            }
+        } else if(([cardVal intValue] == 1) || ([cardVal intValue] == 2)) {
+            NSLog(@"********** 1 or 2 *********");
+            // And we have to set a diff font because 1 + 2 are messed up for some reason...
+            if([RSGameView isPad]) {
+                y_offset = 9;
+            } else {
+                y_offset = 4.5;
+            }
+        } else {
+            if([RSGameView isPad]) {
+                y_offset = 6;
+            } else {
+                y_offset = 3;
+            }
+        }
+    }
+    
     NSMutableDictionary *strAttribs = [[NSMutableDictionary alloc] init];
     if(suit == SUIT_CLUB || suit == SUIT_SPADE) {
         [strAttribs setObject:color2 forKey:NSForegroundColorAttributeName];
@@ -401,29 +433,36 @@
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSTextAlignmentCenter];
     if([RSGameView isPad]) {
-        [strAttribs setObject:[UIFont fontWithName: @"Georgia-Bold" size: 34] forKey:NSFontAttributeName];
+        if(cardVal && (([cardVal intValue] == 1) || ([cardVal intValue] == 2))) {
+            [strAttribs setObject:[UIFont fontWithName: @"Georgia-Bold" size: 46] forKey:NSFontAttributeName];
+        } else {
+            [strAttribs setObject:[UIFont fontWithName: @"Georgia-Bold" size: 36] forKey:NSFontAttributeName];
+        }
     } else {
-        [strAttribs setObject:[UIFont fontWithName: @"Georgia-Bold" size: [UIFont labelFontSize]] forKey:NSFontAttributeName];
+        if(cardVal && (([cardVal intValue] == 1) || ([cardVal intValue] == 2))) {
+            [strAttribs setObject:[UIFont fontWithName: @"Georgia-Bold" size: 21] forKey:NSFontAttributeName];
+        } else {
+            [strAttribs setObject:[UIFont fontWithName: @"Georgia-Bold" size: 17] forKey:NSFontAttributeName];
+        }
     }
     [strAttribs setObject:style forKey:NSParagraphStyleAttributeName];
    
-    
 
     // Upper Left Card # Drawing
     if([RSGameView isPad]) {
-        CGRect upperLeftRect = CGRectMake(x + 12.5, y + 10.5, 43, 43);
+        CGRect upperLeftRect = CGRectMake(x + 12.5 , y + 10.5 - y_offset, 43, 43);
         [card drawInRect:upperLeftRect withAttributes:strAttribs];
     } else {
-        CGRect upperLeftRect = CGRectMake(x + 6.5, y + 6.5, 21, 19);
+        CGRect upperLeftRect = CGRectMake(x + 6.5, y + 6.5 - y_offset, 23, 21);
         [card drawInRect:upperLeftRect withAttributes:strAttribs];
     }
     
     // Lower Right Card # Drawing
     if([RSGameView isPad]) {
-        CGRect lowerRightRect = CGRectMake(x + 92.5, y + 184.5, 43, 43);
+        CGRect lowerRightRect = CGRectMake(x + 92.5, y + 184.5 - y_offset, 43, 43);
         [card drawInRect:lowerRightRect withAttributes:strAttribs];
     } else {
-        CGRect lowerRightRect = CGRectMake(x + 47.5, y + 91.5, 21, 19);
+        CGRect lowerRightRect = CGRectMake(x + 47.5, y + 91.5 - y_offset, 23, 22);
         [card drawInRect:lowerRightRect withAttributes:strAttribs];
     }
     
@@ -496,7 +535,6 @@
         roundedRectanglePath.lineWidth = 1;
         [roundedRectanglePath stroke];
 
-        
         // Overwrite the text rect for ipad only
         textRect = CGRectMake(x + 54, y + 37, 294, 124);
     } else {
@@ -602,15 +640,15 @@
     } else {
         // draw the card on top of the stack if we're not waiting!
         if([RSGameView isPad]) {
-            [self drawCardAtX:((self.bounds.size.width / 2) - 180) y:self.bounds.size.height / 2 - 120 suit:SUIT_SPADE card:@"K"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 110) y:self.bounds.size.height / 2 - 120 suit:SUIT_HEART card:@"3"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 40) y:self.bounds.size.height / 2 - 120 suit:SUIT_DIAMOND card:@"J"];
-            [self drawCardAtX:((self.bounds.size.width / 2) + 30) y:self.bounds.size.height / 2 - 120 suit:SUIT_CLUB card:@"A"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 180) y:self.bounds.size.height / 2 - 120 suit:SUIT_SPADE card:@"1"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 110) y:self.bounds.size.height / 2 - 120 suit:SUIT_HEART card:@"2"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 40) y:self.bounds.size.height / 2 - 120 suit:SUIT_DIAMOND card:@"3"];
+            [self drawCardAtX:((self.bounds.size.width / 2) + 30) y:self.bounds.size.height / 2 - 120 suit:SUIT_CLUB card:@"4"];
         } else {
-            [self drawCardAtX:((self.bounds.size.width / 2) - 90) y:self.bounds.size.height / 2 - 60 suit:SUIT_SPADE card:@"K"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 55) y:self.bounds.size.height / 2 - 60 suit:SUIT_HEART card:@"3"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 20) y:self.bounds.size.height / 2 - 60 suit:SUIT_DIAMOND card:@"J"];
-            [self drawCardAtX:((self.bounds.size.width / 2) + 15) y:self.bounds.size.height / 2 - 60 suit:SUIT_CLUB card:@"A"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 90) y:self.bounds.size.height / 2 - 60 suit:SUIT_SPADE card:@"1"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 55) y:self.bounds.size.height / 2 - 60 suit:SUIT_HEART card:@"2"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 20) y:self.bounds.size.height / 2 - 60 suit:SUIT_DIAMOND card:@"3"];
+            [self drawCardAtX:((self.bounds.size.width / 2) + 15) y:self.bounds.size.height / 2 - 60 suit:SUIT_CLUB card:@"4"];
         }
 
     }
