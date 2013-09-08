@@ -640,14 +640,14 @@
     } else {
         // draw the card on top of the stack if we're not waiting!
         if([RSGameView isPad]) {
-            [self drawCardAtX:((self.bounds.size.width / 2) - 180) y:self.bounds.size.height / 2 - 120 suit:SUIT_SPADE card:@"1"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 110) y:self.bounds.size.height / 2 - 120 suit:SUIT_HEART card:@"2"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 40) y:self.bounds.size.height / 2 - 120 suit:SUIT_DIAMOND card:@"3"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 180) y:self.bounds.size.height / 2 - 120 suit:SUIT_SPADE card:@"J"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 110) y:self.bounds.size.height / 2 - 120 suit:SUIT_HEART card:@"7"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 40) y:self.bounds.size.height / 2 - 120 suit:SUIT_DIAMOND card:@"K"];
             [self drawCardAtX:((self.bounds.size.width / 2) + 30) y:self.bounds.size.height / 2 - 120 suit:SUIT_CLUB card:@"4"];
         } else {
-            [self drawCardAtX:((self.bounds.size.width / 2) - 90) y:self.bounds.size.height / 2 - 60 suit:SUIT_SPADE card:@"1"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 55) y:self.bounds.size.height / 2 - 60 suit:SUIT_HEART card:@"2"];
-            [self drawCardAtX:((self.bounds.size.width / 2) - 20) y:self.bounds.size.height / 2 - 60 suit:SUIT_DIAMOND card:@"3"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 90) y:self.bounds.size.height / 2 - 60 suit:SUIT_SPADE card:@"J"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 55) y:self.bounds.size.height / 2 - 60 suit:SUIT_HEART card:@"7"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 20) y:self.bounds.size.height / 2 - 60 suit:SUIT_DIAMOND card:@"K"];
             [self drawCardAtX:((self.bounds.size.width / 2) + 15) y:self.bounds.size.height / 2 - 60 suit:SUIT_CLUB card:@"4"];
         }
 
