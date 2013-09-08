@@ -79,10 +79,8 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        NSLog(@"RSGameView: have changed to landscape");
         [gameView setOrientationHorizontal:YES];
     } else if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-        NSLog(@"RSGameView: have changed to portrait");
         [gameView setOrientationHorizontal:NO];
     }
 }

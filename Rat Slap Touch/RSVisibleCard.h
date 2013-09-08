@@ -22,8 +22,21 @@
     BOOL playable;
     CGRect cardSize;
     CGPoint cardPosition;
+    int belongsToPlayer;
 }
 
 - (id) initShowingWithFace:(NSString *) newFace suit:(char) newSuit cardSize:(CGRect) newCardSize cardPosition:(CGPoint) newCardPosition;
 - (id) initWithCardSize:(CGRect) newCardSize cardPosition:(CGPoint) newCardPosition;
+
+- (char) suit;
+- (BOOL) showing;
+- (BOOL) active;
+- (NSString *) face;
+- (BOOL) playable;
+- (CGRect) cardSize;
+- (CGPoint) cardPosition;
+- (int) belongsToPlayer;
+
+- (void) setPlayer: (int) newPlayer;
+
 @end

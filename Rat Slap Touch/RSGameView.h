@@ -15,7 +15,10 @@
     BOOL horizontal;
     int totalPlayers;
     int currentPlayers;
-    NSMutableArray *visibleCards;
+    NSMutableArray *visibleStackedCards;
+    NSMutableArray *visiblePlayedCards;
+    int maxStackVisible;
+    int maxPlayedVisible;
 }
 
 + (BOOL) isPad;
@@ -25,6 +28,8 @@
 - (void) drawStarAtX: (float) x y: (float) y alpha: (float) alpha;
 - (void) drawCardBackAtX: (float) x y: (float) y alpha: (float) alpha;
 - (void) drawCardAtX: (float) x y:(float) y suit:(char) suit card:(NSString *) card;
+
+- (void) drawVisibleStackedCards;
 
 - (void) setWaiting: (BOOL) waiting;
 - (void) setPlayers: (int) current total:(int) total;

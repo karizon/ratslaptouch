@@ -17,6 +17,7 @@
         showing = NO;
         face = nil;
         playable = NO;
+        belongsToPlayer = 0;
     }
     return self;
 }
@@ -42,4 +43,43 @@
     return self;
 }
 
+- (char) suit {
+    return suit;
+}
+
+- (BOOL) showing {
+    return showing;
+}
+
+- (BOOL) active {
+    return active;
+}
+
+- (NSString *) face {
+    return face;
+}
+
+- (BOOL) playable {
+    return playable;
+}
+
+- (void) setPlayable: (BOOL) newPlayable {
+    playable = newPlayable;
+}
+
+- (CGRect) cardSize {
+    return cardSize;
+}
+
+- (CGPoint) cardPosition {
+    return cardPosition;
+}
+
+- (int) belongsToPlayer {
+    return belongsToPlayer;
+}
+
+- (void) setPlayer: (int) newPlayer {
+    belongsToPlayer = newPlayer;
+}
 @end

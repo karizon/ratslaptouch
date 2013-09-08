@@ -27,8 +27,9 @@
     stillWaiting = YES;
     totalPlayers = 0;
     currentPlayers = 0;
-    return;
-    [UIViewController attemptRotationToDeviceOrientation];
+    visibleStackCards = [NSMutableArray array];
+    visiblePlayerCards = [NSMutableArray array];
+    maxStackVisible = 3;
 }
 
 - (id)initWithCoder:(NSCoder*)aDecoder {
@@ -36,7 +37,6 @@
     if (self) {
         [self gameViewInit];
     }
-    
     return self;
 }
 
@@ -566,6 +566,15 @@
     [textContent drawInRect:textRect withAttributes:strAttribs];
 }
 
+
+- (void) drawVisibleStackedCards {
+    for(RSVisibleCard *card in visibleStackedCards) {
+        if([card belongsToPlayer]) {
+            
+        }
+    }
+}
+
 - (void)drawRect:(CGRect)rect {
     
     NSLog(@"Game View: redrawing game view");
@@ -650,7 +659,6 @@
             [self drawCardAtX:((self.bounds.size.width / 2) - 20) y:self.bounds.size.height / 2 - 60 suit:SUIT_DIAMOND card:@"K"];
             [self drawCardAtX:((self.bounds.size.width / 2) + 15) y:self.bounds.size.height / 2 - 60 suit:SUIT_CLUB card:@"4"];
         }
-
     }
 }
 
@@ -664,13 +672,14 @@
     NSLog(@"Game View: changing number of players on the board");
     totalPlayers = total;
     currentPlayers = current;
-    NSLog(@"We have %d current players",current);
     [self setNeedsDisplay];
 }
 
 - (void) setOrientationHorizontal: (BOOL) isHorizontal {
-    NSLog(@"Game View: Setting orientation");
-    horizontal = isHorizontal;
+    if(horizontal != isHorizontal) {
+        NSLog(@"Game View: Changing current orientation");
+        horizontal = isHorizontal;
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
