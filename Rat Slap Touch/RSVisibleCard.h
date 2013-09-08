@@ -17,6 +17,7 @@
 @interface RSVisibleCard : NSObject {
     char suit;
     BOOL showing;
+    BOOL active;
     NSString *face;
     BOOL playable;
     CGRect cardSize;

@@ -18,15 +18,13 @@
     NSMutableArray *visibleCards;
 }
 
++ (BOOL) isPad;
 
 - (void) drawBackground;
 
-- (void) drawCardBackAtX: (float) x y: (float) y alpha: (float) alpha;
 - (void) drawStarAtX: (float) x y: (float) y alpha: (float) alpha;
-
+- (void) drawCardBackAtX: (float) x y: (float) y alpha: (float) alpha;
 - (void) drawCardAtX: (float) x y:(float) y suit:(char) suit card:(NSString *) card;
-
-+ (BOOL) isPad;
 
 - (void) setWaiting: (BOOL) waiting;
 - (void) setPlayers: (int) current total:(int) total;

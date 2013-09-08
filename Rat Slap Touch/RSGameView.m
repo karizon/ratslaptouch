@@ -369,7 +369,6 @@
             [rectanglePath closePath];
             [color2 setFill];
             [rectanglePath fill];
-            CGContextRestoreGState(context);
             
             [[UIColor blackColor] setStroke];
             rectanglePath.lineWidth = 1;
@@ -378,12 +377,10 @@
             UIBezierPath* cloverPath1 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 35, y + 51, 27, 27)];
             [color2 setFill];
             [cloverPath1 fill];
-            CGContextRestoreGState(context);
             
             UIBezierPath* cloverPath2 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 23, y + 30, 27, 27)];
             [color2 setFill];
             [cloverPath2 fill];
-            CGContextRestoreGState(context);
 
             UIBezierPath* cloverPath3 = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x + 12, y + 51, 27, 27)];
             [color2 setFill];
@@ -605,9 +602,15 @@
     } else {
         // draw the card on top of the stack if we're not waiting!
         if([RSGameView isPad]) {
-            [self drawCardAtX:((self.bounds.size.width / 2) - 75) y:self.bounds.size.height / 2 - 120 suit:SUIT_SPADE card:@"K"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 180) y:self.bounds.size.height / 2 - 120 suit:SUIT_SPADE card:@"K"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 110) y:self.bounds.size.height / 2 - 120 suit:SUIT_HEART card:@"3"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 40) y:self.bounds.size.height / 2 - 120 suit:SUIT_DIAMOND card:@"J"];
+            [self drawCardAtX:((self.bounds.size.width / 2) + 30) y:self.bounds.size.height / 2 - 120 suit:SUIT_CLUB card:@"A"];
         } else {
-            [self drawCardAtX:((self.bounds.size.width / 2) - 37.5) y:self.bounds.size.height / 2 - 60 suit:SUIT_SPADE card:@"K"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 90) y:self.bounds.size.height / 2 - 60 suit:SUIT_SPADE card:@"K"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 55) y:self.bounds.size.height / 2 - 60 suit:SUIT_HEART card:@"3"];
+            [self drawCardAtX:((self.bounds.size.width / 2) - 20) y:self.bounds.size.height / 2 - 60 suit:SUIT_DIAMOND card:@"J"];
+            [self drawCardAtX:((self.bounds.size.width / 2) + 15) y:self.bounds.size.height / 2 - 60 suit:SUIT_CLUB card:@"A"];
         }
 
     }
