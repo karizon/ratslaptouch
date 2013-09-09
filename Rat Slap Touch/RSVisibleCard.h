@@ -23,6 +23,7 @@
     CGRect cardSize;
     CGPoint cardPosition;
     int belongsToPlayer;
+    BOOL draggable;
 }
 
 - (id) initShowingWithFace:(NSString *) newFace suit:(char) newSuit cardSize:(CGRect) newCardSize;
