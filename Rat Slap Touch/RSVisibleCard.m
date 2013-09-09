@@ -19,6 +19,7 @@
         playable = NO;
         belongsToPlayer = 0;
         active = YES;
+        draggable = NO;
     }
     return self;
 }
@@ -83,4 +84,8 @@
 - (void) setPlayer: (int) newPlayer {
     belongsToPlayer = newPlayer;
 }
+- (BOOL) draggable {
+    return draggable;
+}
+
 @end
