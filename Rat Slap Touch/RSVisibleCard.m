@@ -53,8 +53,16 @@
     return showing;
 }
 
+- (void) setShowing:(BOOL)newShowing {
+    showing = newShowing;
+}
+
 - (BOOL) active {
     return active;
+}
+
+- (void) setActive:(BOOL)newActive {
+    active = newActive;
 }
 
 - (NSString *) face {
@@ -77,6 +85,10 @@
     return cardPosition;
 }
 
+- (void) setPosition:(CGPoint)newPosition {
+    cardPosition = newPosition;
+}
+
 - (int) belongsToPlayer {
     return belongsToPlayer;
 }
@@ -84,8 +96,13 @@
 - (void) setPlayer: (int) newPlayer {
     belongsToPlayer = newPlayer;
 }
+
 - (BOOL) draggable {
     return draggable;
+}
+
+- (void) setDraggable: (BOOL) newDraggable{
+    draggable = newDraggable;
 }
 
 @end

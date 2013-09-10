@@ -39,5 +39,9 @@
 - (int) belongsToPlayer;
 
 - (void) setPlayer: (int) newPlayer;
+- (void) setDraggable: (BOOL) newDraggable;
+- (void) setPosition: (CGPoint) newPosition;
+- (void) setShowing:(BOOL) newShowing;
+- (void) setActive: (BOOL) newActive;
 
 @end
