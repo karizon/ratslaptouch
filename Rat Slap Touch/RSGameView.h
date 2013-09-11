@@ -19,6 +19,7 @@
     NSMutableArray *visiblePlayedCards;
     int maxStackVisible;
     int maxPlayedVisible;
+    BOOL touchPending;
 }
 
 + (BOOL) isPad;
