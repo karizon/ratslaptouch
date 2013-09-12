@@ -71,7 +71,7 @@
 }
 
 - (void) processGameUpdate:(RSGameUpdate *) newUpdate {
-    [gameView setPlayers:[newUpdate players] total:[newUpdate gameSize]];
+    [gameView setPlayers:[newUpdate players] total:[newUpdate gameSize] position:[newUpdate position]];
     if([newUpdate gameStatus] == GAME_STARTING) {
         [gameView setWaiting:NO];
     }

@@ -676,7 +676,7 @@
     [self setNeedsDisplay];
 }
 
-- (void) setPlayers: (int) current total:(int) total {
+- (void) setPlayers: (int) current total:(int) total position:(int) position {
     NSLog(@"Game View: changing number of players on the board");
     totalPlayers = total;
     currentPlayers = current;
