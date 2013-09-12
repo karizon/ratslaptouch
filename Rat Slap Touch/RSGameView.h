@@ -37,4 +37,5 @@
 - (void) setPlayers: (int) current total:(int) total position:(int) position;
 - (void) setOrientationHorizontal: (BOOL) isHorizontal;
 
+- (void) addCardToPlayed:(NSString *) card suit:(char) suit;
 @end

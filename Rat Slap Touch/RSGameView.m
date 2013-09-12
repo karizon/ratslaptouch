@@ -587,7 +587,8 @@
     
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
-    
+    [self drawVisibleStackedCards];
+    /*
     float alpha = 0.15;
     // only draw players 3 + 4 if we are in a 4 player game
     if(totalPlayers == 4) {
@@ -646,7 +647,7 @@
             [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 125.5) alpha:1];
         }
     }
-
+*/
     // If we're waiting, let's make sure the player knows
     if(stillWaiting) {
         if([RSGameView isPad]) {
@@ -655,6 +656,8 @@
             [self drawWaitingDisplayatX:self.bounds.size.width / 2 - 100 y:self.bounds.size.height / 2 - 50];
         }
     } else {
+        [self drawVisiblePlayedCards];
+        /*
         // draw the card on top of the stack if we're not waiting!
         if([RSGameView isPad]) {
             [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 180, self.bounds.size.height / 2 - 120) suit:SUIT_SPADE card:@"J"];
@@ -667,6 +670,7 @@
             [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 20, self.bounds.size.height / 2 - 60) suit:SUIT_DIAMOND card:@"K"];
             [self drawCardAt:CGPointMake(self.bounds.size.width / 2 + 15, self.bounds.size.height / 2 - 60) suit:SUIT_DIAMOND card:@"$"];
         }
+         */
     }
 }
 
@@ -720,6 +724,24 @@
         NSLog(@"Game View: TOUCH RELEASE at (%f,%f)", point.x, point.y);
         touchPending = NO;
     }
+}
+
+- (void) addCardToPlayed:(NSString *) card suit:(char) suit {
+    // Make sure we remove any extra cards before adding one
+    while([visiblePlayedCards count] >= maxPlayedVisible) {
+        [visiblePlayedCards removeObjectAtIndex:0];
+    }
+    [visiblePlayedCards addObject:[[RSVisibleCard alloc] initShowingWithFace:card suit:suit cardSize:CGRectMake(0, 0, 0, 0)]];
+    // Now loop through and make sure all the cards have the proper positions
+    for(RSVisibleCard *card in visiblePlayedCards) {
+        
+    }
+    [self setNeedsDisplay];
+}
+
+- (void) clearPlayedCards {
+    [visiblePlayedCards removeAllObjects];
+    [self setNeedsDisplay];
 }
 
 @end
