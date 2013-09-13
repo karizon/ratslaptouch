@@ -1,0 +1,17 @@
+client TODO:
+
+Card stacks controlled generically w/ player position rotation
+click detection (mostly done?)
+show player names
+show current player position
+show your card position
+game center matchmaking vs friends
+fill w/ random players from gamecenter match
+handle server disconnects
+draw stacks underneath player cards
+gameplay
+
+Server:
+Shuffle cards
+Card play triggers active rules
+gameplay
