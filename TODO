@@ -1,5 +1,4 @@
 client TODO:
-
 Card stacks controlled generically w/ player position rotation
 click detection (mostly done?)
 show player names
@@ -9,7 +8,10 @@ game center matchmaking vs friends
 fill w/ random players from gamecenter match
 handle server disconnects
 draw stacks underneath player cards
+Help screen / about
 gameplay
+
+
 
 Server:
 Shuffle cards
