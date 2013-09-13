@@ -41,6 +41,7 @@
 - (void) setPlayer: (int) newPlayer;
 - (void) setDraggable: (BOOL) newDraggable;
 - (void) setPosition: (CGPoint) newPosition;
+- (void) setCardSize: (CGRect) newCardSize;
 - (void) setShowing:(BOOL) newShowing;
 - (void) setActive: (BOOL) newActive;
 

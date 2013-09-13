@@ -25,7 +25,7 @@
 }
 
 - (id) initShowingWithFace:(NSString *) newFace suit:(char) newSuit cardSize:(CGRect) newCardSize {
-    self = [RSVisibleCard init];
+    self = [self init];
     if(self) {
         face = newFace;
         suit = newSuit;
@@ -81,12 +81,20 @@
     return cardSize;
 }
 
+- (void) setCardSize: (CGRect) newCardSize {
+    cardSize = newCardSize;
+    cardPosition.x = cardSize.origin.x;
+    cardPosition.y = cardSize.origin.y;
+}
+
 - (CGPoint) cardPosition {
     return cardPosition;
 }
 
 - (void) setPosition:(CGPoint)newPosition {
     cardPosition = newPosition;
+    cardSize.origin.x = cardPosition.x;
+    cardSize.origin.y = cardPosition.y;
 }
 
 - (int) belongsToPlayer {

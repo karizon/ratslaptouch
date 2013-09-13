@@ -33,6 +33,8 @@
 - (void) drawVisibleStackedCards;
 - (void) drawVisiblePlayedCards;
 
+- (void) repositionPlayedCards;
+
 - (void) setWaiting: (BOOL) waiting;
 - (void) setPlayers: (int) current total:(int) total position:(int) position;
 - (void) setOrientationHorizontal: (BOOL) isHorizontal;

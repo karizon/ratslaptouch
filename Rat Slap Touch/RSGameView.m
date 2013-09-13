@@ -21,15 +21,13 @@
 
 - (void) gameViewInit {
     NSLog(@"Game View: Initializing (new game board)");
-    if([RSGameView isPad]) {
-        NSLog(@"Game View: We're drawing on an iPad, folks!");
-    }
     stillWaiting = YES;
     totalPlayers = 0;
     currentPlayers = 0;
     visibleStackedCards = [NSMutableArray array];
     visiblePlayedCards = [NSMutableArray array];
     maxStackVisible = 3;
+    maxPlayedVisible = 4;
     touchPending = NO;
 }
 
@@ -588,7 +586,6 @@
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
     [self drawVisibleStackedCards];
-    /*
     float alpha = 0.15;
     // only draw players 3 + 4 if we are in a 4 player game
     if(totalPlayers == 4) {
@@ -647,7 +644,6 @@
             [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 125.5) alpha:1];
         }
     }
-*/
     // If we're waiting, let's make sure the player knows
     if(stillWaiting) {
         if([RSGameView isPad]) {
@@ -657,20 +653,6 @@
         }
     } else {
         [self drawVisiblePlayedCards];
-        /*
-        // draw the card on top of the stack if we're not waiting!
-        if([RSGameView isPad]) {
-            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 180, self.bounds.size.height / 2 - 120) suit:SUIT_SPADE card:@"J"];
-            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 110, self.bounds.size.height / 2 - 120) suit:SUIT_HEART card:@"7"];
-            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 40, self.bounds.size.height / 2 - 120) suit:SUIT_DIAMOND card:@"K"];
-            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 + 30, self.bounds.size.height / 2 - 120) suit:SUIT_CLUB card:@"4"];
-        } else {
-            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 90, self.bounds.size.height / 2 - 60) suit:SUIT_SPADE card:@"J"];
-            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 55, self.bounds.size.height / 2 - 60) suit:SUIT_HEART card:@"7"];
-            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 - 20, self.bounds.size.height / 2 - 60) suit:SUIT_DIAMOND card:@"K"];
-            [self drawCardAt:CGPointMake(self.bounds.size.width / 2 + 15, self.bounds.size.height / 2 - 60) suit:SUIT_DIAMOND card:@"$"];
-        }
-         */
     }
 }
 
@@ -691,6 +673,7 @@
     if(horizontal != isHorizontal) {
         NSLog(@"Game View: Changing current orientation");
         horizontal = isHorizontal;
+        [self repositionPlayedCards];
     }
 }
 
@@ -726,17 +709,41 @@
     }
 }
 
+- (void) repositionPlayedCards {
+    // Loop through and make sure all the played cards have the proper positions
+    float current_x = (self.bounds.size.width / 2);
+    if([RSGameView isPad]) {
+        if([visiblePlayedCards count] % 2)
+            current_x = current_x - ((([visiblePlayedCards count] / 2) + 1) * 75);
+        else
+            current_x = current_x - ((([visiblePlayedCards count] / 2) + 0.5) * 75);
+    } else {
+        if([visiblePlayedCards count] % 2)
+            current_x = current_x - ((([visiblePlayedCards count] / 2) + 1) * 37.5);
+        else
+            current_x = current_x - ((([visiblePlayedCards count] / 2) + 0.5) * 37.5);
+    }
+    
+    for(RSVisibleCard *card in visiblePlayedCards) {
+        if([RSGameView isPad]) {
+            [card setCardSize:CGRectMake(current_x, self.bounds.size.height / 2 - 120, 150, 240)];
+            current_x = current_x + 75;
+        } else {
+            [card setCardSize:CGRectMake(current_x, self.bounds.size.height / 2 - 100, 75, 120)];
+            current_x = current_x + 37.5;
+        }
+    }
+    [self setNeedsDisplay];
+
+}
+
 - (void) addCardToPlayed:(NSString *) card suit:(char) suit {
     // Make sure we remove any extra cards before adding one
     while([visiblePlayedCards count] >= maxPlayedVisible) {
         [visiblePlayedCards removeObjectAtIndex:0];
     }
     [visiblePlayedCards addObject:[[RSVisibleCard alloc] initShowingWithFace:card suit:suit cardSize:CGRectMake(0, 0, 0, 0)]];
-    // Now loop through and make sure all the cards have the proper positions
-    for(RSVisibleCard *card in visiblePlayedCards) {
-        
-    }
-    [self setNeedsDisplay];
+    [self repositionPlayedCards];
 }
 
 - (void) clearPlayedCards {

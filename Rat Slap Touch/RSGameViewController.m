@@ -9,6 +9,7 @@
 #import "RSGameViewController.h"
 #import "RSAppDelegate.h"
 #import "RSGameView.h"
+#import "RSVisibleCard.h"
 #import "RSGameUpdate.h"
 
 @implementation RSGameViewController
@@ -19,6 +20,11 @@
     // NSLog(@"RSGameView: Loaded");
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignGameViewController:self];
+    
+    [gameView addCardToPlayed:@"K" suit:SUIT_CLUB];
+    [gameView addCardToPlayed:@"J" suit:SUIT_DIAMOND];
+    [gameView addCardToPlayed:@"3" suit:SUIT_SPADE];
+    [gameView addCardToPlayed:@"Q" suit:SUIT_HEART];
 
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if((orientation == 0) || (orientation == UIInterfaceOrientationPortrait))  {
