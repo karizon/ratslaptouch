@@ -681,84 +681,18 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    
     NSLog(@"Game View: redrawing game view");
     [self drawBackground];
     [self drawVisibleStackedCards];
-    float alpha = 0.15;
-    // only draw players 3 + 4 if we are in a 4 player game
-    if(totalPlayers == 4) {
-        if(currentPlayers > 3)
-            alpha = 1.0;
-        if(horizontal) {
-            if([RSGameView isPad]) {
-                [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2- 75, 11) alpha:alpha];
-                if(currentPlayers > 2)
-                    alpha = 1.0;
-                [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 75,self.bounds.size.height - 251)
-                               alpha:alpha];
-            } else {
-                [self drawCardBackAt:CGPointMake(11,self.bounds.size.height / 2 - 120) alpha:alpha];
-                if(currentPlayers > 2)
-                    alpha = 1.0;
-                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120)
-                               alpha:alpha];
-            }
-        } else {
-            if([RSGameView isPad]) {
-                [self drawCardBackAt:CGPointMake(11, self.bounds.size.height / 2 - 120) alpha:alpha];
-                if(currentPlayers > 2)
-                    alpha = 1.0;
-                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120)
-                               alpha:alpha];
-            } else {
-                [self drawCardBackAt:CGPointMake(5.5, self.bounds.size.height / 2 - 60) alpha:alpha];
-                if(currentPlayers > 2)
-                    alpha = 1.0;
-                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60)
-                               alpha:alpha];
-            }
-        }
-    }
-    
-    // draw players 1 + 2 in all cases
-    if(horizontal) {
-        if([RSGameView isPad]) {
-            if(currentPlayers > 1)
-                alpha = 1.0;
-            [self drawCardBackAt:CGPointMake(11, self.bounds.size.height / 2 - 120) alpha:alpha];
-            [self drawCardBackAt:CGPointMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120)
-                           alpha:1];
-        } else {
-            if(currentPlayers > 1)
-                alpha = 1.0;
-            [self drawCardBackAt:CGPointMake(5.5, self.bounds.size.height / 2 - 60) alpha:alpha];
-            [self drawCardBackAt:CGPointMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60)
-                           alpha:1];
-        }
-    } else {
-        if([RSGameView isPad]) {
-            if(currentPlayers > 1)
-                alpha = 1.0;
-            [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 75, 11) alpha:alpha];
-            [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 75, self.bounds.size.height - 251)
-                           alpha:1];
-        } else {
-            if(currentPlayers > 1)
-                alpha = 1.0;
-            [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 37.5, 5.5) alpha:alpha];
-            [self drawCardBackAt:CGPointMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 125.5)
-                           alpha:1];
-        }
-    }
-    // If we're waiting, let's make sure the player knows
     if(stillWaiting) {
+        // If we're waiting, let's make sure the player knows
         if([RSGameView isPad]) {
             [self drawWaitingDisplayatX:self.bounds.size.width / 2 - 200 y:self.bounds.size.height / 2 - 100];
         } else {
             [self drawWaitingDisplayatX:self.bounds.size.width / 2 - 100 y:self.bounds.size.height / 2 - 50];
         }
     } else {
+        // If we're not waiting, draw the cards that have been played
         [self drawVisiblePlayedCards];
     }
 }
@@ -772,11 +706,10 @@
 - (void) setPlayers: (int) current total:(int) total position:(int) position {
     NSLog(@"Game View: changing number of players on the board");
     myPosition = position;
-    if(total != totalPlayers) {
-        [self repositionStackedCards];
-        totalPlayers = total;
-    }
+    totalPlayers = total;
+
     currentPlayers = current;
+    [self repositionStackedCards];
     [self setNeedsDisplay];
 }
 
@@ -788,42 +721,97 @@
     }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if(!stillWaiting) {
-        UITouch *touch = [touches anyObject];
-        CGPoint point = [touch locationInView:self];
-        NSLog(@"Game View: TOUCH at (%f,%f)", point.x, point.y);
-        for(RSVisibleCard *card in visiblePlayedCards) {
-            if((point.x >= [card cardPosition].x) &&
-               (point.x <= ([card cardPosition].x + [card cardSize].size.width))) {
-                if((point.y >= [card cardPosition].y) &&
-                   (point.y <= ([card cardPosition].y + [card cardSize].size.height))) {
-                    if([card active]) {
-                    touchPending = YES;
-                        NSLog(@"An active card has been pressed");
-                    }
-                }
-            }
+- (CGRect) getPlayer4Position {
+    if(horizontal) {
+        if([RSGameView isPad]) {
+            return CGRectMake(self.bounds.size.width / 2 - 75, 11, 150, 240);
+        } else {
+            return CGRectMake(self.bounds.size.width / 2 - 37.5, 5.5, 75, 120);
+        }
+    } else {
+        if([RSGameView isPad]) {
+            return CGRectMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120, 150, 240);
+        } else {
+            return CGRectMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60, 75, 120);
         }
     }
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Game View: System says NO TOUCHING");
-    touchPending = NO;
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if(!stillWaiting && touchPending) {
-        UITouch *touch = [touches anyObject];
-        CGPoint point = [touch locationInView:self];
-        NSLog(@"Game View: TOUCH RELEASE at (%f,%f)", point.x, point.y);
-        touchPending = NO;
+- (CGRect) getPlayer3Position {
+    if(horizontal) {
+        if([RSGameView isPad]) {
+            return CGRectMake(self.bounds.size.width / 2 - 75, self.bounds.size.height - 251, 150, 240);
+        } else {
+            return CGRectMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 125.5, 75, 120);
+        }
+    } else {
+        if([RSGameView isPad]) {
+            return CGRectMake(11, self.bounds.size.height / 2 - 120, 150, 240);
+        } else {
+            return CGRectMake(5.5, self.bounds.size.height / 2 - 60, 75, 120);
+        }
     }
 }
 
+- (CGRect) getPlayer2Position {
+    if(horizontal) {
+        if([RSGameView isPad]) {
+            return CGRectMake(11, self.bounds.size.height / 2 - 120, 150, 240);
+        } else {
+            return CGRectMake(5.5, self.bounds.size.height / 2 - 60, 75, 120);
+        }
+    } else {
+        if([RSGameView isPad]) {
+            return CGRectMake(self.bounds.size.width / 2 - 75, 11, 150, 240);
+        } else {
+            return CGRectMake(self.bounds.size.width / 2 - 37.5, 5.5, 75, 120);
+        }
+    }
+}
+
+- (CGRect) getPlayer1Position {
+    if(horizontal) {
+        if([RSGameView isPad]) {
+            return CGRectMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120, 150, 240);
+        } else {
+            return CGRectMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60, 75, 120);
+        }
+    } else {
+        if([RSGameView isPad]) {
+            return CGRectMake(self.bounds.size.width / 2 - 75, self.bounds.size.height - 251, 150, 240);
+        } else {
+            return CGRectMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 125.5, 75, 120);
+        }
+    }
+}
+
+
 - (void) repositionStackedCards {
-    for(RSVisibleCard *card in visibleStackedCards) {
+    // Clear out all old stacked cards:
+    NSLog(@"Game View: Placing Player Card Stacks for position %d",myPosition);
+    [visibleStackedCards removeAllObjects];
+    for(int i=1;i<=totalPlayers;i++) {
+        NSLog(@"Game View: Calculating position for Player %d",i);
+        RSVisibleCard *newCard = [[RSVisibleCard alloc] initWithCardSize:CGRectMake(0, 0, 0, 0)];
+        if(i == myPosition) {
+            // Player Position
+            [newCard setCardSize:[self getPlayer1Position]];
+        } else if(totalPlayers == 2) {
+            // If there are only 2 players, place opposed to player
+            [newCard setCardSize:[self getPlayer2Position]];
+        } else {
+            if((i == myPosition + 1) || (i == myPosition - 3)) {
+                // Clockwise Player
+                [newCard setCardSize:[self getPlayer4Position]];
+            } else if((i == myPosition + 2) || (i == myPosition - 2)) {
+                [newCard setCardSize:[self getPlayer2Position]];
+            } else {
+                // Counterclockwise to Player
+                [newCard setCardSize:[self getPlayer3Position]];
+            }
+        }
+        [newCard setPlayer:i];
+        [visibleStackedCards addObject:newCard];
     }
     [self setNeedsDisplay];
 
@@ -876,6 +864,42 @@
 - (void) clearPlayedCards {
     [visiblePlayedCards removeAllObjects];
     [self setNeedsDisplay];
+}
+
+#pragma mark User Touch Interaction
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if(!stillWaiting) {
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self];
+        NSLog(@"Game View: TOUCH at (%f,%f)", point.x, point.y);
+        for(RSVisibleCard *card in visiblePlayedCards) {
+            if((point.x >= [card cardPosition].x) &&
+               (point.x <= ([card cardPosition].x + [card cardSize].size.width))) {
+                if((point.y >= [card cardPosition].y) &&
+                   (point.y <= ([card cardPosition].y + [card cardSize].size.height))) {
+                    if([card active]) {
+                        touchPending = YES;
+                        NSLog(@"An active card has been pressed");
+                    }
+                }
+            }
+        }
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Game View: System says NO TOUCHING");
+    touchPending = NO;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if(!stillWaiting && touchPending) {
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self];
+        NSLog(@"Game View: TOUCH RELEASE at (%f,%f)", point.x, point.y);
+        touchPending = NO;
+    }
 }
 
 @end

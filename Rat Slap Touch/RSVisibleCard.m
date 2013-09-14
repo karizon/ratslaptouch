@@ -37,7 +37,7 @@
 }
 
 - (id) initWithCardSize:(CGRect) newCardSize {
-    self = [RSVisibleCard init];
+    self = [self init];
     if(self) {
         cardSize = newCardSize;
         cardPosition = CGPointMake(cardSize.origin.x, cardSize.origin.y);

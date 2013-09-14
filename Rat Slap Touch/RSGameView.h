@@ -35,6 +35,11 @@
                suit:(char) suit
                card:(NSString *) card;
 
+- (CGRect) getPlayer1Position;
+- (CGRect) getPlayer2Position;
+- (CGRect) getPlayer3Position;
+- (CGRect) getPlayer4Position;
+
 - (void) drawVisibleStackedCards;
 - (void) drawVisiblePlayedCards;
 
