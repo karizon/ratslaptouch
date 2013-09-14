@@ -717,6 +717,7 @@
     if(horizontal != isHorizontal) {
         NSLog(@"Game View: Changing current orientation");
         horizontal = isHorizontal;
+        [self repositionStackedCards];
         [self repositionPlayedCards];
     }
 }
