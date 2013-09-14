@@ -536,8 +536,7 @@
         }
     }
     [strAttribs setObject:style forKey:NSParagraphStyleAttributeName];
-   
-
+    
     // Upper Left Card # Drawing
     if([RSGameView isPad]) {
         CGRect upperLeftRect = CGRectMake(point.x + 12.5 , point.y + 10.5 - y_offset, 43, 43);
@@ -662,7 +661,7 @@
 
 - (void) drawPlayerHighlight:(CGPoint) position {
     // Color Declarations
-    UIColor *color = [UIColor colorWithRed: 0.886 green: 0.59 blue: 0 alpha: 1];
+    UIColor *color = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
     
     // Rounded Rectangle Drawing
     UIBezierPath *roundedRectanglePath;

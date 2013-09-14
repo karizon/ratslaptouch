@@ -2,7 +2,6 @@ client TODO:
 click detection (mostly done?)
 show player names
 show current player position
-show your card position
 game center matchmaking vs friends
 fill w/ random players from gamecenter match
 handle server disconnects
