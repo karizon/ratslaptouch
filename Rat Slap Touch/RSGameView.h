@@ -27,9 +27,13 @@
 
 - (void) drawBackground;
 
-- (void) drawStarAt:(CGPoint) point alpha: (float) alpha;
-- (void) drawCardBackAt:(CGPoint) point alpha:(float) alpha;
-- (void) drawCardAt:(CGPoint) point suit:(char) suit card:(NSString *) card;
+- (void) drawStarAt:(CGPoint) point
+              alpha: (float) alpha;
+- (void) drawCardBackAt:(CGPoint) point
+                  alpha:(float) alpha;
+- (void) drawCardAt:(CGPoint) point
+               suit:(char) suit
+               card:(NSString *) card;
 
 - (void) drawVisibleStackedCards;
 - (void) drawVisiblePlayedCards;
@@ -38,8 +42,12 @@
 - (void) repositionStackedCards;
 
 - (void) setWaiting: (BOOL) waiting;
-- (void) setPlayers: (int) current total:(int) total position:(int) position;
+- (void) setPlayers: (int) current
+              total:(int) total
+           position:(int) position;
+
 - (void) setOrientationHorizontal: (BOOL) isHorizontal;
 
-- (void) addCardToPlayed:(NSString *) card suit:(char) suit;
+- (void) addCardToPlayed:(NSString *) card
+                    suit:(char) suit;
 @end
