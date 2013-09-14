@@ -617,9 +617,9 @@
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
 
-    // bounding box
     if([RSGameView isPad]) {
-        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 400, 200)
+        // bounding box
+        UIBezierPath *roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 400, 200)
                                                                         cornerRadius: 8];
         [[UIColor whiteColor] setFill];
         [roundedRectanglePath fill];
