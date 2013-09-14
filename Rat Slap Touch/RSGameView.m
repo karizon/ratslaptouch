@@ -102,7 +102,8 @@
                                 (id)gradient2Color.CGColor,
                                 (id)color2.CGColor, nil];
     CGFloat gradient2Locations[] = {0, 1};
-    CGGradientRef gradient2 = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradient2Colors, gradient2Locations);
+    CGGradientRef gradient2 = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradient2Colors,
+                                                         gradient2Locations);
     
     // Shadow Declarations
     UIColor *shadow = [[UIColor blackColor] colorWithAlphaComponent: 0.65];
@@ -146,11 +147,15 @@
     
     // Inner Card Drawing
     if([RSGameView isPad]) {
-        UIBezierPath *innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x + 10, point.y + 10, 128, 220) cornerRadius: 8];
+        UIBezierPath *innerCardPath = [UIBezierPath bezierPathWithRoundedRect:
+                                       CGRectMake(point.x + 10, point.y + 10, 128, 220)
+                                                                 cornerRadius: 8];
         [color3 setFill];
         [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
-        UIBezierPath *innerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x + 5, point.y + 5, 64, 110) cornerRadius: 4];
+        UIBezierPath *innerCardPath = [UIBezierPath bezierPathWithRoundedRect:
+                                       CGRectMake(point.x + 5, point.y + 5, 64, 110)
+                                                                 cornerRadius: 4];
         [color3 setFill];
         [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
     }
@@ -574,13 +579,16 @@
                                (id)strokeColor.CGColor,
                                (id)fillColor.CGColor, nil];
     CGFloat gradientLocations[] = {0, 1};
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradientColors, gradientLocations);
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradientColors,
+                                                        gradientLocations);
     
     // Rectangle Drawing
-    UIBezierPath *rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+    UIBezierPath *rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, self.bounds.size.width,
+                                                                               self.bounds.size.height)];
     CGContextSaveGState(context);
     [rectanglePath addClip];
-    CGContextDrawLinearGradient(context, gradient, CGPointMake(self.bounds.size.width / 2, 0.5), CGPointMake(self.bounds.size.width / 2, self.bounds.size.height), 0);
+    CGContextDrawLinearGradient(context, gradient, CGPointMake(self.bounds.size.width / 2, 0.5),
+                                CGPointMake(self.bounds.size.width / 2, self.bounds.size.height), 0);
     CGContextRestoreGState(context);
     [strokeColor setStroke];
     rectanglePath.lineWidth = 1;
@@ -611,7 +619,8 @@
 
     // bounding box
     if([RSGameView isPad]) {
-        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 400, 200) cornerRadius: 8];
+        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 400, 200)
+                                                                        cornerRadius: 8];
         [[UIColor whiteColor] setFill];
         [roundedRectanglePath fill];
         CGContextRestoreGState(context);
@@ -624,7 +633,8 @@
         textRect = CGRectMake(x + 54, y + 37, 294, 124);
     } else {
         // bounding box
-        UIBezierPath *roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 200, 100) cornerRadius: 4];
+        UIBezierPath *roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(x, y, 200, 100)
+                                                                        cornerRadius: 4];
         [[UIColor whiteColor] setFill];
         [roundedRectanglePath fill];
         CGContextRestoreGState(context);
@@ -699,12 +709,14 @@
                 [self drawCardBackAt:CGPointMake(11, self.bounds.size.height / 2 - 120) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
-                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120)
+                               alpha:alpha];
             } else {
                 [self drawCardBackAt:CGPointMake(5.5, self.bounds.size.height / 2 - 60) alpha:alpha];
                 if(currentPlayers > 2)
                     alpha = 1.0;
-                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60) alpha:alpha];
+                [self drawCardBackAt:CGPointMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60)
+                               alpha:alpha];
             }
         }
     }
