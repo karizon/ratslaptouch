@@ -602,8 +602,6 @@
 - (void) drawWaitingDisplayatX: (float) x y: (float) y {
     // General Declarations
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
-
     CGRect textRect = CGRectMake(x + 34, y + 19, 136, 62);
 
     // Text we want to display
