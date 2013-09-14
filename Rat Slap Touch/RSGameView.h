@@ -19,6 +19,7 @@
     NSMutableArray *visiblePlayedCards;
     int maxStackVisible;
     int maxPlayedVisible;
+    int myPosition;
     BOOL touchPending;
 }
 
@@ -34,6 +35,7 @@
 - (void) drawVisiblePlayedCards;
 
 - (void) repositionPlayedCards;
+- (void) repositionStackedCards;
 
 - (void) setWaiting: (BOOL) waiting;
 - (void) setPlayers: (int) current total:(int) total position:(int) position;
