@@ -662,9 +662,41 @@
     [textContent drawInRect:textRect withAttributes:strAttribs];
 }
 
+- (void) drawPlayerHighlight:(CGPoint) position {
+    // Color Declarations
+    UIColor *color = [UIColor colorWithRed: 0.886 green: 0.59 blue: 0 alpha: 1];
+    
+    // Rounded Rectangle Drawing
+    UIBezierPath *roundedRectanglePath;
+    
+    if([RSGameView isPad]) {
+        roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:
+                                CGRectMake(position.x - 10, position.y - 10, 170, 260)
+                                                          cornerRadius: 8];
+    } else {
+        roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:
+                                CGRectMake(position.x - 5, position.y - 5, 85, 130)
+                                                          cornerRadius: 4];
+    }
+    [color setFill];
+    [roundedRectanglePath fillWithBlendMode:kCGBlendModeNormal alpha:0.5];
+    [[UIColor blackColor] setStroke];
+    if([RSGameView isPad]) {
+        roundedRectanglePath.lineWidth = 2;
+    } else {
+        roundedRectanglePath.lineWidth = 1;
+    }
+    CGFloat roundedRectanglePattern[] = {1, 1, 1, 1};
+    [roundedRectanglePath setLineDash: roundedRectanglePattern count: 4 phase: 0];
+    [roundedRectanglePath strokeWithBlendMode:kCGBlendModeNormal alpha:0.3];
+}
 
 - (void) drawVisibleStackedCards {
     for(RSVisibleCard *card in visibleStackedCards) {
+        if([card belongsToPlayer] == myPosition) {
+            // If this is our position, we're going to draw something underneath to denote it
+            [self drawPlayerHighlight:[card cardPosition]];
+        }
         float alpha = 1.0;
         if([card belongsToPlayer] > currentPlayers)
             alpha = 0.15;
