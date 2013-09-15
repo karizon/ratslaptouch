@@ -26,7 +26,9 @@
     BOOL draggable;
 }
 
-- (id) initShowingWithFace:(NSString *) newFace suit:(char) newSuit cardSize:(CGRect) newCardSize;
+- (id) initShowingWithFace:(NSString *) newFace
+                      suit:(char) newSuit
+                  cardSize:(CGRect) newCardSize;
 - (id) initWithCardSize:(CGRect) newCardSize;
 
 - (char) suit;
