@@ -21,11 +21,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *activeGamesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *waitingTwoPlayerGames;
 @property (weak, nonatomic) IBOutlet UILabel *waitingFourPlayerGames;
+@property (weak, nonatomic) IBOutlet UIButton *join2PlayerButton;
+@property (weak, nonatomic) IBOutlet UIButton *join4PlayerButton;
 
 - (IBAction)joinTwoPlayerGame:(id)sender;
 - (IBAction)joinFourPlayerGame:(id)sender;
 - (IBAction)mainMenuHelp:(id)sender;
 
 - (void) updateServerStatistics:(RSStatusUpdate *) stats;
+- (void) serverNotAvailable;
+- (void) serverAvailable;
 
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4504" systemVersion="13A569" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tmM-1d-t3T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A569" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tmM-1d-t3T">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3734.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--View Controller - Main Menu-->
@@ -96,7 +96,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="joinTwoPlayerGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="i9s-AU-QQU"/>
+                                    <action selector="joinTwoPlayerGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CGV-3i-9UU"/>
                                     <segue destination="05X-Xz-Pc1" kind="push" identifier="gameStartSegue" id="V5d-xD-9oQ"/>
                                 </connections>
                             </button>
@@ -108,7 +108,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="joinFourPlayerGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="p1Y-5Q-Ph5"/>
+                                    <action selector="joinFourPlayerGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="75e-tH-5iD"/>
                                     <segue destination="05X-Xz-Pc1" kind="push" id="oYn-Pd-E3p"/>
                                 </connections>
                             </button>
@@ -163,13 +163,15 @@
                     <connections>
                         <outlet property="activeGamesLabel" destination="I0l-4w-HiZ" id="fOh-Wd-IzR"/>
                         <outlet property="activePlayersLabel" destination="3aR-3U-jJE" id="EsT-jR-Qhh"/>
+                        <outlet property="join2PlayerButton" destination="hTc-lZ-dsg" id="lbb-bf-z3T"/>
+                        <outlet property="join4PlayerButton" destination="xWA-sS-QTe" id="z2r-kX-dRR"/>
                         <outlet property="waitingFourPlayerGames" destination="Gnv-3h-z61" id="VO6-Ky-i8w"/>
                         <outlet property="waitingTwoPlayerGames" destination="kcc-pE-fnk" id="LsP-qS-JlP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="351"/>
+            <point key="canvasLocation" x="296" y="327"/>
         </scene>
         <!--Game View Controller - Game-->
         <scene sceneID="Rau-5W-bjR">
@@ -213,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddw-qA-0Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1297" y="351"/>
+            <point key="canvasLocation" x="296" y="996"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mWZ-Qx-qiS">
@@ -235,7 +237,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKi-Ls-ISV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="336" y="351"/>
+            <point key="canvasLocation" x="296" y="-329"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

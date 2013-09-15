@@ -39,6 +39,7 @@
 - (void) assignViewController:(RSViewController *) newViewController;
 - (void) assignGameViewController:(RSGameViewController *) newViewController;
 
+- (void) processConnect;
 - (void) processDisconnect;
 - (void) processServerStatistics:(RSStatusUpdate *) newStats;
 - (void) processGameUpdate:(RSGameUpdate *) newUpdate;

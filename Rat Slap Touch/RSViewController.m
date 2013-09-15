@@ -81,6 +81,20 @@
     }
 }
 
+- (void) serverNotAvailable {
+    [_activePlayersLabel setText:[NSString stringWithFormat:@"N/A"]];
+    [_activeGamesLabel setText:[NSString stringWithFormat:@"N/A"]];
+    [_waitingTwoPlayerGames setText:[NSString stringWithFormat:@"N/A"]];
+    [_waitingFourPlayerGames setText:[NSString stringWithFormat:@"N/A"]];
+    [_join2PlayerButton setEnabled:NO];
+    [_join4PlayerButton setEnabled:NO];
+}
+
+- (void) serverAvailable {
+    [_join2PlayerButton setEnabled:YES];
+    [_join4PlayerButton setEnabled:YES];
+}
+
 - (IBAction)mainMenuHelp:(id)sender {
     NSLog(@"RSView: Main Menu Help Called");
 }

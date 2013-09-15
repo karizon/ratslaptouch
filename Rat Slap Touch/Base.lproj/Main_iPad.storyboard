@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4504" systemVersion="13A569" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="lp3-Bi-iGb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A569" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="lp3-Bi-iGb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3734.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--View Controller - Rat Slap - Main Menu-->
@@ -81,7 +81,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="joinTwoPlayerGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LSV-te-lpL"/>
+                                    <action selector="joinTwoPlayerGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="61d-mV-sfg"/>
                                     <segue destination="5Oh-jW-ejv" kind="push" identifier="gameStartSegue" id="Wyh-Dj-Be9"/>
                                 </connections>
                             </button>
@@ -93,7 +93,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="joinFourPlayerGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1iu-g2-qmD"/>
+                                    <action selector="joinFourPlayerGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S3R-W1-SlS"/>
                                     <segue destination="5Oh-jW-ejv" kind="push" id="3Pa-4Q-Xn1"/>
                                 </connections>
                             </button>
@@ -135,6 +135,8 @@
                     <connections>
                         <outlet property="activeGamesLabel" destination="bWh-0a-2Ej" id="uBk-ha-T6w"/>
                         <outlet property="activePlayersLabel" destination="QKM-RL-Utm" id="bjR-C7-Tpo"/>
+                        <outlet property="join2PlayerButton" destination="tXQ-Ki-G3J" id="ysa-tR-gv0"/>
+                        <outlet property="join4PlayerButton" destination="siT-oz-s84" id="nfK-6M-YJu"/>
                         <outlet property="waitingFourPlayerGames" destination="xC2-pl-7NR" id="Gz3-Hu-Jep"/>
                         <outlet property="waitingTwoPlayerGames" destination="T6T-zl-Ar1" id="pKb-oj-iDU"/>
                     </connections>

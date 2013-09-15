@@ -142,6 +142,7 @@
 
 - (void)socketDidSecure:(GCDAsyncSocket *)sock{
 	NSLog(@"Network: TLS Encryped Session Established");
+    [appDelegate processConnect];
     canTransmit = YES;
     [appDelegate assignNickname];
 }

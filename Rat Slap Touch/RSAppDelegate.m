@@ -84,13 +84,26 @@
     gameType = newGameType;
 }
 
-- (void) processDisconnect {
-    NSLog(@"Delegate: We have been disconnected from the server");
-    [self abandonGame];
-    sleep(1);
+- (void) processConnect {
+    [viewController serverAvailable];
+}
+
+- (void) attemptReconnect:(NSTimer *) timer {
     if(![networkClient isConnected]) {
         [networkClient connectToHost];
     }
+}
+
+- (void) processDisconnect {
+    NSLog(@"Delegate: We are disconnected from the server, attempting reconnect");
+    [self abandonGame];
+    [viewController serverNotAvailable];
+    float timer = 1.0;
+    [NSTimer scheduledTimerWithTimeInterval:timer
+                                     target:self
+                                   selector:@selector(attemptReconnect:)
+                                   userInfo:nil
+                                    repeats:NO];
 }
 
 - (void) processServerStatistics:(RSStatusUpdate *) newStats {
