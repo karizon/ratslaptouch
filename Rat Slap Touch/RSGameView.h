@@ -30,7 +30,8 @@
 - (void) drawStarAt:(CGPoint) point
               alpha: (float) alpha;
 - (void) drawCardBackAt:(CGPoint) point
-                  alpha:(float) alpha;
+                  alpha:(float) alpha
+               vertical:(BOOL) vertical;
 - (void) drawCardAt:(CGPoint) point
                suit:(char) suit
                card:(NSString *) card;

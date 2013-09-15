@@ -87,7 +87,7 @@
     [starPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
 }
 
-- (void) drawCardBackAt:(CGPoint) point alpha:(float) alpha {
+- (void) drawCardBackAt:(CGPoint) point alpha:(float) alpha vertical:(BOOL) vertical {
     // General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -699,7 +699,7 @@
             alpha = 0.15;
         if(![card active])
             alpha = 0.15;
-        [self drawCardBackAt:[card cardPosition] alpha:alpha];
+        [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:YES];
     }
 }
 
