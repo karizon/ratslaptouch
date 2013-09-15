@@ -1,7 +1,7 @@
 client TODO:
 show player names
 show current player position
-handle server disconnects
+handle server disconnects / reloading
 click detection (mostly done?)
 game center matchmaking vs friends
 fill w/ random players from gamecenter match
