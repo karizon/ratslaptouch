@@ -37,6 +37,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     if([networkClient isConnected]) {
+        [self abandonGame];
         [networkClient forceDisconnect];
     }
 }
@@ -69,8 +70,12 @@
 
 - (void) abandonGame {
     NSLog(@"Delegate: Abandoning Game");
-    gameType = NO_CURRENT_GAME;
+    if(gameViewController) {
+        NSLog(@"Delegate: attempting to pull view");
+        [gameViewController.navigationController popViewControllerAnimated:YES];
+    }
     [networkClient leaveGame];
+    gameType = NO_CURRENT_GAME;
 }
 
 - (void) joinGame:(int) newGameType {
@@ -82,6 +87,10 @@
 - (void) processDisconnect {
     NSLog(@"Delegate: We have been disconnected from the server");
     [self abandonGame];
+    sleep(1);
+    if(![networkClient isConnected]) {
+        [networkClient connectToHost];
+    }
 }
 
 - (void) processServerStatistics:(RSStatusUpdate *) newStats {
