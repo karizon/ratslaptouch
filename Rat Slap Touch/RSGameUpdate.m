@@ -19,6 +19,8 @@
         position = newPosition;
         if([newStatus isEqualToString:@"NEWPLAYER"]) {
             gameStatus = GAME_NEWPLAYER;
+        } else if([newStatus isEqualToString:@"NICKNAMECHANGE"]) {
+            gameStatus = GAME_NEWPLAYER;
         } else if([newStatus isEqualToString:@"UPDATE"]) {
             gameStatus = GAME_PLAYING;
         } else if([newStatus isEqualToString:@"GAMESTART"]) {
