@@ -172,7 +172,7 @@
     } else {
         NSString* dataType = [serverResponse valueForKey:@"type"];
         if([dataType isEqualToString:@"HELO"]) {
-            NSLog(@"Network: Successfully received HELO string");
+            // NSLog(@"Network: Successfully received HELO string");
         } else if([dataType isEqualToString:@"GAME"]) {
             NSLog(@"Network: Received Game Update");
             if([[serverResponse valueForKey:@"status"] isEqualToString:@"ENDED"]) {

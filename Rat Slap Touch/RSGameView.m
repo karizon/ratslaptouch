@@ -20,7 +20,7 @@
 }
 
 - (void) gameViewInit {
-    NSLog(@"Game View: Initializing (new game board)");
+    // NSLog(@"Game View: Initializing (new game board)");
     stillWaiting = YES;
     totalPlayers = 0;
     currentPlayers = 0;
@@ -728,13 +728,13 @@
 }
 
 - (void) setWaiting: (BOOL) waiting {
-    NSLog(@"Game View: Changing whether or not we're waiting on players");
+    // NSLog(@"Game View: Changing whether or not we're waiting on players");
     stillWaiting = waiting;
     [self setNeedsDisplay];
 }
 
 - (void) setPlayers: (int) current total:(int) total position:(int) position {
-    NSLog(@"Game View: changing number of players on the board");
+    // NSLog(@"Game View: changing number of players on the board");
     myPosition = position;
     totalPlayers = total;
 
@@ -818,11 +818,11 @@
 
 
 - (void) repositionStackedCards {
+    // NSLog(@"Game View: Placing Player Card Stacks for position %d",myPosition);
     // Clear out all old stacked cards:
-    NSLog(@"Game View: Placing Player Card Stacks for position %d",myPosition);
     [visibleStackedCards removeAllObjects];
     for(int i=1;i<=totalPlayers;i++) {
-        NSLog(@"Game View: Calculating position for Player %d",i);
+        // NSLog(@"Game View: Calculating position for Player %d",i);
         RSVisibleCard *newCard = [[RSVisibleCard alloc] initWithCardSize:CGRectMake(0, 0, 0, 0)];
         if(i == myPosition) {
             // Player Position

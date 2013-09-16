@@ -8,6 +8,7 @@ fill w/ random players from gamecenter match
 draw stacks underneath player cards
 Help screen / about
 gameplay
+Force game client / server to have same protocol version
 
 
 Server:

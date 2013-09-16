@@ -69,14 +69,13 @@ static RSGCHelper *sharedHelper = nil;
     
     if (!gameCenterAvailable) return;
     
-    NSLog(@"GameCenter: Testing user authentication...");
     [GKLocalPlayer localPlayer].authenticateHandler = ^(UIViewController *viewController,NSError *error) {
         if ([GKLocalPlayer localPlayer].authenticated) {
             // Do nothing. already logged in.
         } else if(viewController) {
             NSLog(@"GameCenter: Presenting login dialog box (not logged into GameCenter)");
             UIViewController *presentingController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-            [presentingController presentViewController:viewController animated:NO completion:nil];//present the login form
+            [presentingController presentViewController:viewController animated:NO completion:nil];
         } else {
             //problem with authentication,probably bc the user doesn't use Game Center
         }
