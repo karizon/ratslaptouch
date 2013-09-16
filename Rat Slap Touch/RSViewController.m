@@ -10,10 +10,6 @@
 #import "RSAppDelegate.h"
 #import "RSStatusUpdate.h"
 
-@interface RSViewController ()
-
-@end
-
 @implementation RSViewController
 
 - (void)viewDidLoad {
@@ -42,7 +38,6 @@
 
 
 - (void) updateServerStatistics:(RSStatusUpdate *)stats {
-    NSLog(@"RSView: Updating Stats on display");
     [_activePlayersLabel setText:[NSString stringWithFormat:@"%d",[stats clients]]];
     [_activeGamesLabel setText:[NSString stringWithFormat:@"%d",[stats games]]];
     [_waitingTwoPlayerGames setText:[NSString stringWithFormat:@"%d",[stats twoWaiting]]];
