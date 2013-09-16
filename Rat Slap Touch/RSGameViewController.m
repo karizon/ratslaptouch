@@ -38,7 +38,7 @@
 - (void)didMoveToParentViewController:(UIViewController *)parent {
     // parent is nil if this view controller was removed
     if(!parent) {
-        NSLog(@"RSGameView: We should be pausing the game, returning to main menu now");
+        [appDelegate abandonGame];
     }
 }
 
