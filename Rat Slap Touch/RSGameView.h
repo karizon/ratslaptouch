@@ -21,6 +21,7 @@
     int maxPlayedVisible;
     int myPosition;
     BOOL touchPending;
+    RSVisibleCard *touchedCard;
 }
 
 + (BOOL) isPad;

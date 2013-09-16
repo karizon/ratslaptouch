@@ -74,7 +74,7 @@ static RSGCHelper *sharedHelper = nil;
         if ([GKLocalPlayer localPlayer].authenticated) {
             // Do nothing. already logged in.
         } else if(viewController) {
-            NSLog(@"GameCenter: Presenting login dialog box");
+            NSLog(@"GameCenter: Presenting login dialog box (not logged into GameCenter)");
             UIViewController *presentingController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
             [presentingController presentViewController:viewController animated:NO completion:nil];//present the login form
         } else {

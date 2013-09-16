@@ -16,7 +16,7 @@
         suit = SUIT_UNDEFINED;
         showing = NO;
         face = nil;
-        playable = NO;
+        playable = YES;
         belongsToPlayer = 0;
         active = YES;
         draggable = NO;

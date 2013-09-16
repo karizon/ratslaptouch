@@ -15,7 +15,10 @@
     int fourWaiting;
 }
 
-- (id) initWithClients:(int) numClients games:(int) numGames twoWaiting:(int) numTwoWaiting fourWaiting:(int) numFourWaiting;
+- (id) initWithClients:(int) numClients
+                 games:(int) numGames
+            twoWaiting:(int) numTwoWaiting
+           fourWaiting:(int) numFourWaiting;
 
 - (int) clients;
 - (int) games;
