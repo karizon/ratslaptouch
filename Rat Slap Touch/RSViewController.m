@@ -22,7 +22,6 @@
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignViewController:self];
     queuedGameType = NO_CURRENT_GAME;
-//    [UIViewController attemptRotationToDeviceOrientation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,14 +31,12 @@
 
 - (IBAction)joinTwoPlayerGame:(id)sender {
     if(queuedGameType != TWO_PLAYER_GAME) {
-        // NSLog(@"RSView: About to join new two player game");
         queuedGameType = TWO_PLAYER_GAME;
     }
 }
 
 - (IBAction)joinFourPlayerGame:(id)sender {
     if(queuedGameType != FOUR_PLAYER_GAME) {
-        // NSLog(@"RSView: About to join new four player game");
         queuedGameType = FOUR_PLAYER_GAME;
     }
 }
