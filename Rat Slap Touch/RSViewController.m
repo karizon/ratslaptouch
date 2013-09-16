@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // NSLog(@"RSView: Loaded");
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignViewController:self];
     queuedGameType = NO_CURRENT_GAME;
@@ -71,7 +70,6 @@
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1) {
-        // NSLog(@"RSView: We apparently want to kill the old game!");
         [appDelegate abandonGame];
         [appDelegate joinGame:queuedGameType];
         [self performSegueWithIdentifier:@"gameStartSegue" sender:self];
