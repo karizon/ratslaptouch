@@ -28,6 +28,7 @@
 		0AAF7B7417CACBEE001E74D8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF7B7317CACBEE001E74D8 /* GameKit.framework */; };
 		0ACB597F17DB984E0076A14B /* RSGameUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB597E17DB984E0076A14B /* RSGameUpdate.m */; };
 		0ACB598217DCC5540076A14B /* RSVisibleCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB598117DCC5540076A14B /* RSVisibleCard.m */; };
+		0AD4DD4F17E90A7000DADD0B /* RSCardSuits.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		0ACB597E17DB984E0076A14B /* RSGameUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGameUpdate.m; sourceTree = "<group>"; };
 		0ACB598017DCC5540076A14B /* RSVisibleCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSVisibleCard.h; sourceTree = "<group>"; };
 		0ACB598117DCC5540076A14B /* RSVisibleCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSVisibleCard.m; sourceTree = "<group>"; };
+		0AD4DD4D17E90A7000DADD0B /* RSCardSuits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSCardSuits.h; sourceTree = "<group>"; };
+		0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCardSuits.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				0ACB598117DCC5540076A14B /* RSVisibleCard.m */,
 				0AAF7B7017CAB25B001E74D8 /* RSGameView.h */,
 				0AAF7B7117CAB25B001E74D8 /* RSGameView.m */,
+				0AD4DD4D17E90A7000DADD0B /* RSCardSuits.h */,
+				0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */,
 				0A4ABAAE17D4CA72007848FB /* RSGameViewController.h */,
 				0A4ABAAF17D4CA72007848FB /* RSGameViewController.m */,
 				0A209ECA17CA8079002B6ACF /* RSViewController.h */,
@@ -246,6 +251,7 @@
 				0A4ABAB017D4CA72007848FB /* RSGameViewController.m in Sources */,
 				0A3979FE17CBF420003466AF /* RSStatusUpdate.m in Sources */,
 				0A209EEF17CA8A1C002B6ACF /* GCDAsyncSocket.m in Sources */,
+				0AD4DD4F17E90A7000DADD0B /* RSCardSuits.m in Sources */,
 				0ACB598217DCC5540076A14B /* RSVisibleCard.m in Sources */,
 				0A209EBF17CA8079002B6ACF /* main.m in Sources */,
 				0A209EC317CA8079002B6ACF /* RSAppDelegate.m in Sources */,
