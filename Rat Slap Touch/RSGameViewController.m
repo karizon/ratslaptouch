@@ -29,7 +29,8 @@
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if((orientation == 0) || (orientation == UIInterfaceOrientationPortrait))  {
         [gameView setOrientationHorizontal:NO];
-    } else if((orientation == UIInterfaceOrientationLandscapeLeft) || (orientation == UIInterfaceOrientationLandscapeRight)) {
+    } else if((orientation == UIInterfaceOrientationLandscapeLeft)
+              || (orientation == UIInterfaceOrientationLandscapeRight)) {
         [gameView setOrientationHorizontal:YES];
     }
 }
@@ -83,10 +84,13 @@
     }
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration {
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
         [gameView setOrientationHorizontal:YES];
-    } else if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+    } else if (toInterfaceOrientation == UIInterfaceOrientationPortrait ||
+               toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
         [gameView setOrientationHorizontal:NO];
     }
 }
