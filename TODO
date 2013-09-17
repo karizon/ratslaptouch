@@ -15,4 +15,4 @@ Server:
 Shuffle cards
 Card play triggers active rules
 gameplay
-better reporting interface / management
+better reporting interface / management (remote kill client, remote client listing / reporting, client banning, etc)
