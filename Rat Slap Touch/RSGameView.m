@@ -194,7 +194,9 @@
             x2 += 40;
         }
     } else {
-        float x2 = point.x + 17;
+        float x2 = point.x + 20;
+        if(vertical)
+            x2 = point.x + 17;
         for(int x=0;x<horizontalStars;x++) {
             float y2 = point.y + 10;
             if(vertical)
@@ -807,9 +809,9 @@
         }
     } else {
         if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width - 75, self.bounds.size.height / 2 - 120, 150, 240);
+            return CGRectMake(self.bounds.size.width - 120, self.bounds.size.height / 2 - 75, 150, 240);
         } else {
-            return CGRectMake(self.bounds.size.width - 37.5, self.bounds.size.height / 2 - 60, 75, 120);
+            return CGRectMake(self.bounds.size.width - 60, self.bounds.size.height / 2 - 37.5, 75, 120);
         }
     }
 }
@@ -823,9 +825,9 @@
         }
     } else {
         if([RSGameView isPad]) {
-            return CGRectMake(-75, self.bounds.size.height / 2 - 120, 150, 240);
+            return CGRectMake(-120, self.bounds.size.height / 2 - 75, 150, 240);
         } else {
-            return CGRectMake(-37.5, self.bounds.size.height / 2 - 60, 75, 120);
+            return CGRectMake(-60, self.bounds.size.height / 2 - 37.5, 75, 120);
         }
     }
 }
@@ -833,9 +835,9 @@
 - (CGRect) getPlayer2Position {
     if(horizontal) {
         if([RSGameView isPad]) {
-            return CGRectMake(-75, self.bounds.size.height / 2 - 120, 150, 240);
+            return CGRectMake(-120, self.bounds.size.height / 2 - 75, 150, 240);
         } else {
-            return CGRectMake(-37.5, self.bounds.size.height / 2 - 60, 75, 120);
+            return CGRectMake(-60, self.bounds.size.height / 2 - 37.5, 75, 120);
         }
     } else {
         if([RSGameView isPad]) {
@@ -849,9 +851,9 @@
 - (CGRect) getPlayer1Position {
     if(horizontal) {
         if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120, 150, 240);
+            return CGRectMake(self.bounds.size.width - 251, self.bounds.size.height / 2 - 75, 150, 240);
         } else {
-            return CGRectMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60, 75, 120);
+            return CGRectMake(self.bounds.size.width - 125.5, self.bounds.size.height / 2 - 37.5, 75, 120);
         }
     } else {
         if([RSGameView isPad]) {
