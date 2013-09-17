@@ -112,79 +112,98 @@
     CGFloat shadowBlurRadius = 4.5;
     
     // Outer Card Drawing
+    UIBezierPath *outerCardPath;
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+    CGContextBeginTransparencyLayer(context, NULL);
+    CGContextSetAlpha(context,alpha);
     if([RSGameView isPad]) {
-        UIBezierPath *outerCardPath;
-        if(vertical) {
+        if(vertical)
             outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 150, 240)
                                                        cornerRadius: 8];
-        } else {
+        else
             outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 240, 150)
                                                        cornerRadius: 8];
-        }
-        CGContextSaveGState(context);
-        CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
-        CGContextBeginTransparencyLayer(context, NULL);
-        CGContextSetAlpha(context,alpha);
+
         [outerCardPath addClip];
         CGContextDrawLinearGradient(context, gradient2, CGPointMake(point.x - 20, point.y + 24),
                                     CGPointMake(point.x + 170, point.y + 220), 0);
-        CGContextEndTransparencyLayer(context);
-        CGContextRestoreGState(context);
-        
-        [[UIColor blackColor] setStroke];
-        outerCardPath.lineWidth = 1;
-        [outerCardPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
-        UIBezierPath *outerCardPath;
-        if(vertical) {
+        if(vertical)
             outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 75, 120)
                                                        cornerRadius: 4];
-        } else {
+        else
             outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 120, 75)
                                                        cornerRadius: 4];
-        }
-        CGContextSaveGState(context);
-        CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
-        CGContextBeginTransparencyLayer(context, NULL);
-        CGContextSetAlpha(context,alpha);
         [outerCardPath addClip];
         CGContextDrawLinearGradient(context, gradient2, CGPointMake(point.x - 10, point.y + 12),
                                     CGPointMake(point.x + 85, point.y + 110), 0);
-        CGContextEndTransparencyLayer(context);
-        CGContextRestoreGState(context);
-        
-        [[UIColor blackColor] setStroke];
-        outerCardPath.lineWidth = 1;
-        [outerCardPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     }
+    CGContextEndTransparencyLayer(context);
+    CGContextRestoreGState(context);
+    
+    [[UIColor blackColor] setStroke];
+    outerCardPath.lineWidth = 1;
+    [outerCardPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     
     // Inner Card Drawing
+    UIBezierPath *innerCardPath;
     if([RSGameView isPad]) {
-        UIBezierPath *innerCardPath = [UIBezierPath bezierPathWithRoundedRect:
-                                       CGRectMake(point.x + 10, point.y + 10, 128, 220)
-                                                                 cornerRadius: 8];
-        [color3 setFill];
-        [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
+        if(vertical)
+            innerCardPath = [UIBezierPath bezierPathWithRoundedRect:
+                             CGRectMake(point.x + 10, point.y + 10, 128, 220)
+                                                       cornerRadius: 8];
+        else
+            innerCardPath = [UIBezierPath bezierPathWithRoundedRect:
+                             CGRectMake(point.x + 10, point.y + 10, 220, 128)
+                                                       cornerRadius: 8];
     } else {
-        UIBezierPath *innerCardPath = [UIBezierPath bezierPathWithRoundedRect:
-                                       CGRectMake(point.x + 5, point.y + 5, 64, 110)
-                                                                 cornerRadius: 4];
-        [color3 setFill];
-        [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
+        if(vertical)
+            innerCardPath = [UIBezierPath bezierPathWithRoundedRect:
+                             CGRectMake(point.x + 5, point.y + 5, 64, 110)
+                                                       cornerRadius: 4];
+        else
+            innerCardPath = [UIBezierPath bezierPathWithRoundedRect:
+                             CGRectMake(point.x + 5, point.y + 5, 110, 64)
+                                                       cornerRadius: 4];
     }
+    [color3 setFill];
+    [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
+
     
     // Draw star card backs
+    int horizontalStars = 5;
+    int verticalStars = 3;
+    if(vertical) {
+        horizontalStars = 3;
+        verticalStars = 5;
+    }
+    
     if([RSGameView isPad]) {
-        for(float x2 = (point.x + 35); x2 < (point.x + 140); x2 += 40) {
-            for(float y2 = (point.y + 24); y2 < (point.y + 200); y2 += 40) {
+        float x2 = point.x + 40;
+        if(vertical)
+            x2 = point.x + 35;
+        for(int x=0;x<horizontalStars;x++) {
+            float y2 = point.y + 18;
+            if(vertical)
+                y2 = point.y + 24;
+            for(int y=0;y<verticalStars;y++) {
                 [self drawStarAt:CGPointMake(x2,y2) alpha:1];
+                y2 += 40;
             }
+            x2 += 40;
         }
     } else {
-        for(float x2 = (point.x + 17); x2 < (point.x + 75); x2 += 20) {
-            for(float y2 = (point.y + 13); y2 < (point.y + 100); y2 += 20) {
+        float x2 = point.x + 17;
+        for(int x=0;x<horizontalStars;x++) {
+            float y2 = point.y + 10;
+            if(vertical)
+                y2 = point.y + 13;
+            for(int y=0;y<verticalStars;y++) {
                 [self drawStarAt:CGPointMake(x2,y2) alpha:1];
+                y2 += 20;
             }
+            x2 += 20;
         }
     }
 
@@ -712,7 +731,22 @@
             alpha = 0.15;
         if(![card active])
             alpha = 0.15;
-        [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:YES];
+        // Cards along left or right side should be horizontal (facing center pile) instead of vertical
+        if(horizontal) {
+            if((([card belongsToPlayer] == 2) && (totalPlayers == 2)) ||
+               ([card belongsToPlayer] == 3) ||
+               ([card belongsToPlayer] == 1))
+                [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:NO];
+            else
+                [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:YES];
+        } else {
+            if((([card belongsToPlayer] == 2) && (totalPlayers == 2)) ||
+               ([card belongsToPlayer] == 3) ||
+               ([card belongsToPlayer] == 1))
+                [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:YES];
+            else
+                [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:NO];
+        }
     }
 }
 

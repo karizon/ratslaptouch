@@ -9,6 +9,7 @@ draw stacks underneath player cards
 Help screen / about
 gameplay
 Force game client / server to have same protocol version
+Two JSON packets in same transmission tends to break game, won't process appropriately
 
 
 Server:
