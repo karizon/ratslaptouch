@@ -49,7 +49,7 @@
     return self;
 }
 
-- (void) drawStarAt:(CGPoint) point alpha: (float) alpha{
+- (void) drawStarAt:(CGPoint) point alpha: (float) alpha {
     // Draw Star w/ first point @ x,y
     UIBezierPath *starPath = [UIBezierPath bezierPath];
     if([RSGameView isPad]) {
@@ -113,8 +113,14 @@
     
     // Outer Card Drawing
     if([RSGameView isPad]) {
-        UIBezierPath *outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 150, 240)
-                                                                 cornerRadius: 8];
+        UIBezierPath *outerCardPath;
+        if(vertical) {
+            outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 150, 240)
+                                                       cornerRadius: 8];
+        } else {
+            outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 240, 150)
+                                                       cornerRadius: 8];
+        }
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         CGContextBeginTransparencyLayer(context, NULL);
@@ -129,8 +135,14 @@
         outerCardPath.lineWidth = 1;
         [outerCardPath strokeWithBlendMode:kCGBlendModeNormal alpha:alpha];
     } else {
-        UIBezierPath *outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 75, 120)
-                                                                 cornerRadius: 4];
+        UIBezierPath *outerCardPath;
+        if(vertical) {
+            outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 75, 120)
+                                                       cornerRadius: 4];
+        } else {
+            outerCardPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(point.x, point.y, 120, 75)
+                                                       cornerRadius: 4];
+        }
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         CGContextBeginTransparencyLayer(context, NULL);
@@ -755,15 +767,15 @@
 - (CGRect) getPlayer4Position {
     if(horizontal) {
         if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width / 2 - 75, 11, 150, 240);
+            return CGRectMake(self.bounds.size.width / 2 - 75, -120, 150, 240);
         } else {
-            return CGRectMake(self.bounds.size.width / 2 - 37.5, 5.5, 75, 120);
+            return CGRectMake(self.bounds.size.width / 2 - 37.5, -60, 75, 120);
         }
     } else {
         if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width - 161, self.bounds.size.height / 2 - 120, 150, 240);
+            return CGRectMake(self.bounds.size.width - 75, self.bounds.size.height / 2 - 120, 150, 240);
         } else {
-            return CGRectMake(self.bounds.size.width - 80.5, self.bounds.size.height / 2 - 60, 75, 120);
+            return CGRectMake(self.bounds.size.width - 37.5, self.bounds.size.height / 2 - 60, 75, 120);
         }
     }
 }
@@ -771,15 +783,15 @@
 - (CGRect) getPlayer3Position {
     if(horizontal) {
         if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width / 2 - 75, self.bounds.size.height - 251, 150, 240);
+            return CGRectMake(self.bounds.size.width / 2 - 75, self.bounds.size.height - 120, 150, 240);
         } else {
-            return CGRectMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 125.5, 75, 120);
+            return CGRectMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 60, 75, 120);
         }
     } else {
         if([RSGameView isPad]) {
-            return CGRectMake(11, self.bounds.size.height / 2 - 120, 150, 240);
+            return CGRectMake(-75, self.bounds.size.height / 2 - 120, 150, 240);
         } else {
-            return CGRectMake(5.5, self.bounds.size.height / 2 - 60, 75, 120);
+            return CGRectMake(-37.5, self.bounds.size.height / 2 - 60, 75, 120);
         }
     }
 }
@@ -787,15 +799,15 @@
 - (CGRect) getPlayer2Position {
     if(horizontal) {
         if([RSGameView isPad]) {
-            return CGRectMake(11, self.bounds.size.height / 2 - 120, 150, 240);
+            return CGRectMake(-75, self.bounds.size.height / 2 - 120, 150, 240);
         } else {
-            return CGRectMake(5.5, self.bounds.size.height / 2 - 60, 75, 120);
+            return CGRectMake(-37.5, self.bounds.size.height / 2 - 60, 75, 120);
         }
     } else {
         if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width / 2 - 75, 11, 150, 240);
+            return CGRectMake(self.bounds.size.width / 2 - 75, -120, 150, 240);
         } else {
-            return CGRectMake(self.bounds.size.width / 2 - 37.5, 5.5, 75, 120);
+            return CGRectMake(self.bounds.size.width / 2 - 37.5, -60, 75, 120);
         }
     }
 }
