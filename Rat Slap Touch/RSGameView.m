@@ -796,10 +796,12 @@
             current_x = current_x + 75;
         } else {
             // For some reason 3.5 vs 4 inch screens don't actually return the height properly??
-            if([[UIScreen mainScreen] bounds].size.height == 480) {
-                [card setCardSize:CGRectMake(current_x, self.bounds.size.height / 2 - 100, 75, 120)];
+            NSLog(@"Game View: Screen Height: %f vs %f",[[UIScreen mainScreen] bounds].size.height,
+                  self.bounds.size.height);
+            if(([[UIScreen mainScreen] bounds].size.height == 480) && !horizontal) {
+                [card setCardSize:CGRectMake(current_x, (self.bounds.size.height / 2) - 100, 75, 120)];
             } else {
-                [card setCardSize:CGRectMake(current_x, self.bounds.size.height / 2 - 60, 75, 120)];
+                [card setCardSize:CGRectMake(current_x, (self.bounds.size.height / 2) - 60, 75, 120)];
             }
             current_x = current_x + 37.5;
         }
