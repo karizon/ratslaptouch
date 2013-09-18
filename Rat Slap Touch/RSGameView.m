@@ -590,6 +590,28 @@
     [roundedRectanglePath strokeWithBlendMode:kCGBlendModeNormal alpha:0.3];
 }
 
+- (BOOL) shouldBeVertical:(int) player {
+    if(horizontal) {
+        if((player == 2) && (totalPlayers == 2)) {
+            return NO;
+        } else if((player == (myPosition + 2)) || (player == myPosition) || (player == myPosition - 2)) {
+            return NO;
+        } else {
+            return YES;
+        }
+    } else {
+        if((player == 2) && (totalPlayers == 2)) {
+            return YES;
+        } else if((player == (myPosition + 2)) || (player == myPosition) || (player == myPosition - 2)) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+
+    return NO;
+}
+
 - (void) drawVisibleStackedCards {
     for(RSVisibleCard *card in visibleStackedCards) {
         if([card belongsToPlayer] == myPosition) {
@@ -602,21 +624,9 @@
         if(![card active])
             alpha = 0.15;
         // Cards along left or right side should be horizontal (facing center pile) instead of vertical
-        if(horizontal) {
-            if((([card belongsToPlayer] == 2) && (totalPlayers == 2)) ||
-               ([card belongsToPlayer] == 3) ||
-               ([card belongsToPlayer] == 1))
-                [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:NO];
-            else
-                [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:YES];
-        } else {
-            if((([card belongsToPlayer] == 2) && (totalPlayers == 2)) ||
-               ([card belongsToPlayer] == 3) ||
-               ([card belongsToPlayer] == 1))
-                [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:YES];
-            else
-                [self drawCardBackAt:[card cardPosition] alpha:alpha vertical:NO];
-        }
+        [self drawCardBackAt:[card cardPosition]
+                       alpha:alpha
+                    vertical:[self shouldBeVertical:[card belongsToPlayer]]];
     }
 }
 

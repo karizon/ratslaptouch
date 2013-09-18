@@ -37,6 +37,8 @@
                suit:(char) suit
                card:(NSString *) card;
 
+- (BOOL) shouldBeVertical:(int) player;
+
 - (CGRect) getPlayer1Position;
 - (CGRect) getPlayer2Position;
 - (CGRect) getPlayer3Position;
