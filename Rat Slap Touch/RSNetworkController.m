@@ -161,7 +161,9 @@
         curData = oldData;
     }
     NSError *jsonParsingError = nil;
-    NSDictionary *serverResponse = [NSJSONSerialization JSONObjectWithData:curData options:0 error:&jsonParsingError];
+    NSDictionary *serverResponse = [NSJSONSerialization JSONObjectWithData:curData
+                                                                   options:0
+                                                                     error:&jsonParsingError];
     if(jsonParsingError) {
         if(![[[NSString alloc] initWithData:curData encoding:NSUTF8StringEncoding] isEqualToString:@"\n"]) {
             NSLog(@"Network: Incomplete JSON, chunking into bucket for next packet");

@@ -21,7 +21,6 @@
 }
 
 - (void) gameViewInit {
-    // NSLog(@"Game View: Initializing (new game board)");
     stillWaiting = YES;
     totalPlayers = 0;
     currentPlayers = 0;
@@ -172,7 +171,7 @@
     [innerCardPath fillWithBlendMode:kCGBlendModeNormal alpha:alpha];
 
     
-    // Draw star card backs
+    // Draw star card backs - 5x3 for a horizontal card, 3x5 for a vertical card
     int horizontalStars = 5;
     int verticalStars = 3;
     if(vertical) {

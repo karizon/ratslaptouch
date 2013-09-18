@@ -44,7 +44,6 @@
         [spadePath addCurveToPoint: CGPointMake(point.x + 59.11, point.y + 151.45)
                      controlPoint1: CGPointMake(point.x + 38.91, point.y + 159.65)
                      controlPoint2: CGPointMake(point.x + 50.35, point.y + 157.68)];
-        
     } else {
         [spadePath moveToPoint: CGPointMake(point.x + 30.42, point.y + 72.99)];
         [spadePath addCurveToPoint: CGPointMake(point.x + 34.47, point.y + 79.52)
@@ -76,7 +75,6 @@
         [spadePath addCurveToPoint: CGPointMake(point.x + 30.42, point.y + 72.99)
                      controlPoint1: CGPointMake(point.x + 21.28, point.y + 76.39)
                      controlPoint2: CGPointMake(point.x + 26.46, point.y + 75.58)];
-        
     }
     [spadePath closePath];
 
