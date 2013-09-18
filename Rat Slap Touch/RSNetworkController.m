@@ -151,6 +151,33 @@
 	// NSLog(@"Network: Data written successfully for tag:%ld", tag);
 }
 
+- (void) handleJSONBlock:(NSDictionary *) serverResponse {
+    NSString* dataType = [serverResponse valueForKey:@"type"];
+    if([dataType isEqualToString:@"HELO"]) {
+        // NSLog(@"Network: Successfully received HELO string");
+    } else if([dataType isEqualToString:@"GAME"]) {
+        NSLog(@"Network: Received Game Update");
+        if([[serverResponse valueForKey:@"status"] isEqualToString:@"ENDED"]) {
+            if([[serverResponse valueForKey:@"winner"] integerValue]) {
+                [appDelegate gameEnded:YES];
+            } else {
+                [appDelegate gameEnded:NO];
+            }
+        } else {
+            [appDelegate processGameUpdate:[[RSGameUpdate alloc]
+                                            initWithPlayers:[[serverResponse
+                                                              valueForKey:@"playerCount"] integerValue]
+                                            newGameSize:[[serverResponse valueForKey:@"gameSize"] integerValue]
+                                            gameID:[[serverResponse valueForKey:@"gameID"] integerValue]
+                                            status:[serverResponse valueForKey:@"status"]
+                                            position:[[serverResponse valueForKey:@"position"] integerValue]]];
+        }
+    } else if([dataType isEqualToString:@"STATISTICS"]) {
+        if([[serverResponse valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
+            [self processStatistics:serverResponse];
+        }
+    }
+}
 
 #pragma mark Main Processing Loop Here
 
@@ -172,31 +199,7 @@
             }
         }
     } else {
-        NSString* dataType = [serverResponse valueForKey:@"type"];
-        if([dataType isEqualToString:@"HELO"]) {
-            // NSLog(@"Network: Successfully received HELO string");
-        } else if([dataType isEqualToString:@"GAME"]) {
-            NSLog(@"Network: Received Game Update");
-            if([[serverResponse valueForKey:@"status"] isEqualToString:@"ENDED"]) {
-                if([[serverResponse valueForKey:@"winner"] integerValue]) {
-                    [appDelegate gameEnded:YES];
-                } else {
-                    [appDelegate gameEnded:NO];
-                }
-            } else {
-                [appDelegate processGameUpdate:[[RSGameUpdate alloc]
-                                                initWithPlayers:[[serverResponse
-                                                                  valueForKey:@"playerCount"] integerValue]
-                                                newGameSize:[[serverResponse valueForKey:@"gameSize"] integerValue]
-                                                gameID:[[serverResponse valueForKey:@"gameID"] integerValue]
-                                                status:[serverResponse valueForKey:@"status"]
-                                                position:[[serverResponse valueForKey:@"position"] integerValue]]];
-            }
-        } else if([dataType isEqualToString:@"STATISTICS"]) {
-            if([[serverResponse valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
-                [self processStatistics:serverResponse];
-            }
-        }
+        [self handleJSONBlock:serverResponse];
         oldData = nil;
     }
 }
