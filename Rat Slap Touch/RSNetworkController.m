@@ -151,6 +151,8 @@
 	// NSLog(@"Network: Data written successfully for tag:%ld", tag);
 }
 
+#pragma mark Main Processing Loop Here
+
 - (void) handleJSONBlock:(NSDictionary *) serverResponse {
     NSString* dataType = [serverResponse valueForKey:@"type"];
     if([dataType isEqualToString:@"HELO"]) {
@@ -178,8 +180,6 @@
         }
     }
 }
-
-#pragma mark Main Processing Loop Here
 
 - (void)processServerData:(NSData *)data {
     NSData *curData = data;

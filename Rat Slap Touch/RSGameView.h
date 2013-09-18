@@ -44,7 +44,7 @@
 - (CGRect) getPlayer3Position;
 - (CGRect) getPlayer4Position;
 
-- (void) drawPlayerHighlight:(CGPoint) position;
+- (void) drawPlayerHighlight:(CGRect) size;
 
 - (void) drawVisibleStackedCards;
 - (void) drawVisiblePlayedCards;

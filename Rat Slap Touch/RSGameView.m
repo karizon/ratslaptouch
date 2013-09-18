@@ -560,7 +560,7 @@
     [textContent drawInRect:textRect withAttributes:strAttribs];
 }
 
-- (void) drawPlayerHighlight:(CGPoint) position {
+- (void) drawPlayerHighlight:(CGRect) size {
     // Color Declarations
     UIColor *color = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
     
@@ -569,11 +569,13 @@
     
     if([RSGameView isPad]) {
         roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:
-                                CGRectMake(position.x - 10, position.y - 10, 170, 260)
+                                CGRectMake(size.origin.x - 10, size.origin.y - 10,
+                                           size.size.width + 20, size.size.height + 20)
                                                           cornerRadius: 8];
     } else {
         roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:
-                                CGRectMake(position.x - 5, position.y - 5, 85, 130)
+                                CGRectMake(size.origin.x - 5, size.origin.y - 5,
+                                           size.size.width + 10, size.size.height + 10)
                                                           cornerRadius: 4];
     }
     [color setFill];
@@ -614,8 +616,8 @@
 - (void) drawVisibleStackedCards {
     for(RSVisibleCard *card in visibleStackedCards) {
         if([card belongsToPlayer] == myPosition) {
-            // If this is our position, we're going to draw something underneath to denote it
-            [self drawPlayerHighlight:[card cardPosition]];
+            // If this is active playing position, we're going to draw something underneath to denote it
+            [self drawPlayerHighlight:[card cardSize]];
         }
         float alpha = 1.0;
         if([card belongsToPlayer] > currentPlayers)
@@ -686,9 +688,9 @@
         }
     } else {
         if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width - 120, self.bounds.size.height / 2 - 75, 150, 240);
+            return CGRectMake(self.bounds.size.width - 120, self.bounds.size.height / 2 - 75, 240, 150);
         } else {
-            return CGRectMake(self.bounds.size.width - 60, self.bounds.size.height / 2 - 37.5, 75, 120);
+            return CGRectMake(self.bounds.size.width - 60, self.bounds.size.height / 2 - 37.5, 120, 75);
         }
     }
 }
@@ -702,9 +704,9 @@
         }
     } else {
         if([RSGameView isPad]) {
-            return CGRectMake(-120, self.bounds.size.height / 2 - 75, 150, 240);
+            return CGRectMake(-120, self.bounds.size.height / 2 - 75, 240, 150);
         } else {
-            return CGRectMake(-60, self.bounds.size.height / 2 - 37.5, 75, 120);
+            return CGRectMake(-60, self.bounds.size.height / 2 - 37.5, 120, 75);
         }
     }
 }
@@ -712,9 +714,9 @@
 - (CGRect) getPlayer2Position {
     if(horizontal) {
         if([RSGameView isPad]) {
-            return CGRectMake(-120, self.bounds.size.height / 2 - 75, 150, 240);
+            return CGRectMake(-120, self.bounds.size.height / 2 - 75, 240, 150);
         } else {
-            return CGRectMake(-60, self.bounds.size.height / 2 - 37.5, 75, 120);
+            return CGRectMake(-60, self.bounds.size.height / 2 - 37.5, 120, 75);
         }
     } else {
         if([RSGameView isPad]) {
@@ -728,9 +730,9 @@
 - (CGRect) getPlayer1Position {
     if(horizontal) {
         if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width - 251, self.bounds.size.height / 2 - 75, 150, 240);
+            return CGRectMake(self.bounds.size.width - 251, self.bounds.size.height / 2 - 75, 240, 150);
         } else {
-            return CGRectMake(self.bounds.size.width - 125.5, self.bounds.size.height / 2 - 37.5, 75, 120);
+            return CGRectMake(self.bounds.size.width - 125.5, self.bounds.size.height / 2 - 37.5, 120, 75);
         }
     } else {
         if([RSGameView isPad]) {
