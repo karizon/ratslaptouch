@@ -2,10 +2,11 @@ client TODO:
 Abandoning game to main menu should prompt
 Make all cards face the center, non-players should be off to the side
 show player names
-show current player position
+show currently playing player's position
 game center matchmaking vs friends
 fill w/ random players from gamecenter match
 draw stacks underneath player cards
+show how many cards a player has left
 Help screen / about
 gameplay
 Force game client / server to have same protocol version
