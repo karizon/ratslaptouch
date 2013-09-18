@@ -158,7 +158,7 @@
     if([dataType isEqualToString:@"HELO"]) {
         // NSLog(@"Network: Successfully received HELO string");
     } else if([dataType isEqualToString:@"GAME"]) {
-        NSLog(@"Network: Received Game Update");
+        // NSLog(@"Network: Received Game Update");
         if([[JSONBlock valueForKey:@"status"] isEqualToString:@"ENDED"]) {
             if([[JSONBlock valueForKey:@"winner"] integerValue]) {
                 [appDelegate gameEnded:YES];
@@ -182,30 +182,68 @@
 }
 
 - (void)processServerData:(NSData *)data {
+    
+    int totalParsedDistance = 0;
+    
     NSData *curData = data;
     if(oldData) {
-        [oldData appendData:data];
+        if(data) {
+            [oldData appendData:data];
+        }
         curData = oldData;
     }
+    
     NSError *jsonParsingError = nil;
     NSDictionary *serverResponse = [NSJSONSerialization JSONObjectWithData:curData
                                                                    options:0
                                                                      error:&jsonParsingError];
-    if(jsonParsingError) {
-        if(![[[NSString alloc] initWithData:curData encoding:NSUTF8StringEncoding] isEqualToString:@"\n"]) {
-            NSLog(@"Network: Incomplete JSON, chunking into bucket for next packet");
+    NSString *textData = [[NSString alloc] initWithData:curData encoding:NSUTF8StringEncoding];
+    if(![textData isEqualToString:@"\n"]) {
+        NSRange range = [textData rangeOfString:@"}"];
+        if(range.location == NSNotFound) {
+            // NSLog(@"JSON: No closing brace found.  Definitely No complete JSON here.");
             if(!oldData) {
                 oldData = [[NSMutableData alloc] initWithData:data];
             }
+        } else {
+            NSString *localData = textData;
+            while(range.location != NSNotFound) {
+                // We have a closing brace, let's see if we can parse that data;
+                totalParsedDistance += range.location;
+                //NSLog(@"JSON: Total Distance to test is currently %d",totalParsedDistance);
+                NSString *testString = [textData substringToIndex:totalParsedDistance + 1];
+                NSData *newData = [testString dataUsingEncoding:NSUTF8StringEncoding];
+                //NSLog(@"JSON: Testing: %@",testString);
+                NSError *localParsingError = nil;
+                serverResponse = [NSJSONSerialization JSONObjectWithData:newData
+                                                                 options:0
+                                                                   error:&localParsingError];
+                if(localParsingError) {
+                    // NSLog(@"JSON: Not enough data in processed chunk, seeing if we can find another brace");
+                    localData = [localData substringFromIndex:range.location+1];
+                    range = [localData rangeOfString:@"}"];
+                    // Add in the offset for the extra } we had to skip
+                    totalParsedDistance += 1;
+                } else {
+                    NSLog(@"Network: Parsed %@",testString);
+                    [self handleJSONBlock:serverResponse];
+                    // Purge the string we just processed out of the buffer
+                    oldData = [[NSMutableData alloc] init];
+                    [oldData appendData:[[textData substringFromIndex:totalParsedDistance+1] dataUsingEncoding:NSUTF8StringEncoding]];
+                    // Then see if we can process any more data by calling ourselves and then exiting
+                    [self processServerData:nil];
+                    return;
+                }
+            }
+            // NSLog(@"Network: Not enough Data in buffer, waiting for more data");
         }
     } else {
-        [self handleJSONBlock:serverResponse];
         oldData = nil;
     }
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"Network: Received %@",[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding]);
+    // NSLog(@"Network: Received %@",[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding]);
     [self processServerData:data];
     [remoteClient readDataWithTimeout:-1.0 tag:0];
 }
