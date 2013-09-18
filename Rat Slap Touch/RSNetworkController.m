@@ -153,30 +153,30 @@
 
 #pragma mark Main Processing Loop Here
 
-- (void) handleJSONBlock:(NSDictionary *) serverResponse {
-    NSString* dataType = [serverResponse valueForKey:@"type"];
+- (void) handleJSONBlock:(NSDictionary *) JSONBlock {
+    NSString* dataType = [JSONBlock valueForKey:@"type"];
     if([dataType isEqualToString:@"HELO"]) {
         // NSLog(@"Network: Successfully received HELO string");
     } else if([dataType isEqualToString:@"GAME"]) {
         NSLog(@"Network: Received Game Update");
-        if([[serverResponse valueForKey:@"status"] isEqualToString:@"ENDED"]) {
-            if([[serverResponse valueForKey:@"winner"] integerValue]) {
+        if([[JSONBlock valueForKey:@"status"] isEqualToString:@"ENDED"]) {
+            if([[JSONBlock valueForKey:@"winner"] integerValue]) {
                 [appDelegate gameEnded:YES];
             } else {
                 [appDelegate gameEnded:NO];
             }
         } else {
             [appDelegate processGameUpdate:[[RSGameUpdate alloc]
-                                            initWithPlayers:[[serverResponse
+                                            initWithPlayers:[[JSONBlock
                                                               valueForKey:@"playerCount"] integerValue]
-                                            newGameSize:[[serverResponse valueForKey:@"gameSize"] integerValue]
-                                            gameID:[[serverResponse valueForKey:@"gameID"] integerValue]
-                                            status:[serverResponse valueForKey:@"status"]
-                                            position:[[serverResponse valueForKey:@"position"] integerValue]]];
+                                            newGameSize:[[JSONBlock valueForKey:@"gameSize"] integerValue]
+                                            gameID:[[JSONBlock valueForKey:@"gameID"] integerValue]
+                                            status:[JSONBlock valueForKey:@"status"]
+                                            position:[[JSONBlock valueForKey:@"position"] integerValue]]];
         }
     } else if([dataType isEqualToString:@"STATISTICS"]) {
-        if([[serverResponse valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
-            [self processStatistics:serverResponse];
+        if([[JSONBlock valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
+            [self processStatistics:JSONBlock];
         }
     }
 }
