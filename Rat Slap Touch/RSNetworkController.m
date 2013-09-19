@@ -229,7 +229,8 @@
                     [self handleJSONBlock:serverResponse];
                     // Purge the string we just processed out of the buffer
                     oldData = [[NSMutableData alloc] init];
-                    [oldData appendData:[[textData substringFromIndex:totalParsedDistance+1] dataUsingEncoding:NSUTF8StringEncoding]];
+                    [oldData appendData:[[textData substringFromIndex:totalParsedDistance+1]
+                                         dataUsingEncoding:NSUTF8StringEncoding]];
                     // Then see if we can process any more data by calling ourselves and then exiting
                     [self processServerData:nil];
                     return;
