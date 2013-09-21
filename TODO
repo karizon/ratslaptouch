@@ -13,7 +13,6 @@ Force game client / server to have same protocol version
 
 
 Server:
-Shuffle cards
 Card play triggers active rules
 gameplay
 better reporting interface / management (remote kill client, remote client listing / reporting, client banning, etc)
