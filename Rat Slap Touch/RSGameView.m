@@ -593,7 +593,7 @@
 
 - (BOOL) shouldBeVertical:(int) player {
     if(horizontal) {
-        if((player == 2) && (totalPlayers == 2)) {
+        if(((player == (myPosition + 1)) || (player == (myPosition - 1))) && (totalPlayers == 2)) {
             return NO;
         } else if((player == (myPosition + 2)) || (player == myPosition) || (player == myPosition - 2)) {
             return NO;
@@ -601,7 +601,7 @@
             return YES;
         }
     } else {
-        if((player == 2) && (totalPlayers == 2)) {
+        if(((player == (myPosition + 1)) || (player == (myPosition - 1))) && (totalPlayers == 2)) {
             return YES;
         } else if((player == (myPosition + 2)) || (player == myPosition) || (player == myPosition - 2)) {
             return YES;
