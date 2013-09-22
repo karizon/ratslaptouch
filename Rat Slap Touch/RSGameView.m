@@ -772,8 +772,12 @@
             }
         }
         [newCard setPlayer:i];
+        
+        // If there is a player for this position, assign his name to the stack
         if(i <= [playerNames count])
             [newCard setFace:[playerNames objectAtIndex:(i-1)]];
+        else
+            [newCard setFace:@"Waiting..."];
         [visibleStackedCards addObject:newCard];
     }
     [self setNeedsDisplay];
