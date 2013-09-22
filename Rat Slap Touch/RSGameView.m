@@ -752,6 +752,7 @@
     [visibleStackedCards removeAllObjects];
     
     for(int i=1;i<=totalPlayers;i++) {
+        NSLog(@"Assigning for card %d",i);
         RSVisibleCard *newCard = [[RSVisibleCard alloc] initWithCardSize:CGRectMake(0, 0, 0, 0)];
         if(i == myPosition) {
             // Player Position
@@ -771,7 +772,8 @@
             }
         }
         [newCard setPlayer:i];
-        [newCard setFace:[playerNames objectAtIndex:i]];
+        if(i <= [playerNames count])
+            [newCard setFace:[playerNames objectAtIndex:(i-1)]];
         [visibleStackedCards addObject:newCard];
     }
     [self setNeedsDisplay];
