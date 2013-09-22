@@ -21,9 +21,15 @@
     int gameID;
     char gameStatus;
     int position;
+    NSMutableArray *playerNames;
 }
 
-- (id) initWithPlayers: (int) newPlayers newGameSize:(int) newGameSize gameID:(int) newGameID status:(NSString *) newStatus position:(int) newPosition;
+- (id) initWithPlayers: (int) newPlayers
+           newGameSize:(int) newGameSize
+                gameID:(int) newGameID
+                status:(NSString *) newStatus
+              position:(int) newPosition
+           playerNames:(NSMutableArray *) newPlayerNames;
 
 - (char) gameStatus;
 - (char) status;
@@ -31,5 +37,6 @@
 - (int) gameSize;
 - (int) players;
 - (int) position;
+- (NSMutableArray *) playerNames;
 
 @end

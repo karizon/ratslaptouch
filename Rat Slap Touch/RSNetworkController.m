@@ -166,18 +166,27 @@
                 [appDelegate gameEnded:NO];
             }
         } else {
+            NSMutableArray *playerNames = [NSMutableArray array];
+            NSArray *nameArray = [JSONBlock objectForKey:@"playerNames"];
+            for(NSDictionary *nameBlock in nameArray) {
+                [playerNames addObject:[nameBlock valueForKey:@"name"]];
+            }
+            
             [appDelegate processGameUpdate:[[RSGameUpdate alloc]
                                             initWithPlayers:[[JSONBlock
                                                               valueForKey:@"playerCount"] integerValue]
                                             newGameSize:[[JSONBlock valueForKey:@"gameSize"] integerValue]
                                             gameID:[[JSONBlock valueForKey:@"gameID"] integerValue]
                                             status:[JSONBlock valueForKey:@"status"]
-                                            position:[[JSONBlock valueForKey:@"position"] integerValue]]];
+                                            position:[[JSONBlock valueForKey:@"position"] integerValue]
+                                            playerNames:playerNames]];
         }
     } else if([dataType isEqualToString:@"STATISTICS"]) {
         if([[JSONBlock valueForKey:@"status"] isEqualToString:@"SUCCESS"]) {
             [self processStatistics:JSONBlock];
         }
+    } else if([dataType isEqualToString:@"ROUND"]) {
+        
     }
 }
 
@@ -269,6 +278,4 @@
                                                         fourWaiting:[fourWaiting intValue]];
     [appDelegate processServerStatistics:stats];
 }
-
-
 @end

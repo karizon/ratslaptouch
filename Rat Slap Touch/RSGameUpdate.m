@@ -10,13 +10,19 @@
 
 @implementation RSGameUpdate
 
-- (id) initWithPlayers: (int) newPlayers newGameSize:(int) newGameSize gameID:(int) newGameID status:(NSString *) newStatus position:(int) newPosition {
+- (id) initWithPlayers: (int) newPlayers
+           newGameSize:(int) newGameSize
+                gameID:(int) newGameID
+                status:(NSString *) newStatus
+              position:(int) newPosition
+           playerNames:(NSMutableArray *) newPlayerNames {
     self = [super init];
     if(self) {
         gameSize = newGameSize;
         players = newPlayers;
         gameID = newGameID;
         position = newPosition;
+        playerNames = newPlayerNames;
         if([newStatus isEqualToString:@"NEWPLAYER"]) {
             gameStatus = GAME_NEWPLAYER;
         } else if([newStatus isEqualToString:@"NICKNAMECHANGE"]) {
@@ -54,6 +60,10 @@
 
 - (int) position {
     return position;
+}
+
+- (NSMutableArray *) playerNames {
+    return playerNames;
 }
 
 @end
