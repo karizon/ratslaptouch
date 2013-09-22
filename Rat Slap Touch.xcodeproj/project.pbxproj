@@ -129,8 +129,6 @@
 				0A9CAEFA17EFB139002451CB /* Network / Updates */,
 				0A4ABAAB17D16F28007848FB /* RSGCHelper.h */,
 				0A4ABAAC17D16F28007848FB /* RSGCHelper.m */,
-				0ACB598017DCC5540076A14B /* RSVisibleCard.h */,
-				0ACB598117DCC5540076A14B /* RSVisibleCard.m */,
 				0A4ABAAE17D4CA72007848FB /* RSGameViewController.h */,
 				0A4ABAAF17D4CA72007848FB /* RSGameViewController.m */,
 				0A209ECA17CA8079002B6ACF /* RSViewController.h */,
@@ -187,6 +185,8 @@
 				0AAF7B7117CAB25B001E74D8 /* RSGameView.m */,
 				0AD4DD4D17E90A7000DADD0B /* RSCardSuits.h */,
 				0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */,
+				0ACB598017DCC5540076A14B /* RSVisibleCard.h */,
+				0ACB598117DCC5540076A14B /* RSVisibleCard.m */,
 			);
 			name = Drawing;
 			sourceTree = "<group>";
