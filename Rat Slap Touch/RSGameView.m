@@ -745,11 +745,10 @@
 
 
 - (void) repositionStackedCards {
-    // NSLog(@"Game View: Placing Player Card Stacks for position %d",myPosition);
     // Clear out all old stacked cards:
     [visibleStackedCards removeAllObjects];
+    
     for(int i=1;i<=totalPlayers;i++) {
-        // NSLog(@"Game View: Calculating position for Player %d",i);
         RSVisibleCard *newCard = [[RSVisibleCard alloc] initWithCardSize:CGRectMake(0, 0, 0, 0)];
         if(i == myPosition) {
             // Player Position
