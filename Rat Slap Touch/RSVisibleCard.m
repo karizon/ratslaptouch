@@ -69,6 +69,10 @@
     return face;
 }
 
+- (void) setFace:(NSString *) newFace {
+    face = newFace;
+}
+
 - (BOOL) playable {
     return playable;
 }

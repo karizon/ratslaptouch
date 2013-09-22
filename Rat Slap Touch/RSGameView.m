@@ -655,17 +655,20 @@
 }
 
 - (void) setWaiting: (BOOL) waiting {
-    // NSLog(@"Game View: Changing whether or not we're waiting on players");
     stillWaiting = waiting;
     [self setNeedsDisplay];
 }
 
-- (void) setPlayers: (int) current total:(int) total position:(int) position {
-    // NSLog(@"Game View: changing number of players on the board");
+- (void) setPlayers: (int) current
+              total:(int) total
+           position:(int) position
+        playerNames: (NSMutableArray *) newPlayerNames {
+
     myPosition = position;
     totalPlayers = total;
-
     currentPlayers = current;
+    playerNames = newPlayerNames;
+    
     [self repositionStackedCards];
     [self setNeedsDisplay];
 }
@@ -768,6 +771,7 @@
             }
         }
         [newCard setPlayer:i];
+        [newCard setFace:[playerNames objectAtIndex:i]];
         [visibleStackedCards addObject:newCard];
     }
     [self setNeedsDisplay];

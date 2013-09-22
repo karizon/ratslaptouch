@@ -46,5 +46,6 @@
 - (void) setCardSize: (CGRect) newCardSize;
 - (void) setShowing:(BOOL) newShowing;
 - (void) setActive: (BOOL) newActive;
+- (void) setFace:(NSString *) newFace;
 
 @end

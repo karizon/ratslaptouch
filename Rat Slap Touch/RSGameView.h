@@ -17,6 +17,7 @@
     int currentPlayers;
     NSMutableArray *visibleStackedCards;
     NSMutableArray *visiblePlayedCards;
+    NSMutableArray *playerNames;
     int maxStackVisible;
     int maxPlayedVisible;
     int myPosition;
@@ -55,7 +56,8 @@
 - (void) setWaiting: (BOOL) waiting;
 - (void) setPlayers: (int) current
               total:(int) total
-           position:(int) position;
+           position:(int) position
+        playerNames:(NSMutableArray *) playerNames;
 
 - (void) setOrientationHorizontal: (BOOL) isHorizontal;
 
