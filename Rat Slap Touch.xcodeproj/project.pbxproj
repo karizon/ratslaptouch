@@ -24,6 +24,7 @@
 		0A3979FE17CBF420003466AF /* RSStatusUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3979FD17CBF420003466AF /* RSStatusUpdate.m */; };
 		0A4ABAAD17D16F28007848FB /* RSGCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4ABAAC17D16F28007848FB /* RSGCHelper.m */; };
 		0A4ABAB017D4CA72007848FB /* RSGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4ABAAF17D4CA72007848FB /* RSGameViewController.m */; };
+		0A9CAEF917EFB12F002451CB /* RSRoundUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9CAEF817EFB12F002451CB /* RSRoundUpdate.m */; };
 		0AAF7B7217CAB25B001E74D8 /* RSGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF7B7117CAB25B001E74D8 /* RSGameView.m */; };
 		0AAF7B7417CACBEE001E74D8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF7B7317CACBEE001E74D8 /* GameKit.framework */; };
 		0ACB597F17DB984E0076A14B /* RSGameUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB597E17DB984E0076A14B /* RSGameUpdate.m */; };
@@ -60,6 +61,8 @@
 		0A4ABAAC17D16F28007848FB /* RSGCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGCHelper.m; sourceTree = "<group>"; };
 		0A4ABAAE17D4CA72007848FB /* RSGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGameViewController.h; sourceTree = "<group>"; };
 		0A4ABAAF17D4CA72007848FB /* RSGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGameViewController.m; sourceTree = "<group>"; };
+		0A9CAEF717EFB12F002451CB /* RSRoundUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRoundUpdate.h; sourceTree = "<group>"; };
+		0A9CAEF817EFB12F002451CB /* RSRoundUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRoundUpdate.m; sourceTree = "<group>"; };
 		0AAF7B7017CAB25B001E74D8 /* RSGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGameView.h; sourceTree = "<group>"; };
 		0AAF7B7117CAB25B001E74D8 /* RSGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGameView.m; sourceTree = "<group>"; };
 		0AAF7B7317CACBEE001E74D8 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -122,20 +125,12 @@
 		0A209EB817CA8079002B6ACF /* Rat Slap Touch */ = {
 			isa = PBXGroup;
 			children = (
-				0A209EF017CA8B08002B6ACF /* RSNetworkController.h */,
-				0A209EF117CA8B08002B6ACF /* RSNetworkController.m */,
+				0A9CAEFB17EFB158002451CB /* Drawing */,
+				0A9CAEFA17EFB139002451CB /* Network / Updates */,
 				0A4ABAAB17D16F28007848FB /* RSGCHelper.h */,
 				0A4ABAAC17D16F28007848FB /* RSGCHelper.m */,
-				0A3979FC17CBF420003466AF /* RSStatusUpdate.h */,
-				0A3979FD17CBF420003466AF /* RSStatusUpdate.m */,
-				0ACB597D17DB984E0076A14B /* RSGameUpdate.h */,
-				0ACB597E17DB984E0076A14B /* RSGameUpdate.m */,
 				0ACB598017DCC5540076A14B /* RSVisibleCard.h */,
 				0ACB598117DCC5540076A14B /* RSVisibleCard.m */,
-				0AAF7B7017CAB25B001E74D8 /* RSGameView.h */,
-				0AAF7B7117CAB25B001E74D8 /* RSGameView.m */,
-				0AD4DD4D17E90A7000DADD0B /* RSCardSuits.h */,
-				0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */,
 				0A4ABAAE17D4CA72007848FB /* RSGameViewController.h */,
 				0A4ABAAF17D4CA72007848FB /* RSGameViewController.m */,
 				0A209ECA17CA8079002B6ACF /* RSViewController.h */,
@@ -168,6 +163,32 @@
 				0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */,
 			);
 			name = GCDAsyncSocket;
+			sourceTree = "<group>";
+		};
+		0A9CAEFA17EFB139002451CB /* Network / Updates */ = {
+			isa = PBXGroup;
+			children = (
+				0A209EF017CA8B08002B6ACF /* RSNetworkController.h */,
+				0A209EF117CA8B08002B6ACF /* RSNetworkController.m */,
+				0A3979FC17CBF420003466AF /* RSStatusUpdate.h */,
+				0A3979FD17CBF420003466AF /* RSStatusUpdate.m */,
+				0ACB597D17DB984E0076A14B /* RSGameUpdate.h */,
+				0ACB597E17DB984E0076A14B /* RSGameUpdate.m */,
+				0A9CAEF717EFB12F002451CB /* RSRoundUpdate.h */,
+				0A9CAEF817EFB12F002451CB /* RSRoundUpdate.m */,
+			);
+			name = "Network / Updates";
+			sourceTree = "<group>";
+		};
+		0A9CAEFB17EFB158002451CB /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				0AAF7B7017CAB25B001E74D8 /* RSGameView.h */,
+				0AAF7B7117CAB25B001E74D8 /* RSGameView.m */,
+				0AD4DD4D17E90A7000DADD0B /* RSCardSuits.h */,
+				0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */,
+			);
+			name = Drawing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +277,7 @@
 				0A209EBF17CA8079002B6ACF /* main.m in Sources */,
 				0A209EC317CA8079002B6ACF /* RSAppDelegate.m in Sources */,
 				0AAF7B7217CAB25B001E74D8 /* RSGameView.m in Sources */,
+				0A9CAEF917EFB12F002451CB /* RSRoundUpdate.m in Sources */,
 				0A209EF217CA8B08002B6ACF /* RSNetworkController.m in Sources */,
 				0A4ABAAD17D16F28007848FB /* RSGCHelper.m in Sources */,
 				0A209ECC17CA8079002B6ACF /* RSViewController.m in Sources */,
