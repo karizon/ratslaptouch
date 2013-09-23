@@ -60,9 +60,11 @@
            position:(int) position
         playerNames:(NSMutableArray *) playerNames;
 - (void) setActivePlayer:(int) newPlayer;
+- (void) setPlayerStack:(int) position stackSize:(int) newStackSize;
 
 - (void) setOrientationHorizontal: (BOOL) isHorizontal;
 
+- (void) clearPlayedCards;
 - (void) addCardToPlayed:(NSString *) card
                     suit:(char) suit;
 @end

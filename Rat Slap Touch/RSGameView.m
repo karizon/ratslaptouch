@@ -822,6 +822,10 @@
     [self setNeedsDisplay];
 }
 
+- (void) setPlayerStack:(int) position stackSize:(int) newStackSize {
+    
+}
+
 - (void) addCardToPlayed:(NSString *) card suit:(char) suit {
     // Make sure we remove any extra cards before adding one
     while([visiblePlayedCards count] >= maxPlayedVisible) {
