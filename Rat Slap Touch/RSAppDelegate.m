@@ -72,7 +72,6 @@
 - (void) abandonGame {
     NSLog(@"Delegate: Abandoning Game");
     if(gameViewController) {
-        NSLog(@"Delegate: attempting to pull view");
         [gameViewController.navigationController popViewControllerAnimated:YES];
     }
     [networkClient leaveGame];
