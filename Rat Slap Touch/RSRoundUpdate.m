@@ -10,4 +10,22 @@
 
 @implementation RSRoundUpdate
 
+- (id) initWithHandSizes:(NSMutableArray *)newHandSizes whoseMove:(int)newMove {
+    self = [super init];
+    if(self) {
+        handSizes = newHandSizes;
+        whoseMove = newMove;
+    }
+    
+    return self;
+}
+
+- (int) whoseMove {
+    return whoseMove;
+}
+
+- (NSMutableArray *) handSizes {
+    return handSizes;
+}
+
 @end

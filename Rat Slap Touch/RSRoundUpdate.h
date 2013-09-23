@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RSRoundUpdate : NSObject
+@interface RSRoundUpdate : NSObject {
+    NSMutableArray *handSizes;
+    int whoseMove;
+}
+
+- (id) initWithHandSizes:(NSMutableArray *) newHandSizes
+               whoseMove:(int) newMove;
+
+- (int) whoseMove;
+- (NSMutableArray *) handSizes;
 
 @end
