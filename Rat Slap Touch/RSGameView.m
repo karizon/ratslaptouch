@@ -853,7 +853,7 @@
                     if([card active] && [card playable]) {
                         touchPending = YES;
                         touchedCard = card;
-                        NSLog(@"Game View: An active playedcard has been pressed");
+                        // NSLog(@"Game View: An active playedcard has been pressed");
                         return;
                     }
                 }
@@ -867,7 +867,7 @@
                     if([card active] && [card playable]) {
                         touchPending = YES;
                         touchedCard = card;
-                        NSLog(@"Game View: An active stack card has been pressed");
+                        // NSLog(@"Game View: An active stack card has been pressed");
                         return;
                     }
                 }
@@ -892,7 +892,7 @@
             if((point.y >= [touchedCard cardPosition].y) &&
                (point.y <= ([touchedCard cardPosition].y + [touchedCard cardSize].size.height))) {
                 if([touchedCard active] && [touchedCard playable]) {
-                    NSLog(@"Game View: the active card was released");
+                    NSLog(@"Game View: An active card was pressed and then released");
                 }
             }
         }
