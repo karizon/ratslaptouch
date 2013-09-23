@@ -21,6 +21,7 @@
     int maxStackVisible;
     int maxPlayedVisible;
     int myPosition;
+    int activePlayer;
     BOOL touchPending;
     RSVisibleCard *touchedCard;
 }
@@ -58,6 +59,7 @@
               total:(int) total
            position:(int) position
         playerNames:(NSMutableArray *) playerNames;
+- (void) setActivePlayer:(int) newPlayer;
 
 - (void) setOrientationHorizontal: (BOOL) isHorizontal;
 

@@ -21,6 +21,7 @@
 }
 
 - (void) gameViewInit {
+    activePlayer = 0;
     stillWaiting = YES;
     totalPlayers = 0;
     currentPlayers = 0;
@@ -569,13 +570,13 @@
     
     if([RSGameView isPad]) {
         roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:
-                                CGRectMake(size.origin.x - 10, size.origin.y - 10,
-                                           size.size.width + 20, size.size.height + 20)
+                                CGRectMake(size.origin.x - 15, size.origin.y - 15,
+                                           size.size.width + 30, size.size.height + 30)
                                                           cornerRadius: 8];
     } else {
         roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:
-                                CGRectMake(size.origin.x - 5, size.origin.y - 5,
-                                           size.size.width + 10, size.size.height + 10)
+                                CGRectMake(size.origin.x - 7.5, size.origin.y - 7.5,
+                                           size.size.width + 15, size.size.height + 15)
                                                           cornerRadius: 4];
     }
     [color setFill];
@@ -615,7 +616,7 @@
 
 - (void) drawVisibleStackedCards {
     for(RSVisibleCard *card in visibleStackedCards) {
-        if([card belongsToPlayer] == myPosition) {
+        if([card belongsToPlayer] == activePlayer) {
             // If this is active playing position, we're going to draw something underneath to denote it
             [self drawPlayerHighlight:[card cardSize]];
         }
@@ -746,7 +747,6 @@
     }
 }
 
-
 - (void) repositionStackedCards {
     // Clear out all old stacked cards:
     [visibleStackedCards removeAllObjects];
@@ -816,6 +816,12 @@
 
 }
 
+- (void) setActivePlayer:(int) newPlayer {
+    NSLog(@"Game View: Setting %d to active player", newPlayer);
+    activePlayer = newPlayer;
+    [self setNeedsDisplay];
+}
+
 - (void) addCardToPlayed:(NSString *) card suit:(char) suit {
     // Make sure we remove any extra cards before adding one
     while([visiblePlayedCards count] >= maxPlayedVisible) {
@@ -835,7 +841,7 @@
 #pragma mark User Touch Interaction
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if(!stillWaiting) {
+    if(!stillWaiting && (activePlayer == myPosition)) {
         UITouch *touch = [touches anyObject];
         CGPoint point = [touch locationInView:self];
         // NSLog(@"Game View: TOUCH at (%f,%f)", point.x, point.y);

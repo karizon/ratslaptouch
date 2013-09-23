@@ -11,6 +11,7 @@
 @class RSAppDelegate;
 @class RSGameView;
 @class RSGameUpdate;
+@class RSRoundUpdate;
 
 @interface RSGameViewController : UIViewController {
     RSAppDelegate *appDelegate;
@@ -21,4 +22,5 @@
 - (void) gameEnded:(BOOL) winner;
 
 - (void) processGameUpdate:(RSGameUpdate *) newUpdate;
+- (void) processRoundUpdate:(RSRoundUpdate *) newUpdate;
 @end

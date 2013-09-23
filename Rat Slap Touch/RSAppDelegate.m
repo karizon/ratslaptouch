@@ -120,6 +120,7 @@
 
 - (void) processRoundUpdate: (RSRoundUpdate *) newUpdate {
     NSLog(@"Delegate: Processing new Round Information");
+    [gameViewController processRoundUpdate:newUpdate];
 }
 
 - (void) gameCenterLoginSuccessful: (NSString *) playerNickname {

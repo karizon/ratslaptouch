@@ -11,6 +11,7 @@
 #import "RSGameView.h"
 #import "RSVisibleCard.h"
 #import "RSGameUpdate.h"
+#import "RSRoundUpdate.h"
 
 @implementation RSGameViewController
 
@@ -73,7 +74,6 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    NSLog(@"RSGameView: Being asked if I rotate in a direction.  Answering Yes");
     return YES;
 }
 
@@ -85,6 +85,11 @@
     if([newUpdate gameStatus] == GAME_STARTING) {
         [gameView setWaiting:NO];
     }
+}
+
+- (void) processRoundUpdate:(RSRoundUpdate *) newUpdate {
+    NSLog(@"RSGameView: Processing Round Update");
+    [gameView setActivePlayer:[newUpdate whoseMove]];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
