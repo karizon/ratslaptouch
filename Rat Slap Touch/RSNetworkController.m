@@ -10,6 +10,7 @@
 #import "RSAppDelegate.h"
 #import "RSStatusUpdate.h"
 #import "RSGameUpdate.h"
+#import "RSRoundUpdate.h"
 
 #import "GCDAsyncSocket.h"
 
@@ -147,10 +148,6 @@
     [appDelegate assignNickname];
 }
 
-- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
-	// NSLog(@"Network: Data written successfully for tag:%ld", tag);
-}
-
 #pragma mark Main Processing Loop Here
 
 - (void) handleJSONBlock:(NSDictionary *) JSONBlock {
@@ -186,7 +183,15 @@
             [self processStatistics:JSONBlock];
         }
     } else if([dataType isEqualToString:@"ROUND"]) {
-        
+        NSMutableArray *cardStacks = [NSMutableArray array];
+        NSArray *stackArray = [JSONBlock objectForKey:@"handSizes"];
+        for(NSDictionary *nameBlock in stackArray) {
+            [cardStacks addObject:[NSNumber numberWithInt:[[nameBlock valueForKey:@"size"] integerValue]]];
+        }
+        RSRoundUpdate *update = [[RSRoundUpdate alloc] initWithHandSizes:cardStacks
+                                                               whoseMove:[[JSONBlock valueForKey:@"currentPlayer"]
+                                                                          integerValue]];
+        [appDelegate processRoundUpdate:update];
     }
 }
 
@@ -210,7 +215,7 @@
     if(![textData isEqualToString:@"\n"]) {
         NSRange range = [textData rangeOfString:@"}"];
         if(range.location == NSNotFound) {
-            // NSLog(@"JSON: No closing brace found.  Definitely No complete JSON here.");
+            // No closing brace found.  Definitely No complete JSON here.  Append and move on
             if(!oldData) {
                 oldData = [[NSMutableData alloc] initWithData:data];
             }
@@ -228,13 +233,13 @@
                                                                  options:0
                                                                    error:&localParsingError];
                 if(localParsingError) {
-                    // NSLog(@"JSON: Not enough data in processed chunk, seeing if we can find another brace");
+                    // Not enough data in processed chunk, see if we can find another brace
                     localData = [localData substringFromIndex:range.location+1];
                     range = [localData rangeOfString:@"}"];
                     // Add in the offset for the extra } we had to skip
                     totalParsedDistance += 1;
                 } else {
-                    NSLog(@"Network: Parsed %@",testString);
+                    NSLog(@"Network: Successfully Parsed %@",testString);
                     [self handleJSONBlock:serverResponse];
                     // Purge the string we just processed out of the buffer
                     oldData = [[NSMutableData alloc] init];

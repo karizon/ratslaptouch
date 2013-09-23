@@ -10,6 +10,7 @@
 #import "RSNetworkController.h"
 #import "RSStatusUpdate.h"
 #import "RSGameUpdate.h"
+#import "RSRoundUpdate.h"
 #import "RSViewController.h"
 #import "RSGCHelper.h"
 #import "RSGameViewController.h"
@@ -115,6 +116,10 @@
 - (void) processGameUpdate:(RSGameUpdate *) newUpdate {
     NSLog(@"Delegate: Processing updated Game information");
     [gameViewController processGameUpdate:newUpdate];
+}
+
+- (void) processRoundUpdate: (RSRoundUpdate *) newUpdate {
+    NSLog(@"Delegate: Processing new Round Information");
 }
 
 - (void) gameCenterLoginSuccessful: (NSString *) playerNickname {

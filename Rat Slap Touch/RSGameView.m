@@ -638,7 +638,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    NSLog(@"Game View: redrawing game view");
+    // NSLog(@"Game View: redrawing game view");
     [self drawBackground];
     [self drawVisibleStackedCards];
     if(stillWaiting) {

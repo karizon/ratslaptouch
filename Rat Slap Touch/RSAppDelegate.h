@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 #define NO_CURRENT_GAME 0
 #define TWO_PLAYER_GAME 2
 #define FOUR_PLAYER_GAME 4
@@ -19,6 +18,7 @@
 @class RSGameViewController;
 @class RSGCHelper;
 @class RSGameUpdate;
+@class RSRoundUpdate;
 
 @interface RSAppDelegate : UIResponder <UIApplicationDelegate> {
     int gameType;
@@ -42,7 +42,8 @@
 - (void) processConnect;
 - (void) processDisconnect;
 - (void) processServerStatistics:(RSStatusUpdate *) newStats;
-- (void) processGameUpdate:(RSGameUpdate *) newUpdate;
+- (void) processGameUpdate: (RSGameUpdate *) newUpdate;
+- (void) processRoundUpdate: (RSRoundUpdate *) newUpdate;
 
 - (void) gameCenterLoginSuccessful: (NSString *)playerNickname;
 - (void) gameEnded:(BOOL) winner;
