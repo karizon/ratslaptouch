@@ -857,7 +857,7 @@
                     if([card active] && [card playable]) {
                         touchPending = YES;
                         touchedCard = card;
-                        // NSLog(@"Game View: An active playedcard has been pressed");
+                        NSLog(@"Game View: An active playedcard has been pressed");
                         return;
                     }
                 }
@@ -871,7 +871,7 @@
                     if([card active] && [card playable]) {
                         touchPending = YES;
                         touchedCard = card;
-                        // NSLog(@"Game View: An active stack card has been pressed");
+                        NSLog(@"Game View: An active stack card has been pressed");
                         return;
                     }
                 }
@@ -880,30 +880,6 @@
     }
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Game View: System says NO TOUCHING");
-    touchPending = NO;
-    touchedCard = nil;
-}
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if(!stillWaiting && touchPending) {
-        UITouch *touch = [touches anyObject];
-        CGPoint point = [touch locationInView:self];
-        // NSLog(@"Game View: TOUCH RELEASE at (%f,%f)", point.x, point.y);
-        if((point.x >= [touchedCard cardPosition].x) &&
-           (point.x <= ([touchedCard cardPosition].x + [touchedCard cardSize].size.width))) {
-            if((point.y >= [touchedCard cardPosition].y) &&
-               (point.y <= ([touchedCard cardPosition].y + [touchedCard cardSize].size.height))) {
-                if([touchedCard active] && [touchedCard playable]) {
-                    NSLog(@"Game View: An active card was pressed and then released");
-                }
-            }
-        }
-
-        touchPending = NO;
-        touchedCard = nil;
-    }
-}
 
 @end
