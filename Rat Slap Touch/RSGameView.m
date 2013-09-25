@@ -846,7 +846,7 @@
 #pragma mark User Touch Interaction
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if(!stillWaiting && (activePlayer == myPosition)) {
+    if(!stillWaiting) {
         
         RSGameViewController *controller = nil;
         for (UIView* next = [self superview]; next; next = next.superview) {
@@ -877,16 +877,19 @@
                 }
             }
         }
-        for(RSVisibleCard *card in visibleStackedCards) {
-            if((point.x >= [card cardPosition].x) &&
-               (point.x <= ([card cardPosition].x + [card cardSize].size.width))) {
-                if((point.y >= [card cardPosition].y) &&
-                   (point.y <= ([card cardPosition].y + [card cardSize].size.height))) {
-                    if([card active] && [card playable]) {
-                        // Tell controller we clicked a card, and it's from our stack
-                        NSLog(@"Game View: Playing a card out of our hand");
-                        [controller playerPlayedCard:YES];
-                        return;
+        if(activePlayer == myPosition) {
+            // Player may only play from his own stack when it is his turn
+            for(RSVisibleCard *card in visibleStackedCards) {
+                if((point.x >= [card cardPosition].x) &&
+                   (point.x <= ([card cardPosition].x + [card cardSize].size.width))) {
+                    if((point.y >= [card cardPosition].y) &&
+                       (point.y <= ([card cardPosition].y + [card cardSize].size.height))) {
+                        if([card active] && [card playable]) {
+                            // Tell controller we clicked a card, and it's from our stack
+                            NSLog(@"Game View: Playing a card out of our hand");
+                            [controller playerPlayedCard:YES];
+                            return;
+                        }
                     }
                 }
             }
