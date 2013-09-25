@@ -11,6 +11,7 @@
 #import "RSStatusUpdate.h"
 #import "RSGameUpdate.h"
 #import "RSRoundUpdate.h"
+#import "RSVisibleCard.h"
 #import "RSViewController.h"
 #import "RSGCHelper.h"
 #import "RSGameViewController.h"
@@ -135,6 +136,10 @@
 
 - (void) playerPlayedCard:(BOOL) stack {
     [networkClient playCard:stack];
+}
+
+- (void) addCardToPlayed:(RSVisibleCard *) newCard {
+    [gameViewController addCardToPlayed:newCard];
 }
 
 - (void) gameEnded:(BOOL) winner {

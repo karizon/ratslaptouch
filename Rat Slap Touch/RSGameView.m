@@ -870,7 +870,6 @@
                    (point.y <= ([card cardPosition].y + [card cardSize].size.height))) {
                     if([card active] && [card playable]) {
                         // Tell controller we clicked a card, and not from our stack
-                        NSLog(@"Game View: Clicked the played cards (SLAP!)");
                         [controller playerPlayedCard:NO];
                         return;
                     }
@@ -886,7 +885,6 @@
                        (point.y <= ([card cardPosition].y + [card cardSize].size.height))) {
                         if([card active] && [card playable]) {
                             // Tell controller we clicked a card, and it's from our stack
-                            NSLog(@"Game View: Playing a card out of our hand");
                             [controller playerPlayedCard:YES];
                             return;
                         }

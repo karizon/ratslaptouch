@@ -12,6 +12,7 @@
 @class RSGameView;
 @class RSGameUpdate;
 @class RSRoundUpdate;
+@class RSVisibleCard;
 
 @interface RSGameViewController : UIViewController {
     RSAppDelegate *appDelegate;
@@ -24,4 +25,5 @@
 - (void) processGameUpdate:(RSGameUpdate *) newUpdate;
 - (void) processRoundUpdate:(RSRoundUpdate *) newUpdate;
 - (void) playerPlayedCard:(BOOL) stack;
+- (void) addCardToPlayed:(RSVisibleCard *) newCard;
 @end

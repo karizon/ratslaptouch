@@ -22,10 +22,12 @@
     appDelegate = (RSAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate assignGameViewController:self];
     
+    /*
     [gameView addCardToPlayed:@"K" suit:SUIT_CLUB];
     [gameView addCardToPlayed:@"J" suit:SUIT_DIAMOND];
     [gameView addCardToPlayed:@"3" suit:SUIT_SPADE];
     [gameView addCardToPlayed:@"Q" suit:SUIT_HEART];
+     */
 
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if((orientation == 0) || (orientation == UIInterfaceOrientationPortrait))  {
@@ -34,6 +36,10 @@
               || (orientation == UIInterfaceOrientationLandscapeRight)) {
         [gameView setOrientationHorizontal:YES];
     }
+}
+
+- (void) addCardToPlayed:(RSVisibleCard *) newCard {
+    [gameView addCardToPlayed:[newCard face] suit:[newCard suit]];
 }
 
 

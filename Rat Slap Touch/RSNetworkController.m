@@ -11,6 +11,7 @@
 #import "RSStatusUpdate.h"
 #import "RSGameUpdate.h"
 #import "RSRoundUpdate.h"
+#import "RSVisibleCard.h"
 
 #import "GCDAsyncSocket.h"
 
@@ -199,6 +200,22 @@
                                                                whoseMove:[[JSONBlock valueForKey:@"currentPlayer"]
                                                                           integerValue]];
         [appDelegate processRoundUpdate:update];
+    } else if([dataType isEqualToString:@"CARD"]) {
+        char newSuit=0;
+        if([[JSONBlock valueForKey:@"suit"] isEqualToString:@"heart"]) {
+            newSuit = SUIT_HEART;
+        } else if([[JSONBlock valueForKey:@"suit"] isEqualToString:@"diamond"]) {
+            newSuit = SUIT_DIAMOND;
+        } else if([[JSONBlock valueForKey:@"suit"] isEqualToString:@"spade"]) {
+            newSuit = SUIT_SPADE;
+        } else if([[JSONBlock valueForKey:@"suit"] isEqualToString:@"club"]) {
+            newSuit = SUIT_CLUB;
+        }
+        RSVisibleCard *card = [[RSVisibleCard alloc]initShowingWithFace:[JSONBlock valueForKey:@"face"]
+                                                                   suit:newSuit
+                                                               cardSize:CGRectMake(0, 0, 0, 0)];
+        [appDelegate addCardToPlayed:card];
+        
     }
 }
 

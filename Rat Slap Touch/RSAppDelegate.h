@@ -19,6 +19,7 @@
 @class RSGCHelper;
 @class RSGameUpdate;
 @class RSRoundUpdate;
+@class RSVisibleCard;
 
 @interface RSAppDelegate : UIResponder <UIApplicationDelegate> {
     int gameType;
@@ -49,4 +50,5 @@
 - (void) gameEnded:(BOOL) winner;
 
 - (void) playerPlayedCard:(BOOL) stack;
+- (void) addCardToPlayed:(RSVisibleCard *) newCard;
 @end
