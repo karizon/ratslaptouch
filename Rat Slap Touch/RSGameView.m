@@ -9,6 +9,7 @@
 #import "RSGameView.h"
 #import "RSVisibleCard.h"
 #import "RSCardSuits.h"
+#import "RSGameViewController.h"
 
 @implementation RSGameView
 
@@ -846,6 +847,19 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if(!stillWaiting && (activePlayer == myPosition)) {
+        
+        RSGameViewController *controller = nil;
+        for (UIView* next = [self superview]; next; next = next.superview) {
+            UIResponder* nextResponder = [next nextResponder];
+            if ([nextResponder isKindOfClass:[RSGameViewController class]]) {
+                controller = (RSGameViewController *) nextResponder;
+            }
+        }
+        
+        if(!controller) {
+            NSLog(@"Game View: can't find my controller!!!");
+            return;
+        }
         UITouch *touch = [touches anyObject];
         CGPoint point = [touch locationInView:self];
         // NSLog(@"Game View: TOUCH at (%f,%f)", point.x, point.y);
@@ -855,9 +869,9 @@
                 if((point.y >= [card cardPosition].y) &&
                    (point.y <= ([card cardPosition].y + [card cardSize].size.height))) {
                     if([card active] && [card playable]) {
-                        touchPending = YES;
-                        touchedCard = card;
-                        NSLog(@"Game View: An active playedcard has been pressed");
+                        // Tell controller we clicked a card, and not from our stack
+                        NSLog(@"Game View: Clicked the played cards (SLAP!)");
+                        [controller playerPlayedCard:NO];
                         return;
                     }
                 }
@@ -869,9 +883,9 @@
                 if((point.y >= [card cardPosition].y) &&
                    (point.y <= ([card cardPosition].y + [card cardSize].size.height))) {
                     if([card active] && [card playable]) {
-                        touchPending = YES;
-                        touchedCard = card;
-                        NSLog(@"Game View: An active stack card has been pressed");
+                        // Tell controller we clicked a card, and it's from our stack
+                        NSLog(@"Game View: Playing a card out of our hand");
+                        [controller playerPlayedCard:YES];
                         return;
                     }
                 }

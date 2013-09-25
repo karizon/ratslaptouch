@@ -23,4 +23,5 @@
 
 - (void) processGameUpdate:(RSGameUpdate *) newUpdate;
 - (void) processRoundUpdate:(RSRoundUpdate *) newUpdate;
+- (void) playerPlayedCard:(BOOL) stack;
 @end

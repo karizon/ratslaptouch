@@ -47,4 +47,6 @@
 
 - (void) gameCenterLoginSuccessful: (NSString *)playerNickname;
 - (void) gameEnded:(BOOL) winner;
+
+- (void) playerPlayedCard:(BOOL) stack;
 @end

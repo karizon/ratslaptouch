@@ -26,5 +26,6 @@
 - (void) joinGame:(int) players;
 - (void) leaveGame;
 - (void) assignNickname:(NSString *) newNickname;
-
+- (void) playCard: (BOOL) stack;
+- (void) transmitJSON: (NSDictionary *) jsonDictionary;
 @end

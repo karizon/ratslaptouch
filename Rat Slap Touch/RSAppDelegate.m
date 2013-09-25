@@ -133,6 +133,10 @@
     }
 }
 
+- (void) playerPlayedCard:(BOOL) stack {
+    [networkClient playCard:stack];
+}
+
 - (void) gameEnded:(BOOL) winner {
     if(winner) {
         NSLog(@"Delegate: Game has ended, we have won!");

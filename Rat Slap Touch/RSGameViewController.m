@@ -102,4 +102,8 @@
         [gameView setOrientationHorizontal:NO];
     }
 }
+
+- (void) playerPlayedCard:(BOOL) stack {
+    [appDelegate playerPlayedCard:stack];
+}
 @end

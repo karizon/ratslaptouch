@@ -60,6 +60,7 @@
 
         [remoteClient disconnectAfterWriting];
         remoteClient = nil;
+        canTransmit = NO;
     } else {
         [self forceDisconnect];
     }
@@ -71,56 +72,62 @@
         NSLog(@"Network: Forcing connection drop");
         [remoteClient disconnect];
         remoteClient = nil;
+        canTransmit = NO;
     }
 }
 
+- (void) transmitJSON: (NSDictionary *) jsonDictionary {
+    if(jsonDictionary) {
+        NSError *error;
+
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
+        NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"Network: Sending %@",resultAsString);
+        [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
+    }
+}
+
+- (void) playCard: (BOOL) stack {
+    if(remoteClient && canTransmit) {
+        NSString *type = @"stack";
+        if(!stack)
+            type = @"slap";
+        NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"CARD", @"type",
+                                        type, @"status",
+                                        nil];
+        [self transmitJSON:jsonDictionary];
+    }
+}
 
 - (void) joinGame:(int) players {
     if(remoteClient && canTransmit) {
-        NSError *error;
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"JOIN", @"type",
                                         @"REQUEST", @"status",
                                         [NSString stringWithFormat:@"%d",players],@"players",
                                         nil];
-        if(jsonDictionary) {
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
-            NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            NSLog(@"Network: Sending %@",resultAsString);
-            [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
-        }
+        [self transmitJSON:jsonDictionary];
     }
 }
 
 - (void) leaveGame {
     if(remoteClient && canTransmit) {
-        NSError *error;
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"LEAVE", @"type",
                                         @"REQUEST", @"status",
                                         nil];
-        if(jsonDictionary) {
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
-            NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            NSLog(@"Network: Sending %@",resultAsString);
-            [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
-        }
+        [self transmitJSON:jsonDictionary];
     }
 }
 
 - (void) assignNickname:(NSString *)newNickname {
     if(remoteClient && newNickname && canTransmit) {
-        NSError *error;
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"NICKNAME", @"type",
                                         newNickname,@"nickname",
                                         nil];
-        if(jsonDictionary) {
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
-            NSString *resultAsString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            NSLog(@"Network: Sending %@",resultAsString);
-            [remoteClient writeData:jsonData withTimeout:-1 tag:SERVER_STATUS_TAG];
-        }
+        [self transmitJSON:jsonDictionary];
     }
 }
 
