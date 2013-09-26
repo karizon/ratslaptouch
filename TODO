@@ -1,13 +1,11 @@
 client TODO:
 Abandoning game to main menu should prompt
 show player names
-show currently playing player's position
 game center matchmaking vs friends
 fill w/ random players from gamecenter match
 draw stacks underneath player cards
 show how many cards a player has left
 Help screen / about
-gameplay
 ios6 version?
 Force game client / server to have same protocol version
 Message of the Day!
@@ -15,8 +13,15 @@ Message of the Day!
 
 Server:
 Card play triggers active rules
-gameplay
-better reporting interface / management 
+better reporting interface / management
     (remote kill client, remote client listing / reporting, 
     client banning, etc)
 Message of the Day!
+
+
+Gameplay:
+Challenges
+Advancing turns
+determine slap winner, assign pile
+slap rules (when can you slap?  can you slap during challenge?)
+victor determination
