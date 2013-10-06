@@ -25,6 +25,8 @@ Announcement broadcasts
 Clean up single-file mess, split into multiple classes
 force client to support server version (recommend upgrade)
 abstract out generic server wrapper
+maximum games configuration to prevent server from running out of memory ;)
+way to migrate game between active servers / server assignment
 
 
 Gameplay:
