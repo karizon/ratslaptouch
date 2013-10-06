@@ -10,6 +10,7 @@
 #import "RSVisibleCard.h"
 #import "RSCardSuits.h"
 #import "RSGameViewController.h"
+#import "RSPlayerPosition.h"
 
 @implementation RSGameView
 
@@ -684,70 +685,6 @@
     }
 }
 
-- (CGRect) getPlayer4Position {
-    if(horizontal) {
-        if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width / 2 - 75, -120, 150, 240);
-        } else {
-            return CGRectMake(self.bounds.size.width / 2 - 37.5, -60, 75, 120);
-        }
-    } else {
-        if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width - 120, self.bounds.size.height / 2 - 75, 240, 150);
-        } else {
-            return CGRectMake(self.bounds.size.width - 60, self.bounds.size.height / 2 - 37.5, 120, 75);
-        }
-    }
-}
-
-- (CGRect) getPlayer3Position {
-    if(horizontal) {
-        if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width / 2 - 75, self.bounds.size.height - 120, 150, 240);
-        } else {
-            return CGRectMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 60, 75, 120);
-        }
-    } else {
-        if([RSGameView isPad]) {
-            return CGRectMake(-120, self.bounds.size.height / 2 - 75, 240, 150);
-        } else {
-            return CGRectMake(-60, self.bounds.size.height / 2 - 37.5, 120, 75);
-        }
-    }
-}
-
-- (CGRect) getPlayer2Position {
-    if(horizontal) {
-        if([RSGameView isPad]) {
-            return CGRectMake(-120, self.bounds.size.height / 2 - 75, 240, 150);
-        } else {
-            return CGRectMake(-60, self.bounds.size.height / 2 - 37.5, 120, 75);
-        }
-    } else {
-        if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width / 2 - 75, -120, 150, 240);
-        } else {
-            return CGRectMake(self.bounds.size.width / 2 - 37.5, -60, 75, 120);
-        }
-    }
-}
-
-- (CGRect) getPlayer1Position {
-    if(horizontal) {
-        if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width - 251, self.bounds.size.height / 2 - 75, 240, 150);
-        } else {
-            return CGRectMake(self.bounds.size.width - 125.5, self.bounds.size.height / 2 - 37.5, 120, 75);
-        }
-    } else {
-        if([RSGameView isPad]) {
-            return CGRectMake(self.bounds.size.width / 2 - 75, self.bounds.size.height - 251, 150, 240);
-        } else {
-            return CGRectMake(self.bounds.size.width / 2 - 37.5, self.bounds.size.height - 125.5, 75, 120);
-        }
-    }
-}
-
 - (void) repositionStackedCards {
     // Clear out all old stacked cards:
     [visibleStackedCards removeAllObjects];
@@ -756,19 +693,19 @@
         RSVisibleCard *newCard = [[RSVisibleCard alloc] initWithCardSize:CGRectMake(0, 0, 0, 0)];
         if(i == myPosition) {
             // Player Position
-            [newCard setCardSize:[self getPlayer1Position]];
+            [newCard setCardSize:[RSPlayerPosition getPlayer1Position:horizontal size:self.bounds]];
         } else if(totalPlayers == 2) {
             // If there are only 2 players, place opposed to player
-            [newCard setCardSize:[self getPlayer2Position]];
+            [newCard setCardSize:[RSPlayerPosition getPlayer2Position:horizontal size:self.bounds]];
         } else {
             if((i == myPosition + 1) || (i == myPosition - 3)) {
                 // Clockwise Player
-                [newCard setCardSize:[self getPlayer4Position]];
+                [newCard setCardSize:[RSPlayerPosition getPlayer4Position:horizontal size:self.bounds]];
             } else if((i == myPosition + 2) || (i == myPosition - 2)) {
-                [newCard setCardSize:[self getPlayer2Position]];
+                [newCard setCardSize:[RSPlayerPosition getPlayer2Position:horizontal size:self.bounds]];
             } else {
                 // Counterclockwise to Player
-                [newCard setCardSize:[self getPlayer3Position]];
+                [newCard setCardSize:[RSPlayerPosition getPlayer3Position:horizontal size:self.bounds]];
             }
         }
         [newCard setPlayer:i];
@@ -894,7 +831,5 @@
         }
     }
 }
-
-
 
 @end

@@ -41,11 +41,6 @@
 
 - (BOOL) shouldBeVertical:(int) player;
 
-- (CGRect) getPlayer1Position;
-- (CGRect) getPlayer2Position;
-- (CGRect) getPlayer3Position;
-- (CGRect) getPlayer4Position;
-
 - (void) drawPlayerHighlight:(CGRect) size;
 
 - (void) drawVisibleStackedCards;

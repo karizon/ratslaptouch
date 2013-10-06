@@ -21,6 +21,7 @@
 		0A209EEB17CA89D6002B6ACF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209EEA17CA89D6002B6ACF /* Security.framework */; };
 		0A209EEF17CA8A1C002B6ACF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */; };
 		0A209EF217CA8B08002B6ACF /* RSNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A209EF117CA8B08002B6ACF /* RSNetworkController.m */; };
+		0A3031D2180204FE006B9A7D /* RSPlayerPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3031D1180204FE006B9A7D /* RSPlayerPosition.m */; };
 		0A3979FE17CBF420003466AF /* RSStatusUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3979FD17CBF420003466AF /* RSStatusUpdate.m */; };
 		0A4ABAAD17D16F28007848FB /* RSGCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4ABAAC17D16F28007848FB /* RSGCHelper.m */; };
 		0A4ABAB017D4CA72007848FB /* RSGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4ABAAF17D4CA72007848FB /* RSGameViewController.m */; };
@@ -55,6 +56,8 @@
 		0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		0A209EF017CA8B08002B6ACF /* RSNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNetworkController.h; sourceTree = "<group>"; };
 		0A209EF117CA8B08002B6ACF /* RSNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNetworkController.m; sourceTree = "<group>"; };
+		0A3031D0180204FE006B9A7D /* RSPlayerPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPlayerPosition.h; sourceTree = "<group>"; };
+		0A3031D1180204FE006B9A7D /* RSPlayerPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPlayerPosition.m; sourceTree = "<group>"; };
 		0A3979FC17CBF420003466AF /* RSStatusUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStatusUpdate.h; sourceTree = "<group>"; };
 		0A3979FD17CBF420003466AF /* RSStatusUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStatusUpdate.m; sourceTree = "<group>"; };
 		0A4ABAAB17D16F28007848FB /* RSGCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGCHelper.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */,
 				0ACB598017DCC5540076A14B /* RSVisibleCard.h */,
 				0ACB598117DCC5540076A14B /* RSVisibleCard.m */,
+				0A3031D0180204FE006B9A7D /* RSPlayerPosition.h */,
+				0A3031D1180204FE006B9A7D /* RSPlayerPosition.m */,
 			);
 			name = Drawing;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				0AAF7B7217CAB25B001E74D8 /* RSGameView.m in Sources */,
 				0A9CAEF917EFB12F002451CB /* RSRoundUpdate.m in Sources */,
 				0A209EF217CA8B08002B6ACF /* RSNetworkController.m in Sources */,
+				0A3031D2180204FE006B9A7D /* RSPlayerPosition.m in Sources */,
 				0A4ABAAD17D16F28007848FB /* RSGCHelper.m in Sources */,
 				0A209ECC17CA8079002B6ACF /* RSViewController.m in Sources */,
 				0ACB597F17DB984E0076A14B /* RSGameUpdate.m in Sources */,
