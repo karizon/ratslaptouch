@@ -1,4 +1,5 @@
-client TODO:
+client:
+~~~~~~
 Abandoning game to main menu should prompt
 show player names
 game center matchmaking vs friends
@@ -6,26 +7,52 @@ fill w/ random players from gamecenter match
 draw stacks underneath player cards
 show how many cards a player has left
 Help screen / about
-ios6 version?
-Force game client / server to have same protocol version
+Force game client / server to have same protocol version (recommend upgrade)
 Message of the Day!
 Challenge Notice
 Animate cards going onto pile
 slap animation
 clean up intro / start screen
+clean up RSGameView - split into multiple classes
 
 
 Server:
+~~~~~~
 Card play triggers active rules
-better reporting interface / management
-    (remote kill client, remote client listing / reporting, 
-    client banning, etc)
 Message of the Day!
+Announcement broadcasts
+Clean up single-file mess, split into multiple classes
+force client to support server version (recommend upgrade)
+abstract out generic server wrapper
 
 
 Gameplay:
+~~~~~~~~
 determine challenge winner, assign pile
 determine slap winner, assign pile
 slap rules (when can you slap?  can you slap during challenge?)
 player elimination, victor determination
 player leaves a 4 player game splitting cards amongst remainder
+
+
+Management Application:
+~~~~~~~~~~~~~~~~~~~~~~
+Support Authentication
+Ban user IP
+Ban user gamecenter ID
+display overall statistics
+display current game status
+end a current game
+set motd
+send broadcast announcement
+
+
+Game Test Suite:
+~~~~~~~~~~~~~~~
+Create 2 player game
+Create 4 player game
+test card announcements / plays
+test challenges
+test slaps
+automated gameplay / stress tester
+time responses
