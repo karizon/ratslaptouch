@@ -97,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				0A1511F017E3B71800848E3C /* TODO */,
-				0A209EEC17CA89E9002B6ACF /* GCDAsyncSocket */,
 				0A209EB817CA8079002B6ACF /* Rat Slap Touch */,
 				0A209EB117CA8079002B6ACF /* Frameworks */,
 				0A209EB017CA8079002B6ACF /* Products */,
@@ -164,6 +163,7 @@
 				0A209EEE17CA8A1C002B6ACF /* GCDAsyncSocket.m */,
 			);
 			name = GCDAsyncSocket;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0A9CAEFA17EFB139002451CB /* Network / Updates */ = {
@@ -177,6 +177,7 @@
 				0ACB597E17DB984E0076A14B /* RSGameUpdate.m */,
 				0A9CAEF717EFB12F002451CB /* RSRoundUpdate.h */,
 				0A9CAEF817EFB12F002451CB /* RSRoundUpdate.m */,
+				0A209EEC17CA89E9002B6ACF /* GCDAsyncSocket */,
 			);
 			name = "Network / Updates";
 			sourceTree = "<group>";
