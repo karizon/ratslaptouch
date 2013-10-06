@@ -5,7 +5,7 @@ show player names
 game center matchmaking vs friends
 fill w/ random players from gamecenter match
 draw stacks underneath player cards
-show how many cards a player has left
+show how many cards a player has left in his stack
 Help screen / about
 Force game client / server to have same protocol version (recommend upgrade)
 Message of the Day!
@@ -13,6 +13,7 @@ Challenge Notice
 Animate cards going onto pile
 slap animation
 clean up intro / start screen
+add tutorial mode
 clean up RSGameView - split into multiple classes
 
 
