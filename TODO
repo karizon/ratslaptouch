@@ -17,6 +17,7 @@ add tutorial mode
 clean up RSGameView - split into multiple classes
 new icon for iOS
 port to os x
+display information about challenge (challenge in motion, chances remaining, etc)
 
 
 Server:
@@ -29,15 +30,18 @@ force client to support server version (recommend upgrade)
 abstract out generic server wrapper
 maximum games configuration to prevent server from running out of memory ;)
 way to migrate game between active servers / server assignment
+better error handling on connection parsing
 
 
 Gameplay:
 ~~~~~~~~
 determine challenge winner, assign pile
 determine slap winner, assign pile
-slap rules (when can you slap?  can you slap during challenge?)
+slap rules
+slap penalty on false slap
 player elimination, victor determination
 player leaves a 4 player game splitting cards amongst remainder
+8 player game? :)
 
 
 Management Application:
