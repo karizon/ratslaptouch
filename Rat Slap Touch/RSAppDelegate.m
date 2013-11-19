@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 mandrake. All rights reserved.
 //
 
+#import <NewRelicAgent/NewRelicAgent.h>
+
 #import "RSAppDelegate.h"
 #import "RSNetworkController.h"
 #import "RSStatusUpdate.h"
@@ -20,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"Delegate: Initializing");
+    NSLog(@"Connecting to New Relic");
+    [NewRelicAgent startWithApplicationToken:@"AAe337a390ed27d70ff78b860396f1be461ff16523"];
     viewController = nil;
     gameType = NO_CURRENT_GAME;
     
