@@ -26,13 +26,13 @@
 		0A4ABAAD17D16F28007848FB /* RSGCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4ABAAC17D16F28007848FB /* RSGCHelper.m */; };
 		0A4ABAB017D4CA72007848FB /* RSGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4ABAAF17D4CA72007848FB /* RSGameViewController.m */; };
 		0A54C6BD183BC7A6005D67CC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A54C6BC183BC7A6005D67CC /* libz.dylib */; };
+		0A70F248183D566200404B96 /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A70F247183D566200404B96 /* NewRelicAgent.framework */; };
 		0A9CAEF917EFB12F002451CB /* RSRoundUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9CAEF817EFB12F002451CB /* RSRoundUpdate.m */; };
 		0AAF7B7217CAB25B001E74D8 /* RSGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF7B7117CAB25B001E74D8 /* RSGameView.m */; };
 		0AAF7B7417CACBEE001E74D8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF7B7317CACBEE001E74D8 /* GameKit.framework */; };
 		0ACB597F17DB984E0076A14B /* RSGameUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB597E17DB984E0076A14B /* RSGameUpdate.m */; };
 		0ACB598217DCC5540076A14B /* RSVisibleCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB598117DCC5540076A14B /* RSVisibleCard.m */; };
 		0AD4DD4F17E90A7000DADD0B /* RSCardSuits.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */; };
-		0AEC6387183BC70E00807BA0 /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC6386183BC70E00807BA0 /* NewRelicAgent.framework */; };
 		0AEC6389183BC74900807BA0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC6388183BC74900807BA0 /* CoreTelephony.framework */; };
 		0AEC638B183BC75600807BA0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC638A183BC75600807BA0 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +69,7 @@
 		0A4ABAAE17D4CA72007848FB /* RSGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGameViewController.h; sourceTree = "<group>"; };
 		0A4ABAAF17D4CA72007848FB /* RSGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGameViewController.m; sourceTree = "<group>"; };
 		0A54C6BC183BC7A6005D67CC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0A70F247183D566200404B96 /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NewRelicAgent.framework; sourceTree = "<group>"; };
 		0A9CAEF717EFB12F002451CB /* RSRoundUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRoundUpdate.h; sourceTree = "<group>"; };
 		0A9CAEF817EFB12F002451CB /* RSRoundUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRoundUpdate.m; sourceTree = "<group>"; };
 		0AAF7B7017CAB25B001E74D8 /* RSGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGameView.h; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		0ACB598117DCC5540076A14B /* RSVisibleCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSVisibleCard.m; sourceTree = "<group>"; };
 		0AD4DD4D17E90A7000DADD0B /* RSCardSuits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSCardSuits.h; sourceTree = "<group>"; };
 		0AD4DD4E17E90A7000DADD0B /* RSCardSuits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCardSuits.m; sourceTree = "<group>"; };
-		0AEC6386183BC70E00807BA0 /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NewRelicAgent.framework; sourceTree = "<group>"; };
 		0AEC6388183BC74900807BA0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		0AEC638A183BC75600807BA0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -91,10 +91,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A54C6BD183BC7A6005D67CC /* libz.dylib in Frameworks */,
+				0A70F248183D566200404B96 /* NewRelicAgent.framework in Frameworks */,
 				0AEC638B183BC75600807BA0 /* SystemConfiguration.framework in Frameworks */,
 				0AEC6389183BC74900807BA0 /* CoreTelephony.framework in Frameworks */,
 				0A209EEB17CA89D6002B6ACF /* Security.framework in Frameworks */,
-				0AEC6387183BC70E00807BA0 /* NewRelicAgent.framework in Frameworks */,
 				0A209EB517CA8079002B6ACF /* CoreGraphics.framework in Frameworks */,
 				0A209EB717CA8079002B6ACF /* UIKit.framework in Frameworks */,
 				0A209EB317CA8079002B6ACF /* Foundation.framework in Frameworks */,
@@ -126,10 +126,10 @@
 		0A209EB117CA8079002B6ACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A70F247183D566200404B96 /* NewRelicAgent.framework */,
 				0A54C6BC183BC7A6005D67CC /* libz.dylib */,
 				0AEC638A183BC75600807BA0 /* SystemConfiguration.framework */,
 				0AEC6388183BC74900807BA0 /* CoreTelephony.framework */,
-				0AEC6386183BC70E00807BA0 /* NewRelicAgent.framework */,
 				0AAF7B7317CACBEE001E74D8 /* GameKit.framework */,
 				0A209EEA17CA89D6002B6ACF /* Security.framework */,
 				0A209EB217CA8079002B6ACF /* Foundation.framework */,
