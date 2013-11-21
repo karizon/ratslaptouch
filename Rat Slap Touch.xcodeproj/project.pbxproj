@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A1511F117E3B71800848E3C /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 0A1511F017E3B71800848E3C /* TODO */; };
 		0A209EB317CA8079002B6ACF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209EB217CA8079002B6ACF /* Foundation.framework */; };
 		0A209EB517CA8079002B6ACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209EB417CA8079002B6ACF /* CoreGraphics.framework */; };
 		0A209EB717CA8079002B6ACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A209EB617CA8079002B6ACF /* UIKit.framework */; };
@@ -38,7 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A1511F017E3B71800848E3C /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		0A209EAF17CA8079002B6ACF /* Rat Slap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rat Slap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A209EB217CA8079002B6ACF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0A209EB417CA8079002B6ACF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,7 +106,6 @@
 		0A209EA617CA8079002B6ACF = {
 			isa = PBXGroup;
 			children = (
-				0A1511F017E3B71800848E3C /* TODO */,
 				0A209EB817CA8079002B6ACF /* Rat Slap Touch */,
 				0A209EB117CA8079002B6ACF /* Frameworks */,
 				0A209EB017CA8079002B6ACF /* Products */,
@@ -277,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A209EC917CA8079002B6ACF /* Main_iPad.storyboard in Resources */,
-				0A1511F117E3B71800848E3C /* TODO in Resources */,
 				0A209ECE17CA8079002B6ACF /* Images.xcassets in Resources */,
 				0A209EC617CA8079002B6ACF /* Main_iPhone.storyboard in Resources */,
 				0A209EBD17CA8079002B6ACF /* InfoPlist.strings in Resources */,
