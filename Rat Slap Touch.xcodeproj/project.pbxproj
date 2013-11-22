@@ -123,8 +123,8 @@
 		0A209EB117CA8079002B6ACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A70F247183D566200404B96 /* NewRelicAgent.framework */,
 				0A54C6BC183BC7A6005D67CC /* libz.dylib */,
+				0A70F247183D566200404B96 /* NewRelicAgent.framework */,
 				0AEC638A183BC75600807BA0 /* SystemConfiguration.framework */,
 				0AEC6388183BC74900807BA0 /* CoreTelephony.framework */,
 				0AAF7B7317CACBEE001E74D8 /* GameKit.framework */,
